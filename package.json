@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "prepare": "husky",
-    "eslint": "eslint ./source/",
-    "eslint:fix": "eslint --fix .",
+    "eslint": "eslint ./app/",
+    "eslint:fix": "eslint --fix ./app/",
     "prettier": "prettier --write .",
     "prod:build": "tsc --noEmit && yarn run prettier && yarn run eslint && vite build",
     "dev:build": "vite build --watch"

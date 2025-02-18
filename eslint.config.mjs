@@ -11,4 +11,14 @@ export default tseslint.config(
   eslint.configs.recommended,
   tseslint.configs.recommended,
   pluginReact.configs.flat["jsx-runtime"],
+  {
+    settings: {
+      "import/resolver": {
+        alias: {
+          extensions: [".tsx"],
+          map: [["@/*", "./src/*"]],
+        },
+      },
+    },
+  },
 );
