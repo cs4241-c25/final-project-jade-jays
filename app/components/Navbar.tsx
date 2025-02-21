@@ -1,17 +1,17 @@
 import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
-import { BrowserRouter, Routes, Route } from "react-router";
 
 export default function Navbar() {
+    const navigate = useNavigate();
 
     return (
-        <BrowserRouter>
-            <a href={"/"}>
-                <button id={"login-button"}>Login</button>
-            </a>
-            <a href={"/app"}>
-                <button id={"main"}>Application</button>
-            </a>
-        </BrowserRouter>
+        <>
+            <button id={"login-button"} onClick={() => {
+                navigate("/");
+            }}>Login</button>
+            <button id={"main"} onClick={() => {
+                navigate("/app");
+            }}>Application</button>
+        </>
     );
 }

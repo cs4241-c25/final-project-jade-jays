@@ -6,10 +6,6 @@ export default function Login() {
     const [user, setUser] = useState("");
     const [pass, setPass] = useState("");
 
-    function handleLogin(event) {
-
-    }
-
     const changeUser = (e: React.ChangeEvent<HTMLInputElement>) => {
         setUser(e.target.value);
     };
