@@ -35,6 +35,13 @@ export default function Login() {
         setPass(e.target.value);
     };
 
+    useEffect(() => {
+        const path = Auth("", "", "/app");
+        if (path !== "/") {
+            navigate("/app");
+        }
+    });
+
     return (
         <>
             <h1>Login</h1>

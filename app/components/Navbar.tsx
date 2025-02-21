@@ -12,13 +12,18 @@ export default function Navbar() {
                 navigate("/");
             }}>Login</button>
         }
+        else {
+            return <button id={"logout-button"} onClick={() => {
+                localStorage.setItem("user", "");
+                localStorage.setItem("pass", "");
+                navigate("/");
+            }}>Logout</button>
+        }
     }
 
     return (
         <>
-            <button id={"login-button"} onClick={() => {
-                navigate("/");
-            }}>Login</button>
+            {logButton()}
             <button id={"main"} onClick={() => {
                 navigate("/app");
             }}>Application</button>
