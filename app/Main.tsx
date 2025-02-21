@@ -5,8 +5,11 @@ import "@/Main.css";
 
 import Login from "./components/Login";
 import Navbar from "./components/Navbar";
-import App from "./components/App";
+import TrackSheet from "./components/TrackSheet";
 import Redirect from "./components/Redirect";
+import {rootPath, trackPath, flowPath, makePath} from "./components/Paths";
+import FlowChart from "./components/FlowChart";
+import Maker from "./components/Maker";
 
 const root = createRoot(document.getElementById("root")!);
 root.render(
@@ -14,8 +17,10 @@ root.render(
     <BrowserRouter>
         <Navbar />
       <Routes>
-        <Route path="/" index element={<Login />} />
-        <Route path="/app" element={<App />} />
+        <Route path={rootPath} index element={<Login />} />
+        <Route path={trackPath} element={<TrackSheet />} />
+          <Route path={flowPath} element={<FlowChart />} />
+          <Route path={makePath} element={<Maker />} />
         <Route path="*"  element={<Redirect />} />
       </Routes>
     </BrowserRouter>

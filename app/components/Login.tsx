@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {useNavigate} from "react-router-dom";
 import Auth from "./Authenticate";
+import {makePath, rootPath} from "./Paths";
 
 try {
     localStorage.getItem("user")
@@ -36,9 +37,9 @@ export default function Login() {
     };
 
     useEffect(() => {
-        const path = Auth("", "", "/app");
-        if (path !== "/") {
-            navigate("/app");
+        const path = Auth("", "", makePath);
+        if (path !== rootPath) {
+            navigate(makePath);
         }
     });
 
@@ -52,7 +53,7 @@ export default function Login() {
             <br/>
             <br/>
             <button onClick={() => {
-                const path = Auth(user, pass, "/app");
+                const path = Auth(user, pass, makePath);
                 navigate(path);
             }}>Login</button>
             <p>{user}:{pass}</p>

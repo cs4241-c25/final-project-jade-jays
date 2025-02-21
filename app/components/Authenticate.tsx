@@ -1,3 +1,4 @@
+import {rootPath} from "./Paths";
 
 
 try {
@@ -13,7 +14,7 @@ catch (e) {
 
 export default function Auth(username: string, password: string, targetPath: string) {
 
-    let path = "/";
+    let path = rootPath;
 
     if (localStorage.getItem("user") !== username && username !== "") {
         localStorage.setItem("user", username);
