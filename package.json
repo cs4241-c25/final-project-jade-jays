@@ -8,13 +8,15 @@
     "eslint:fix": "eslint --fix ./app/",
     "prettier": "prettier --write .",
     "prod:build": "tsc --noEmit && yarn run prettier && yarn run eslint && vite build",
-    "dev:build": "vite build --watch"
+    "dev:build": "vite build --watch",
+    "run": "vite"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.7",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router": "^7.1.5",
+    "react-router-dom": "^7.2.0",
     "tailwindcss": "^4.0.7"
   },
   "devDependencies": {
@@ -26,6 +28,7 @@
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-prettier": "^5.2.3",
     "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.1.0",
     "globals": "^15.15.0",
     "husky": "^9.1.7",
     "prettier": "^3.5.1",
