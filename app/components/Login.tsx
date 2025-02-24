@@ -36,12 +36,16 @@ export default function Login() {
         setPass(e.target.value);
     };
 
+    /*
+
     useEffect(() => {
         const path = Auth("", "", makePath);
         if (path !== rootPath) {
             navigate(makePath);
         }
     });
+
+     */
 
     return (
         <>

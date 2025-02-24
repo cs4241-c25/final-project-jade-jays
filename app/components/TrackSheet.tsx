@@ -7,12 +7,15 @@ import {makePath, rootPath} from "./Paths";
 export default function TrackSheet() {
     const navigate = useNavigate();
 
+    /*
     useEffect(() => {
         const path = Auth("", "", makePath);
         if (path === rootPath) {
             navigate(path);
         }
     });
+
+     */
 
     return (
         <>

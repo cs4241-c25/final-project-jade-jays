@@ -7,6 +7,7 @@ import * as path from "path";
 export default defineConfig(({ command, mode }) => {
   const options = {
     plugins: [react(), tailwindcss()],
+    base: "/",
     resolve: {
       alias: [{ find: "@", replacement: path.resolve(__dirname, "app") }],
     },
