@@ -2,28 +2,18 @@
   "name": "final-project-jade-jays",
   "type": "module",
   "scripts": {
+    "dev": "pnpm run -r dev",
     "prettier:all": "prettier . --write",
     "prettier:client": "prettier ./frontend/src --write",
-    "prettier:server": "prettier ./backend/src --write"
+    "prettier:server": "prettier ./backend/src --write",
+    "prepare": "husky"
   },
   "devDependencies": {
-    "@types/node": "^22.13.5",
     "prettier": "3.5.2",
-    "typescript": "^5.7.3"
+    "husky": "^9.1.7"
   },
   "engines": {
-    "yarn": "^1.22.22",
     "pnpm": ">=10",
     "node": ">=20"
-  },
-  "pnpm": {
-    "ignoredBuiltDependencies": [
-      "@swc/core",
-      "esbuild"
-    ],
-    "onlyBuiltDependencies": [
-      "@swc/core",
-      "esbuild"
-    ]
   }
 }

@@ -4,10 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint ./src/",
-    "preview": "vite preview"
+    "prod": "tsc -b && vite build",
+    "dev": "tsc -b && vite build --watch",
+    "lint": "eslint ./src/"
   },
   "dependencies": {
     "react": "^18.3.1",

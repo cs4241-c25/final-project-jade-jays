@@ -3,7 +3,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "start": "tsc --watch src/index.ts",
+    "dev": "tsc --watch src/index.ts",
     "types": "tsc -b src/"
   },
   "dependencies": {
