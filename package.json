@@ -1,46 +1,29 @@
 {
   "name": "final-project-jade-jays",
   "type": "module",
-  "private": true,
   "scripts": {
-    "prepare": "husky",
-    "eslint": "eslint ./app/",
-    "eslint:fix": "eslint --fix ./app/",
-    "prettier": "prettier --write .",
-    "prod:build": "tsc --noEmit && yarn run prettier && yarn run eslint && vite build",
-    "dev:build": "vite build --watch",
-    "run": "vite",
-    "start": "node ./Server/app.js"
-  },
-  "dependencies": {
-    "@tailwindcss/vite": "^4.0.7",
-    "@types/react-router-dom": "^5.3.3",
-    "express": "^4.21.2",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-router": "^7.1.5",
-    "react-router-dom": "^7.2.0",
-    "tailwindcss": "^4.0.7"
+    "prettier:all": "prettier . --write",
+    "prettier:client": "prettier ./frontend/src --write",
+    "prettier:server": "prettier ./backend/src --write"
   },
   "devDependencies": {
-    "@eslint/js": "^9.20.0",
-    "@types/react": "^19.0.8",
-    "@types/react-dom": "^19.0.3",
-    "@vitejs/plugin-react-swc": "^3.5.0",
-    "eslint": "^9.20.1",
-    "eslint-config-prettier": "^10.0.1",
-    "eslint-plugin-prettier": "^5.2.3",
-    "eslint-plugin-react": "^7.37.4",
-    "eslint-plugin-react-hooks": "^5.1.0",
-    "globals": "^15.15.0",
-    "husky": "^9.1.7",
-    "prettier": "^3.5.1",
-    "typescript": "^5.7.3",
-    "typescript-eslint": "^8.24.1",
-    "vite": "^6.1.0"
+    "@types/node": "^22.13.5",
+    "prettier": "3.5.2",
+    "typescript": "^5.7.3"
   },
   "engines": {
     "yarn": "^1.22.22",
-    "pnpm": "^10.4.1"
+    "pnpm": ">=10",
+    "node": ">=20"
+  },
+  "pnpm": {
+    "ignoredBuiltDependencies": [
+      "@swc/core",
+      "esbuild"
+    ],
+    "onlyBuiltDependencies": [
+      "@swc/core",
+      "esbuild"
+    ]
   }
 }

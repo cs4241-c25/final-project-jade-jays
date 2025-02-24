@@ -20,12 +20,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true,
-
-    /* path aliases */
-    "paths": {
-      "@/*": ["./app/*"]
-    }
+    "noUncheckedSideEffectImports": true
   },
   "include": ["src"]
 }
