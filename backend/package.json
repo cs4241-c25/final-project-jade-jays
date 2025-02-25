@@ -3,7 +3,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "tsc --watch src/index.ts",
+    "dev": "tsc -b --watch --watchDirectory usefsevents",
     "types": "tsc -b src/"
   },
   "dependencies": {
