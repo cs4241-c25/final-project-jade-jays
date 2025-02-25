@@ -1,0 +1,8 @@
+# transpilation artifacts
+*.d.ts*
+*.js*
+tsconfig.tsbuildinfo
+
+# env files
+.env*
+!.env-sample

@@ -24,6 +24,4 @@ Function Set-PathVariable {
 
 $PnpmPath = Resolve-Path -Path "$env:APPDATA\..\Local\pnpm"
 if (Test-Path -Path $PnpmPath) {
-    echo $PnpmPath
-    Remove-Item -Recurse -Force $PnpmPath
 }
