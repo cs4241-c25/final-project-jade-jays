@@ -22,9 +22,9 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
 
-    /* path aliases */
+    /* alias */
     "paths": {
-      "@/*": ["./app/*"]
+      "@/*": ["./src/*"]
     }
   },
   "include": ["src"]
