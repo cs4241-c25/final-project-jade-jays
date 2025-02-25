@@ -15,7 +15,7 @@ importers:
         specifier: 3.5.2
         version: 3.5.2
 
-  backend:
+  apps/backend:
     dependencies:
       '@types/express':
         specifier: ^5.0.0
@@ -33,7 +33,7 @@ importers:
         specifier: ^5.7.3
         version: 5.7.3
 
-  frontend:
+  apps/frontend:
     dependencies:
       react:
         specifier: ^18.3.1
