@@ -10,7 +10,7 @@ On top of course planning, we have some additional features include:
 
 To ensure that development environment is consistent, I suggest using **pnpm**.
 
-# Manual Webstorm Setup
+### Manual Webstorm Setup
 
 Press `CTRL+ALT+S` to go to Webstorm's settings. In the search bar type Node.js.
 Under Languages & Frameworks, click on the Node.js tab. Look for Node interpreter.
@@ -18,7 +18,7 @@ Click on the dropdown and select download, choose any Node version above 20 and
 click download. This would install Node and other package managers, including
 pnpm.
 
-# Others
+### Others
 
 You can quickly install by running the `install` script in `Powershell`. This
 will install pnpm and set up a path to the pnpm executable. This allows you to
