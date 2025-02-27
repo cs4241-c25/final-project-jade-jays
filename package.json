@@ -6,7 +6,7 @@
     "prettier:all": "prettier . --write",
     "prettier:client": "prettier ./frontend/src --write",
     "prettier:server": "prettier ./backend/src --write",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "devDependencies": {
     "husky": "^9.1.7",
