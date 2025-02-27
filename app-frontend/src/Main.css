@@ -1,8 +1,4 @@
-@import "tailwindcss";
-@plugin "tailwindcss-animate";
-
-@custom-variant dark (&:is(.dark *));
-@tailwind utilities;
+@layer mantine, components;
 
 :root {
   --background: oklch(91.28% 0 0);
@@ -19,6 +15,7 @@
   --input: oklch(0.922 0 0);
   --ring: oklch(0.87 0 0);
   --radius: 0.625rem;
+  --scale: 1rem;
 }
 
 .dark {
@@ -37,7 +34,7 @@
   --ring: oklch(0.439 0 0);
 }
 
-@theme inline {
+:root {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
@@ -55,13 +52,4 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-}
-
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
 }

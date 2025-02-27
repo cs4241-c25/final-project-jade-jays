@@ -1,0 +1,55 @@
+import cx from 'clsx'
+import { Outlet, NavLink } from 'react-router-dom'
+import { AppShell, UnstyledButton, Title, Group } from '@mantine/core'
+
+import classes from './appLayout.module.css'
+
+export function AppLayout() {
+    return (
+        <AppShell
+            withBorder={false}
+            padding={"0.5rem"}
+            header={{ height: "50", offset: true }}>
+            <AppShell.Header className={classes.header}>
+                <Group>
+                    <UnstyledButton
+                        renderRoot={({ className, ...others }) => (
+                            <NavLink to={"/"} className={cx(className)} {...others}/>
+                        )}>
+                        <Title order={2} fw={"700"}>
+                            Planner
+                        </Title>
+                    </UnstyledButton>
+                </Group>
+                <div className={classes.headerGroup}>
+                    <div className={classes.headerMenu}>
+                        <UnstyledButton
+                            renderRoot={({ className, ...others }) => (
+                                <NavLink to={"/"} className={cx(className)} {...others}/>
+                            )}>
+                            <Title order={4} fw={"600"}>
+                                Courses
+                            </Title>
+                        </UnstyledButton>
+                    </div>
+                    <div className={classes.headerMenu}>
+                        <UnstyledButton
+                            renderRoot={({ className, ...others }) => (
+                                <NavLink to={"/schedule"} className={cx(className)} {...others}/>
+                            )}>
+                            <Title order={4} fw={"600"}>
+                                Schedule
+                            </Title>
+                        </UnstyledButton>
+                    </div>
+                </div>
+            </AppShell.Header>
+            <AppShell.Main className={classes.main}>
+                <div
+                    className={classes.mainSection}>
+                    <Outlet/>
+                </div>
+            </AppShell.Main>
+        </AppShell>
+    );
+};
