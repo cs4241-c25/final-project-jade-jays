@@ -6,7 +6,6 @@
       <script value="dev" />
     </scripts>
     <node-interpreter value="project" />
-    <package-manager value="C:\Users\Thinh Pham\AppData\Roaming\JetBrains\WebStorm2024.3\node\versions\22.14.0\pnpm.cmd" />
     <envs />
     <method v="2" />
   </configuration>
