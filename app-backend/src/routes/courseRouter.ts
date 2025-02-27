@@ -8,14 +8,17 @@ const router: Router = Router({});
 
 router.get("/all", async (req: Request, res: Response) => {
   try {
+    // This approach bloats the data, BAD...
     const data: { [key: string]: CourseType[] } = {};
-    const courses = await Course.find({}).sort({ subject: 1 });
+    const courses = await Course.find({}).select("-__v").sort({ subject: 1 });
     courses.forEach((course: CourseType) => {
-      if (!data[course.subject]) {
-        data[course.subject] = [course];
-      } else {
-        data[course.subject].push(course);
-      }
+      course.subject.split("; ").forEach((subject: string) => {
+        if (!data[subject]) {
+          data[subject] = [course];
+        } else {
+          data[subject].push(course);
+        }
+      });
     });
     res.send(JSON.stringify({ success: true, data: data }));
   } catch (error) {
@@ -36,7 +39,6 @@ router.get("/populate_database", async (req: Request, res: Response) => {
     });
 
     const courses: CourseType[] = [];
-    const subject = new Set();
     response.data.Report_Entry.forEach((course_data: RawCourseType) => {
       courses.push({
         title: course_data.Course_Title,
