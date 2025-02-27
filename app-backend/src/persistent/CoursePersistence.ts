@@ -1,6 +1,7 @@
+import { CourseType } from "@/util/persistent.types";
 import mongoose from "mongoose";
 
-const course = new mongoose.Schema({
+const course = new mongoose.Schema<CourseType>({
   title: String,
   locations: String,
   instructional_format: String,
@@ -17,7 +18,7 @@ const course = new mongoose.Schema({
   section_status: String,
   section_start_date: Date,
   section_end_date: Date,
-  section_time: String,
+  section_details: String,
   offer_period: String,
   academic_period: String,
   course_tags: [String], // String array

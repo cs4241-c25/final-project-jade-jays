@@ -3,7 +3,7 @@ import logger from "morgan";
 import cors from "cors";
 
 import { ConnectDB } from "./util/DatabaseUtil.js";
-import courseRoutes from "./route/courseRouter.js";
+import courseRoutes from "./routes/courseRouter.js";
 
 export function initApp(): express.Express {
   const app = express();

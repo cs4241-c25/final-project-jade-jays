@@ -8,7 +8,15 @@ const router: Router = Router({});
 
 router.get("/all", async (req: Request, res: Response) => {
   try {
-    const data = await Course.find({});
+    const data: { [key: string]: CourseType[] } = {};
+    const courses = await Course.find({}).sort({ subject: 1 });
+    courses.forEach((course: CourseType) => {
+      if (!data[course.subject]) {
+        data[course.subject] = [course];
+      } else {
+        data[course.subject].push(course);
+      }
+    });
     res.send(JSON.stringify({ success: true, data: data }));
   } catch (error) {
     console.error("[ERROR] Cannot get public course listing.");
@@ -28,6 +36,7 @@ router.get("/populate_database", async (req: Request, res: Response) => {
     });
 
     const courses: CourseType[] = [];
+    const subject = new Set();
     response.data.Report_Entry.forEach((course_data: RawCourseType) => {
       courses.push({
         title: course_data.Course_Title,

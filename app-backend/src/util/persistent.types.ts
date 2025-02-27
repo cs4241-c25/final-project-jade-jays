@@ -1,4 +1,7 @@
-export type CourseType = {
+import { Types } from "mongoose";
+
+export interface CourseType {
+  _id?: Types.ObjectId;
   title: string;
   locations: string;
   instructional_format: string;
@@ -19,7 +22,7 @@ export type CourseType = {
   offer_period: string;
   academic_period: string;
   course_tags: string[]; // String array
-};
+}
 
 export type RawCourseType = {
   Course_Section_Start_Date: string;
