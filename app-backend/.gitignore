@@ -1,6 +1,7 @@
 # transpilation artifacts
 *.d.ts*
-*.js*
+*.js
+*.js.map
 tsconfig.tsbuildinfo
 
 # env files
