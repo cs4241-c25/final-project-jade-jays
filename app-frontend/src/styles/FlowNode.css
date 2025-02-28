@@ -1,24 +1,37 @@
+:root {
+  --node-width: 210px;
+  --node-height: 85px;
+}
+
+p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .flow-node {
-    width: 100px;
-    height: 100px;
-    white-space: pre-line;
-    border: 2px solid black;
-    border-radius: 5px;
-    font-size: 12px;
+  max-width: var(--node-width) !important;
+  min-width: var(--node-width) !important;
+  max-height: var(--node-height) !important;
+  min-height: var(--node-height) !important;
+  border: 2px solid black;
+  border-radius: 5px;
+  font-size: 12px;
+  padding: 5px;
 }
 
 .uncompleted {
-    background-color: red;
+  background-color: red;
 }
 
 .completed {
-    background-color: green;
+  background-color: green;
 }
 
 .confirmed {
-    background-color: blue;
+  background-color: blue;
 }
 
 .unconfirmed {
-    background-color: yellow;
+  background-color: yellow;
 }

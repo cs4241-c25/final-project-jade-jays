@@ -1,19 +1,31 @@
 import { MarkerType } from "reactflow";
 
-function BasicEdge(
+function basicEdge(
   id: string,
   source: string,
   target: string,
-  sourceHandle: string,
-  color: string,
+  targetHandle: string,
+  req: string,
 ): any {
+
+  let color = "";
+  if (req === "prereq") {
+    color = "black"
+  }
+  else if (req === "concurrent") {
+    color = "blue"
+  }
+  else if (req === "recomended") {
+    color = "green"
+  }
+
   return {
     id: id,
     source: source,
     target: target,
     type: "step",
     color: color,
-    sourceHandle: sourceHandle,
+    targetHandle: targetHandle,
     markerEnd: {
       type: MarkerType.ArrowClosed,
       color: color,
@@ -23,20 +35,45 @@ function BasicEdge(
   };
 }
 
-export function PrereqEdge(
+export function prereqEdge(
   id: string,
   source: string,
   target: string,
-  sourceHandle: string,
+  targetHandle: string,
 ): any {
-  return BasicEdge(id, source, target, sourceHandle, "red");
+  return basicEdge(id, source, target, targetHandle, "red");
 }
 
-export function ConcurrentEdge(
+export function concurrentEdge(
   id: string,
   source: string,
   target: string,
-  sourceHandle: string,
+  targetHandle: string,
 ): any {
-  return BasicEdge(id, source, target, sourceHandle, "green");
+  return basicEdge(id, source, target, targetHandle, "green");
+}
+
+export function getEdges(nodes: any[]): any[] {
+
+  let edges: any[] = [];
+
+  let edgeID = 0;
+
+  for (let nodeI = 0; nodeI < nodes.length; nodeI++) {
+    const node = nodes[nodeI];
+    const nodeID = node.id;
+    for (let reqI = 0; reqI < node.prereq.length; reqI++) {
+      const prereqs = node.prereq[reqI];
+      for (let reqJ = 0; reqJ < prereqs.length; reqJ++) {
+        const sourceClass = prereqs[reqJ];
+        const sourceID = sourceClass.id;
+        edges.push(
+            basicEdge(String(edgeID), sourceID, nodeID, String(reqI), sourceClass.req)
+        );
+        edgeID++;
+      }
+    }
+  }
+
+  return edges;
 }
