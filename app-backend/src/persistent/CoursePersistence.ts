@@ -4,9 +4,6 @@ import mongoose, { Schema } from "mongoose";
 const course = new mongoose.Schema<CourseType>({
   code: { type: String },
   title: { type: String },
-  locations: { type: String },
-  instructional_format: { type: String },
-  delivery_mode: { type: String },
   description: { type: String },
   instructors: { type: String },
   waitlist_capacity: { type: String },
@@ -14,13 +11,6 @@ const course = new mongoose.Schema<CourseType>({
   credits: Number,
   subject: { type: Schema.Types.ObjectId },
   academic_level: { type: String },
-  section_code: { type: String },
-  section_status: { type: String },
-  section_start_date: { type: String },
-  section_end_date: { type: String },
-  section_start_time: { type: String },
-  section_end_time: { type: String },
-  meeting_day_patterns: { type: String },
   offer_period: { type: String },
   academic_period: { type: String },
   course_tags: [String], // String array

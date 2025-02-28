@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 
 const subject = new mongoose.Schema<SubjectType>({
   type: String,
-  abbreviation: String,
+  code: String,
   department: String,
 });
 

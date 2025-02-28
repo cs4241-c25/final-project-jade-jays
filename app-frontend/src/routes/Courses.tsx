@@ -1,5 +1,5 @@
 import { PanelGroup, Panel, PanelResizeHandle } from "react-resizable-panels";
-import { useState } from "react";
+import { useLocalStorage } from "@mantine/hooks";
 
 import { ClientSubjectType } from "app-packages/types/persistent.types.ts";
 import { useSubject } from "@/hooks/data-fetches.ts";
@@ -9,10 +9,11 @@ import { SidebarItem } from "@/components/SidebarItem";
 import classes from "@/styles/courses.module.css";
 
 export function Courses() {
-  const [currentSubject, setCurrentSubject] = useState(
-    "67c167c36a03c8261f15d9c8",
-  );
   const { isPending, isError, data, error } = useSubject();
+  const [value, setValue] = useLocalStorage({
+    key: "subject",
+    defaultValue: "67c167c36a03c8261f15d9c8",
+  });
 
   if (isPending) {
     return <span>Loading...</span>;
@@ -47,7 +48,7 @@ export function Courses() {
                 <SidebarItem
                   key={subject.type}
                   subject={subject}
-                  onClick={() => setCurrentSubject(subject._id)}
+                  onClick={() => setValue(subject._id)}
                 />
               );
             })
@@ -63,7 +64,7 @@ export function Courses() {
         minSize={25}
         order={2}
       >
-        <CourseList subject={currentSubject} />
+        <CourseList subject={value} />
       </Panel>
       <PanelResizeHandle className={classes.panelHandle} />
       <Panel

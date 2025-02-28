@@ -25,7 +25,6 @@ export function SidebarItem({ subject, ...props }: SidebarItemProp) {
     <UnstyledButton
       className={classes.sidebarPanelItem}
       mod={{ _id: subject._id }}
-      onMouseOver={() => prefetch()}
       {...props}
     >
       <Text size={"sm"}>{subject.type}</Text>
