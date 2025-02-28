@@ -1,0 +1,24 @@
+.flow-node {
+    width: 100px;
+    height: 100px;
+    white-space: pre-line;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.uncompleted {
+    background-color: red;
+}
+
+.completed {
+    background-color: green;
+}
+
+.confirmed {
+    background-color: blue;
+}
+
+.unconfirmed {
+    background-color: yellow;
+}
