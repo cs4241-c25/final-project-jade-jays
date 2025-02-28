@@ -2,7 +2,7 @@ import cx from "clsx";
 import { Outlet, NavLink } from "react-router-dom";
 import { AppShell, UnstyledButton, Title, Group } from "@mantine/core";
 
-import classes from "./appLayout.module.css";
+import classes from "../styles/appLayout.module.css";
 
 export function AppLayout() {
   return (

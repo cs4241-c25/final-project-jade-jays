@@ -3,7 +3,9 @@ import logger from "morgan";
 import cors from "cors";
 
 import { ConnectDB } from "./util/DatabaseUtil.js";
-import courseRoutes from "./routes/courseRouter.js";
+import adminRoutes from "./routes/adminRouter.js";
+import courseRoutes from "./routes/courseRouter";
+import subjectRoutes from "./routes/subjectRouter";
 
 export function initApp(): express.Express {
   const app = express();
@@ -20,7 +22,9 @@ export function initApp(): express.Express {
 
   ConnectDB();
 
+  app.use("/api/admin/", adminRoutes);
   app.use("/api/course/", courseRoutes);
+  app.use("/api/subject/", subjectRoutes);
 
   return app;
 }

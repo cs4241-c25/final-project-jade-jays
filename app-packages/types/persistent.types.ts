@@ -1,24 +1,66 @@
 import { Types } from "mongoose";
 
-export interface CourseType {
-  _id?: Types.ObjectId;
+export interface ClientSubjectType {
+  _id: string;
+  type: string;
+  abbreviation: string;
+  department: string;
+}
+
+export interface ClientCourseType {
+  _id: string;
+  code: string;
   title: string;
   locations: string;
   instructional_format: string;
-  meeting_day_patterns: string;
   delivery_mode: string;
   description: string;
   instructors: string;
   waitlist_capacity: string;
   enrolled_capacity: string;
   credits: number;
-  subject: string;
+  subject: Types.ObjectId;
   academic_level: string;
-  section: string;
+  section_code: string;
   section_status: string;
   section_start_date: string;
   section_end_date: string;
-  section_details: string;
+  section_start_time: string;
+  section_end_time: string;
+  meeting_day_patterns: string;
+  offer_period: string;
+  academic_period: string;
+  course_tags: string[]; // String array
+}
+
+export interface SubjectType {
+  _id?: Types.ObjectId;
+  type: string;
+  abbreviation: string;
+  department: string;
+}
+
+export interface CourseType {
+  _id?: Types.ObjectId;
+  code: string;
+  title: string;
+  locations: string;
+  instructional_format: string;
+  delivery_mode: string;
+  description: string;
+  instructors: string;
+  waitlist_capacity: string;
+  enrolled_capacity: string;
+  credits: number;
+  subject: Types.ObjectId;
+  academic_level: string;
+  section_code: string;
+  section_status: string;
+  section_start_date: string;
+  section_end_date: string;
+  section_start_time: string;
+  section_end_time: string;
+  meeting_day_patterns: string;
   offer_period: string;
   academic_period: string;
   course_tags: string[]; // String array

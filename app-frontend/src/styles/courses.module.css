@@ -1,0 +1,25 @@
+.panel {
+  padding: var(--mantine-spacing-sm);
+  background-color: var(--mantine-color-gray-1);
+  display: flex;
+  flex-direction: column;
+}
+
+.panelHandle {
+  flex: 0 0 0.25rem;
+  transition: background-color 250ms;
+}
+.panelHandle[data-resize-handle-active="pointer"] {
+  background-color: var(--mantine-color-dark-2);
+}
+
+.sidebarPanelItem {
+  width: 100%;
+  padding: calc(0.25rem * var(--mantine-scale));
+  border-radius: var(--mantine-radius-sm);
+  transition: background-color 250ms;
+}
+
+.sidebarPanelItem:hover {
+  background-color: var(--mantine-color-gray-2);
+}

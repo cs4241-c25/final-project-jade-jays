@@ -1,26 +1,28 @@
-import { CourseType } from "@/util/persistent.types";
-import mongoose from "mongoose";
+import { CourseType } from "app-packages/types/persistent.types";
+import mongoose, { Schema } from "mongoose";
 
 const course = new mongoose.Schema<CourseType>({
-  title: String,
-  locations: String,
-  instructional_format: String,
-  meeting_day_patterns: String,
-  delivery_mode: String,
-  description: String,
-  instructors: String,
-  waitlist_capacity: String,
-  enrolled_capacity: String,
+  code: { type: String },
+  title: { type: String },
+  locations: { type: String },
+  instructional_format: { type: String },
+  delivery_mode: { type: String },
+  description: { type: String },
+  instructors: { type: String },
+  waitlist_capacity: { type: String },
+  enrolled_capacity: { type: String },
   credits: Number,
-  subject: String,
-  academic_level: String,
-  section: String,
-  section_status: String,
-  section_start_date: Date,
-  section_end_date: Date,
-  section_details: String,
-  offer_period: String,
-  academic_period: String,
+  subject: { type: Schema.Types.ObjectId },
+  academic_level: { type: String },
+  section_code: { type: String },
+  section_status: { type: String },
+  section_start_date: { type: String },
+  section_end_date: { type: String },
+  section_start_time: { type: String },
+  section_end_time: { type: String },
+  meeting_day_patterns: { type: String },
+  offer_period: { type: String },
+  academic_period: { type: String },
   course_tags: [String], // String array
 });
 

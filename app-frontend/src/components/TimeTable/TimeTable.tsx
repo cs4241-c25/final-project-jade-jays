@@ -1,7 +1,7 @@
 import { getTimeRange } from "./TTTimeUtils.ts";
 import { RangeType } from "./TimeTable.types.ts";
 import { Table } from "@mantine/core";
-import classes from "./timetable.module.css";
+import classes from "../../styles/timetable.module.css";
 
 interface TimeTableProps {
   range: RangeType;

@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"; // Ensure this is from "react-router-dom"
 import { MantineProvider, createTheme } from "@mantine/core";
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 
-import { CourseProvider } from "@/components/CourseProvider/CourseProvider.tsx";
-import { AppLayout } from "@/components/AppLayout/AppLayout.tsx";
+import { AppLayout } from "@/components/AppLayout.tsx";
 import { Courses } from "@/routes/Courses";
 import { Schedule } from "@/routes/Schedule";
 
@@ -37,10 +37,18 @@ const theme = createTheme({
   primaryColor: "red",
 });
 
+const client = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60,
+    },
+  },
+});
+
 export default function App() {
   return (
     <MantineProvider theme={theme}>
-      <CourseProvider>
+      <QueryClientProvider client={client}>
         <BrowserRouter>
           <Routes>
             <Route element={<AppLayout />}>
@@ -49,7 +57,7 @@ export default function App() {
             </Route>
           </Routes>
         </BrowserRouter>
-      </CourseProvider>
+      </QueryClientProvider>
     </MantineProvider>
   );
 }

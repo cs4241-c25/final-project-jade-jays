@@ -1,8 +1,10 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { CourseProviderProps } from "./CourseProvider.types.ts";
+import { CourseProviderProps, CourseType } from "./CourseProvider.types.ts";
 import axios from "axios";
 
-export interface CourseContext {}
+export type CourseContext = {
+  [key: string]: CourseType[];
+};
 
 const CourseContext = createContext<CourseContext>({});
 
