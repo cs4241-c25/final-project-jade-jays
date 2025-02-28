@@ -3,8 +3,11 @@ import { ReactFlow, MiniMap, Controls } from "@xyflow/react";
 
 import "@xyflow/react/dist/style.css";
 
-import ClassNode from "@/components/ClassNode";
-import {prereqEdge, concurrentEdge, getEdges} from "@/components/FlowEdges.tsx";
+import ClassNode from "@/components/FlowNode.tsx";
+import {
+  getEdges,
+} from "@/components/FlowEdges.tsx";
+import {Legend} from "@/components/Legend.tsx";
 
 const obj = {
   name: "Object Oriented Design",
@@ -31,7 +34,7 @@ const discrete = {
   time: "M-T-R-F 4:00PM-4:50PM",
   taken: "completed",
   prereq: [],
-}
+};
 
 const algo = {
   name: "Algorithms",
@@ -39,23 +42,29 @@ const algo = {
   professor: "Michael Engling",
   time: "M-T-R-F 10:00AM-11:50AM",
   taken: "confirmed",
-  prereq: [[{id: "CS 2102", req: "prereq"}, {id: "CS 2103", req: "concurrent"}], [{id: "CS 2022", req: "recomended"}]]
+  prereq: [
+    [
+      { id: "CS 2102", req: "prereq" },
+      { id: "CS 2103", req: "concurrent" },
+    ],
+    [{ id: "CS 2022", req: "recomended" }],
+  ],
 };
 
 const nodes = [obj, advObj, discrete, algo];
 
 export const FlowChart: React.FC = () => {
   const initialNodes = [
-    { id: algo.id, position: {x: 400, y: 200}, data: algo, type: "custom"},
-    { id: discrete.id, position: {x: 600, y: 0}, data: discrete, type: "custom"},
-    { id: obj.id, position: {x: 300, y: 0}, data: obj, type: "custom"},
-    { id: advObj.id, position: {x: 0, y: 0}, data: advObj, type: "custom"},
+    { id: algo.id, position: { x: 400, y: 200 }, data: algo, type: "custom" },
+    {
+      id: discrete.id,
+      position: { x: 600, y: 0 },
+      data: discrete,
+      type: "custom",
+    },
+    { id: obj.id, position: { x: 300, y: 0 }, data: obj, type: "custom" },
+    { id: advObj.id, position: { x: 0, y: 0 }, data: advObj, type: "custom" },
   ];
-  /*const initialEdges = [
-    concurrentEdge("test1", discrete.id, algo.id, "1"),
-    prereqEdge("test2", obj.id, algo.id, "0"),
-    prereqEdge("test3", advObj.id, algo.id, "0"),
-  ];*/
 
   const initialEdges = getEdges(nodes);
 
@@ -65,6 +74,7 @@ export const FlowChart: React.FC = () => {
 
   return (
     <div style={{ width: "100vw", height: "calc(100vh - 37px)" }}>
+      <Legend />
       <ReactFlow
         nodes={initialNodes}
         edges={initialEdges}
@@ -75,6 +85,7 @@ export const FlowChart: React.FC = () => {
         <MiniMap nodeStrokeWidth={30} />
         <Controls />
       </ReactFlow>
+
     </div>
   );
 };

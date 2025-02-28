@@ -1,5 +1,10 @@
 import { MarkerType } from "reactflow";
 
+import "@/styles/FlowNode.css";
+
+const r = document.querySelector(':root');
+const rs = getComputedStyle(r);
+
 function basicEdge(
   id: string,
   source: string,
@@ -7,16 +12,13 @@ function basicEdge(
   targetHandle: string,
   req: string,
 ): any {
-
   let color = "";
   if (req === "prereq") {
-    color = "black"
-  }
-  else if (req === "concurrent") {
-    color = "blue"
-  }
-  else if (req === "recomended") {
-    color = "green"
+    color = rs.getPropertyValue('--prereq-color');
+  } else if (req === "concurrent") {
+    color = rs.getPropertyValue('--concurrent-color');
+  } else if (req === "recomended") {
+    color = rs.getPropertyValue('--recomend-color');
   }
 
   return {
@@ -35,26 +37,7 @@ function basicEdge(
   };
 }
 
-export function prereqEdge(
-  id: string,
-  source: string,
-  target: string,
-  targetHandle: string,
-): any {
-  return basicEdge(id, source, target, targetHandle, "red");
-}
-
-export function concurrentEdge(
-  id: string,
-  source: string,
-  target: string,
-  targetHandle: string,
-): any {
-  return basicEdge(id, source, target, targetHandle, "green");
-}
-
 export function getEdges(nodes: any[]): any[] {
-
   let edges: any[] = [];
 
   let edgeID = 0;
@@ -68,7 +51,13 @@ export function getEdges(nodes: any[]): any[] {
         const sourceClass = prereqs[reqJ];
         const sourceID = sourceClass.id;
         edges.push(
-            basicEdge(String(edgeID), sourceID, nodeID, String(reqI), sourceClass.req)
+          basicEdge(
+            String(edgeID),
+            sourceID,
+            nodeID,
+            String(reqI),
+            sourceClass.req,
+          ),
         );
         edgeID++;
       }

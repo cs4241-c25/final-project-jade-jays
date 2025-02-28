@@ -1,12 +1,20 @@
 :root {
   --node-width: 210px;
   --node-height: 85px;
+  --uncomplete-color: red;
+  --complete-color: green;
+  --confirm-color: blue;
+  --unconfirm-color: yellow;
+  --prereq-color: black;
+  --concurrent-color: blue;
+  --recomend-color: green;
 }
 
-p {
+.node-text {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  width: 100%;
 }
 
 .flow-node {
@@ -21,17 +29,17 @@ p {
 }
 
 .uncompleted {
-  background-color: red;
+  background-color: var(--uncomplete-color);
 }
 
 .completed {
-  background-color: green;
+  background-color: var(--complete-color);
 }
 
 .confirmed {
-  background-color: blue;
+  background-color: var(--confirm-color);
 }
 
 .unconfirmed {
-  background-color: yellow;
+  background-color: var(--unconfirm-color);
 }
