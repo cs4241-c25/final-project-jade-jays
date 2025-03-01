@@ -25,7 +25,7 @@ function basicEdge(
     id: id,
     source: source,
     target: target,
-    type: "step",
+    type: "default",
     color: color,
     targetHandle: targetHandle,
     markerEnd: {

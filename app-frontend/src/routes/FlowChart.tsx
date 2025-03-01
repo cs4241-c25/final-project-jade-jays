@@ -1,9 +1,17 @@
 import React, {useCallback, useState} from "react";
-import {ReactFlow, MiniMap, Controls, getConnectedEdges, useEdgesState, applyEdgeChanges} from "@xyflow/react";
+import {
+  ReactFlow,
+  MiniMap,
+  Controls,
+  getConnectedEdges,
+  useEdgesState,
+  applyEdgeChanges,
+  applyNodeChanges, useNodesState
+} from "@xyflow/react";
 
 import "@xyflow/react/dist/style.css";
 
-import {ClassNode, getClasses} from "@/components/FlowNode.tsx";
+import {ClassNode, getClasses} from "@/components/FlowNodes.tsx";
 import { getEdges } from "@/components/FlowEdges.tsx";
 import { Legend } from "@/components/Legend.tsx";
 
@@ -83,59 +91,87 @@ const webware = {
   ],
 }
 
-const nodes = [obj, advObj, discrete, algo, webware, os, objApp];
+const foundations = {
+  name: "Foundations Of Computer Science",
+  id: "CS 3133",
+  professor: "Hanmeng Zhan",
+  time: "M-R 3:00PM-4:50PM",
+  taken: "confirmed",
+  prereq: [
+    [
+      { id: "CS 2022", req: "prereq" },
+    ],
+    [{ id: "CS 2223", req: "prereq" }],
+  ],
+}
 
+const introAI = {
+  name: "Introduction To Artificial Intelligence",
+  id: "CS 4341",
+  professor: "Unconfirmed",
+  time: "T-F 1:00PM-2:50PM",
+  taken: "confirmed",
+  prereq: [
+    [
+      { id: "CS 2102", req: "prereq" },
+      { id: "CS 2103", req: "prereq" },
+    ],
+    [{ id: "CS 2223", req: "prereq" }],
+    [{ id: "CS 3133", req: "prereq" }],
+  ],
+}
 
+const classNodes = [obj, advObj, discrete, algo, webware, os, objApp, foundations, introAI];
 
 export const FlowChart = () => {
-  /*const initialNodes = [
-    { id: algo.id, position: { x: 400, y: 200 }, data: algo, type: "custom" },
-    {
-      id: discrete.id,
-      position: { x: 600, y: 0 },
-      data: discrete,
-      type: "custom",
-    },
-    { id: obj.id, position: { x: 300, y: 0 }, data: obj, type: "custom" },
-    { id: advObj.id, position: { x: 0, y: 0 }, data: advObj, type: "custom" },
-    { id: webware.id, position: { x: 100, y: 700 }, data: webware, type: "custom" },
-    { id: os.id, position: { x: 300, y: 500 }, data: os, type: "custom" },
-    { id: objApp.id, position: { x: 0, y: 500 }, data: objApp, type: "custom" },
-  ];*/
-
-  const initialEdges = getEdges(nodes);
-  const initialNodes = getClasses(nodes, initialEdges);
-  const [edges, setEdges] = useEdgesState(initialEdges);
+  const [edges, setEdges] = useState(getEdges(classNodes));
+  const [nodes, setNodes] = useState(getClasses(classNodes, edges));
+  //const initialNodes = getClasses(classNodes, getEdges(classNodes));
 
   const nodeTypes = {
     custom: ClassNode,
   };
 
   const onNodeClick = (event, node) => {
+    console.log(node);
     let newEdges = edges.slice(0);
     for (let newEdge of newEdges) {
       newEdge.animated = false;
     }
     const connectedEdges = getConnectedEdges([node], newEdges);
+    console.log(connectedEdges);
 
     for (let i = 0; i < connectedEdges.length; i++) {
       const index = edges.indexOf(connectedEdges[i]);
       newEdges[index].animated = true;
     }
 
+    console.log(edges);
     setEdges(newEdges);
+    console.log(edges);
   }
+
+  const onNodesChange = useCallback(
+      (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
+      [],
+  );
+  const onEdgesChange = useCallback(
+      (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
+      [],
+  );
 
   return (
     <div style={{ width: "100vw", height: "calc(100vh - 37px)" }}>
       <Legend />
       <ReactFlow
-        onNodeClick={onNodeClick}
-        nodes={initialNodes}
         edges={edges}
+        nodes={nodes}
+        onEdgesChange={onEdgesChange}
+        onNodesChange={onNodesChange}
         nodeTypes={nodeTypes}
         fitView
         proOptions={{ hideAttribution: true }}
+        //onNodeClick={onNodeClick}
       >
         <MiniMap nodeStrokeWidth={30} />
         <Controls />
