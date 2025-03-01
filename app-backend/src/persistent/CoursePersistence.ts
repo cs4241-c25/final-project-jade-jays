@@ -11,7 +11,8 @@ const course = new mongoose.Schema<CourseType>({
   credits: Number,
   subject: { type: String },
   academic_level: { type: String },
-  offer_period: { type: String },
+  academic_terms_pattern: { type: [String] },
+  offering_periods: { type: [String] },
   academic_period: { type: String },
   course_tags: [String], // String array
 });

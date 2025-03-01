@@ -12,6 +12,7 @@ const subject = new mongoose.Schema<SectionType>({
   section_start_time: { type: String },
   section_end_time: { type: String },
   meeting_day_patterns: { type: String },
+  offering_period: { type: String },
 });
 
 const Section = mongoose.model("Section", subject, "sections");

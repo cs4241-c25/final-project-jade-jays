@@ -23,16 +23,16 @@ router.get("/populate_database", async (req: Request, res: Response) => {
     });
 
     const subjects: { [key: string]: SubjectType } = {};
-    response.data.Report_Entry.map((course_data: RawCourseType) => {
-      const subject = course_data.Subject.split("; ")[0];
-      const code = course_data.Course_Title.split(" ")[0];
+    response.data.Report_Entry.map((courseData: RawCourseType) => {
+      const subject = courseData.Subject.split("; ")[0];
+      const code = courseData.Course_Title.split(" ")[0];
 
       // there's a bug with philosophy. Need more checks for data validation
       if (!subjects[code]) {
         subjects[code] = {
           type: subject,
-          code: course_data.Course_Title.split(" ")[0],
-          department: course_data.Course_Section_Owner,
+          code: courseData.Course_Title.split(" ")[0],
+          department: courseData.Course_Section_Owner,
         };
       }
     });
@@ -45,99 +45,132 @@ router.get("/populate_database", async (req: Request, res: Response) => {
       console.log("[STATUS] Data successfully added");
     }
 
+    // Parsing Courses and Sections data
     const courses: { [key: string]: CourseType } = {};
     const sections: SectionType[] = [];
     const timeRangeRegex = /([0-1])*([0-9]):([0-5]){2}( )*(AM|PM)/g;
     const classSectionRegex = /([A-Z]){1,}( )*([0-9]){2,}(-)*/g;
 
     // sort the data
-    const sortedCourses = response.data.Report_Entry.sort((a:RawCourseType,b:RawCourseType) => {
-      if      (a.Course_Title > b.Course_Title) return 1;
-      else if (a.Course_Title < b.Course_Title) return -1;
-      return 0;
-    });
+    const sortedCourses = response.data.Report_Entry.sort(
+      (a: RawCourseType, b: RawCourseType) => {
+        if (a.Course_Title > b.Course_Title) return 1;
+        else if (a.Course_Title < b.Course_Title) return -1;
+        return 0;
+      },
+    );
 
     // doing this instead of maps so that we can use Set object to determine
     // which term the course is available for
-    for (let i:number = 0 ; i < sortedCourses.length ; i++) {
-      const courseData:RawCourseType = sortedCourses[i];
-      const courseTitle = courseData.Course_Title;
-      for (let j:number = i ; j < sortedCourses.length - 1; j++) {
-        const [code, title] = courseData.Course_Title.split(" - ");
-        const [code_abbrev, code_number] = code.split(" ");
+    for (let i: number = 0; i < sortedCourses.length; i++) {
+      const courseData: RawCourseType = sortedCourses[i];
+      const [code, title] = courseData.Course_Title.split(" - ");
+      const [code_abbrev, code_number] = code.split(" ");
 
-        if (sortedCourses[j+1].Course_Title !== courseTitle) {
+      const terms: Set<string> = new Set();
+      const offeringPeriod: Set<string> = new Set();
+      for (let j: number = i; j < sortedCourses.length - 1; j++) {
+        const sectionData = sortedCourses[j];
+
+        Subject.findOne({ code: code_abbrev }).then((subject) => {
+          let section_start_time = "",
+            section_end_time = "";
+          let section_code = "";
+
+          const section_time_matches =
+            sectionData.Section_Details.match(timeRangeRegex);
+          if (section_time_matches) {
+            [section_start_time, section_end_time] = section_time_matches;
+          }
+
+          const section_code_matches =
+            sectionData.Course_Section.match(classSectionRegex);
+          if (section_code_matches) {
+            section_code = section_code_matches[1];
+          }
+
+          sections.push({
+            locations: sectionData.Locations,
+            instructional_format: sectionData.Instructional_Format,
+            meeting_day_patterns: sectionData.Meeting_Day_Patterns,
+            delivery_mode: sectionData.Delivery_Mode,
+            section_code: section_code,
+            section_status: sectionData.Section_Status,
+            section_start_date: sectionData.Course_Section_Start_Date,
+            section_end_date: sectionData.Course_Section_End_Date,
+            section_start_time: section_start_time,
+            section_end_time: section_end_time,
+            offering_period: sectionData.Offering_Period,
+          });
+        });
+
+        const offering_period = sectionData.Offering_Period;
+        if (!offeringPeriod.has(offering_period)) {
+          offeringPeriod.add(offering_period);
+        }
+
+        const term = sectionData.Offering_Period.replace(
+          /([0-9]){1,4}\s*(Spring|Fall)*/g,
+          "",
+        )
+          .replace(/Term/g, "")
+          .trim();
+        if (!terms.has(term)) {
+          terms.add(term);
+        }
+
+        if (sortedCourses[j + 1].Course_Title !== courseData.Course_Title) {
           i = j;
           break;
         }
       }
+
+      if (!courses[`${code_abbrev}${code_number}`]) {
+        courses[`${code_abbrev}${code_number}`] = {
+          code: code_number,
+          title: title,
+          description: courseData.Course_Description.replace(
+            /<br\s*\/>/g,
+            " ",
+          ).replace(/<(\/)*([a-z])*\s*([a-z]:\s*(")*[a-z]("*))*\s*>/g, ""),
+          instructors: courseData.Instructors,
+          waitlist_capacity: courseData.Waitlist_Waitlist_Capacity,
+          enrolled_capacity: courseData.Enrolled_Capacity,
+          credits: Number(courseData.Credits),
+          subject: code_abbrev,
+          academic_level: courseData.Academic_Level,
+          academic_terms_pattern: Array.from(terms),
+          offering_periods: Array.from(terms),
+          academic_period: courseData.Starting_Academic_Period_Type,
+          course_tags: courseData.Course_Tags.split(" :: "),
+        };
+      }
     }
 
-          // Subject.findOne({ code: code_abbrev }).then((subject) => {
-          //   let section_start_time = "",
-          //       section_end_time = "";
-          //   let section_code = "";
-          //
-          //   const section_time_matches =
-          //       course_data.Section_Details.match(timeRangeRegex);
-          //   if (section_time_matches) {
-          //     [section_start_time, section_end_time] = section_time_matches;
-          //   }
-          //
-          //   const section_code_matches =
-          //       course_data.Course_Section.match(classSectionRegex);
-          //   if (section_code_matches) {
-          //     section_code = section_code_matches[1];
-          //   }
-          //
-          //   if (!courses[`${code_abbrev}${code_number}`]) {
-          //     courses[`${code_abbrev}${code_number}`] = {
-          //       code: code_number,
-          //       title: title,
-          //       description: course_data.Course_Description.replace(
-          //           /<br\s*\/>/g,
-          //           " ",
-          //       ).replace(/<(\/)*([a-z])*\s*([a-z]:\s*(")*[a-z]("*))*\s*>/g, ""),
-          //       instructors: course_data.Instructors,
-          //       waitlist_capacity: course_data.Waitlist_Waitlist_Capacity,
-          //       enrolled_capacity: course_data.Enrolled_Capacity,
-          //       credits: Number(course_data.Credits),
-          //       subject: code_abbrev,
-          //       academic_level: course_data.Academic_Level,
-          //       offer_period: course_data.Offering_Period,
-          //       academic_period: course_data.Starting_Academic_Period_Type,
-          //       course_tags: course_data.Course_Tags.split(" :: "),
-          //     };
-          //   }
-          //
-          //   sections.push({
-          //     locations: course_data.Locations,
-          //     instructional_format: course_data.Instructional_Format,
-          //     meeting_day_patterns: course_data.Meeting_Day_Patterns,
-          //     delivery_mode: course_data.Delivery_Mode,
-          //     section_code: section_code,
-          //     section_status: course_data.Section_Status,
-          //     section_start_date: course_data.Course_Section_Start_Date,
-          //     section_end_date: course_data.Course_Section_End_Date,
-          //     section_start_time: section_start_time,
-          //     section_end_time: section_end_time,
-          //   });
-          // });
-    //
-    // await Section.deleteMany({});
-    // console.log("[STATUS] Database successfully dumped.");
-    //
-    // if (await Section.insertMany(sections)) {
-    //   console.log("[STATUS] Data successfully added");
-    // }
-    //
-    // await Course.deleteMany({});
-    // console.log("[STATUS] Database successfully dumped.");
-    //
-    // if (await Course.insertMany(Object.values(courses))) {
-    //   console.log("[STATUS] Data successfully added");
-    res.send(JSON.stringify({ success: true }));
-    // }
+    Object.values(courses)
+      .sort((a: CourseType, b: CourseType) => {
+        if (a.title > b.title) return 1;
+        else if (a.title < b.title) return -1;
+        return 0;
+      })
+      .forEach((course) => {
+        console.log(course.title, course.offering_periods);
+      });
+
+    await Section.deleteMany({});
+    console.log("[STATUS] Database successfully dumped.");
+
+    if (await Section.insertMany(sections)) {
+      console.log("[STATUS] Data successfully added");
+    }
+
+    await Course.deleteMany({});
+    console.log("[STATUS] Database successfully dumped.");
+
+    if (await Course.insertMany(Object.values(courses))) {
+      console.log("[STATUS] Data successfully added");
+      res.send(JSON.stringify({ success: true }));
+    }
   } catch (error) {
     console.error("[ERROR] Cannot get public course listing.");
     console.log(error);
@@ -149,16 +182,16 @@ router.get("/dump/:type", async (req, res) => {
   try {
     switch (req.params.type) {
       case "subject":
-      {
-        await Subject.deleteMany({});
-        console.log("[STATUS] Database successfully dumped.");
-      }
+        {
+          await Subject.deleteMany({});
+          console.log("[STATUS] Database successfully dumped.");
+        }
         break;
       case "course":
-      {
-        await Course.deleteMany({});
-        console.log("[STATUS] Database successfully dumped.");
-      }
+        {
+          await Course.deleteMany({});
+          console.log("[STATUS] Database successfully dumped.");
+        }
         break;
     }
 

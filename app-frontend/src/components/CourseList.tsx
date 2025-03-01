@@ -36,12 +36,7 @@ export function CourseView({ subject }: CourseViewProp) {
         <CourseList subject={subject} setCourse={setCurrentCourse} />
       </Panel>
       <PanelResizeHandle className={classes.panelHandle} />
-      <Panel
-        id={"course-info-group"}
-        defaultSize={25}
-        minSize={0}
-        order={3}
-      >
+      <Panel id={"course-info-group"} defaultSize={25} minSize={0} order={3}>
         <PanelGroup
           style={{ gap: "calc(var(--app-shell-padding)/4)" }}
           direction={"vertical"}

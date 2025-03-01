@@ -11,24 +11,15 @@ export interface ClientCourseType {
   _id: string;
   code: string;
   title: string;
-  locations: string;
-  instructional_format: string;
-  delivery_mode: string;
   description: string;
   instructors: string;
   waitlist_capacity: string;
   enrolled_capacity: string;
   credits: number;
-  subject: Types.ObjectId;
+  subject: string;
   academic_level: string;
-  section_code: string;
-  section_status: string;
-  section_start_date: string;
-  section_end_date: string;
-  section_start_time: string;
-  section_end_time: string;
-  meeting_day_patterns: string;
-  offer_period: string;
+  academic_terms_pattern: string;
+  offering_periods: string[];
   academic_period: string;
   course_tags: string[]; // String array
 }
@@ -45,6 +36,7 @@ export interface SectionType {
   section_start_time: string;
   section_end_time: string;
   meeting_day_patterns: string;
+  offering_period: string;
 }
 
 export interface SubjectType {
@@ -65,7 +57,8 @@ export interface CourseType {
   credits: number;
   subject: string;
   academic_level: string;
-  offer_period: string;
+  academic_terms_pattern: string[];
+  offering_periods: string[];
   academic_period: string;
   course_tags: string[]; // String array
 }
