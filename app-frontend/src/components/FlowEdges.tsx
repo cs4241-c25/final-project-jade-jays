@@ -2,7 +2,7 @@ import { MarkerType } from "reactflow";
 
 import "@/styles/FlowNode.css";
 
-const r = document.querySelector(':root');
+const r = document.querySelector(":root");
 const rs = getComputedStyle(r);
 
 function basicEdge(
@@ -14,11 +14,11 @@ function basicEdge(
 ): any {
   let color = "";
   if (req === "prereq") {
-    color = rs.getPropertyValue('--prereq-color');
+    color = rs.getPropertyValue("--prereq-color");
   } else if (req === "concurrent") {
-    color = rs.getPropertyValue('--concurrent-color');
+    color = rs.getPropertyValue("--concurrent-color");
   } else if (req === "recomended") {
-    color = rs.getPropertyValue('--recomend-color');
+    color = rs.getPropertyValue("--recomend-color");
   }
 
   return {
@@ -34,6 +34,7 @@ function basicEdge(
     },
     style: { stroke: color },
     focusable: false,
+    animated: false
   };
 }
 

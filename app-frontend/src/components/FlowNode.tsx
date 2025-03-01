@@ -1,6 +1,6 @@
-import { Handle, Position } from "@xyflow/react";
+import {Handle, Position} from "@xyflow/react";
 import "@/styles/FlowNode.css";
-import React, { JSX } from "react";
+import React, {JSX, useCallback} from "react";
 
 const width = 210;
 
@@ -28,7 +28,7 @@ function getHandles(count: number): any {
   return <> {handles} </>;
 }
 
-export default function ClassNode({ data, isConnectable }) {
+export function ClassNode({ data }) {
   const handlers = getHandles(data.prereq.length);
 
   return (
@@ -48,4 +48,13 @@ export default function ClassNode({ data, isConnectable }) {
       </div>
     </>
   );
+}
+
+export function getClasses(nodes, initialEdges) {
+  let returnNodes = [];
+  for (let i = 0; i < nodes.length; i++) {
+    const node = nodes[i];
+    returnNodes.push({ id: node.id, position: { x: i*150, y: i*150 }, data: node, type: "custom" },);
+  }
+  return returnNodes;
 }
