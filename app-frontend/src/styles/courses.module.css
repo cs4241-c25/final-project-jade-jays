@@ -13,9 +13,32 @@
   background-color: var(--mantine-color-dark-2);
 }
 
+.courseCode {
+  width: calc(4.5rem * var(--mantine-scale));
+}
+
+.courseItem {
+  width: 100%;
+  padding: calc(0.25rem * var(--mantine-scale));
+  display: flex;
+  flex-direction: row;
+  gap: var(--mantine-spacing-md);
+  border-radius: var(--mantine-radius-sm);
+}
+.courseItem:hover {
+  background-color: var(--mantine-color-gray-2);
+}
+.courseItem[data-active] {
+  background-color: var(--mantine-color-gray-3);
+  transition: background-color 0ms;
+}
+
 .sidebarPanelItem {
   width: 100%;
   padding: calc(0.25rem * var(--mantine-scale));
+  display: flex;
+  flex-direction: row;
+  gap: var(--mantine-spacing-md);
   border-radius: var(--mantine-radius-sm);
   transition: background-color 250ms;
 }

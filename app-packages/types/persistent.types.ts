@@ -63,7 +63,7 @@ export interface CourseType {
   waitlist_capacity: string;
   enrolled_capacity: string;
   credits: number;
-  subject: Types.ObjectId;
+  subject: string;
   academic_level: string;
   offer_period: string;
   academic_period: string;

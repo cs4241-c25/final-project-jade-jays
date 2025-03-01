@@ -3,10 +3,10 @@ import Course from "../persistent/CoursePersistence.js";
 
 const router: Router = Router();
 
-router.get("/id::id", async (req: Request, res: Response) => {
+router.get("/code::code", async (req: Request, res: Response) => {
   try {
     const courseData = await Course.find({
-      subject: req.params.id,
+      subject: req.params.code,
     })
       .select("-__v")
       .sort({ code: 1 });

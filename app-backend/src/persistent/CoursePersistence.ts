@@ -9,7 +9,7 @@ const course = new mongoose.Schema<CourseType>({
   waitlist_capacity: { type: String },
   enrolled_capacity: { type: String },
   credits: Number,
-  subject: { type: Schema.Types.ObjectId },
+  subject: { type: String },
   academic_level: { type: String },
   offer_period: { type: String },
   academic_period: { type: String },
