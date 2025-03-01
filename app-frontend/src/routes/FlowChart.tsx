@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from "react";
+import React, { useCallback, useState } from "react";
 import {
   ReactFlow,
   MiniMap,
@@ -6,12 +6,18 @@ import {
   getConnectedEdges,
   useEdgesState,
   applyEdgeChanges,
-  applyNodeChanges, useNodesState
+  applyNodeChanges,
+  useNodesState, useReactFlow,
 } from "@xyflow/react";
+import Dagre from '@dagrejs/dagre';
 
 import "@xyflow/react/dist/style.css";
+import "@/styles/FlowNode.css";
 
-import {ClassNode, getClasses} from "@/components/FlowNodes.tsx";
+const r = document.querySelector(":root");
+const rs = getComputedStyle(r);
+
+import { ClassNode, getClasses } from "@/components/FlowNodes.tsx";
 import { getEdges } from "@/components/FlowEdges.tsx";
 import { Legend } from "@/components/Legend.tsx";
 
@@ -73,7 +79,7 @@ const os = {
   time: "T-F 12:00PM-1:50PM",
   taken: "confirmed",
   prereq: [],
-}
+};
 
 const webware = {
   name: "Webware: Computational Technology For Network Information Systems",
@@ -89,7 +95,7 @@ const webware = {
     ],
     [{ id: "CS 3013", req: "prereq" }],
   ],
-}
+};
 
 const foundations = {
   name: "Foundations Of Computer Science",
@@ -98,12 +104,10 @@ const foundations = {
   time: "M-R 3:00PM-4:50PM",
   taken: "confirmed",
   prereq: [
-    [
-      { id: "CS 2022", req: "prereq" },
-    ],
+    [{ id: "CS 2022", req: "prereq" }],
     [{ id: "CS 2223", req: "prereq" }],
   ],
-}
+};
 
 const introAI = {
   name: "Introduction To Artificial Intelligence",
@@ -119,13 +123,53 @@ const introAI = {
     [{ id: "CS 2223", req: "prereq" }],
     [{ id: "CS 3133", req: "prereq" }],
   ],
-}
+};
 
-const classNodes = [obj, advObj, discrete, algo, webware, os, objApp, foundations, introAI];
+const classNodes = [
+  obj,
+  advObj,
+  discrete,
+  algo,
+  webware,
+  os,
+  objApp,
+  foundations,
+  introAI,
+];
+
+const getLayoutedElements = (nodes, edges, options) => {
+  const g = new Dagre.graphlib.Graph().setDefaultEdgeLabel(() => ({}));
+  g.setGraph({ rankdir: options.direction });
+
+  edges.forEach((edge) => g.setEdge(edge.source, edge.target));
+  nodes.forEach((node) =>
+      g.setNode(node.id, {
+        ...node,
+        width: rs.getPropertyValue("--node-width").replace("px", ""),
+        height: rs.getPropertyValue("--node-height").replace("px", ""),
+      }),
+  );
+
+  Dagre.layout(g);
+
+  return {
+    nodes: nodes.map((node) => {
+      const position = g.node(node.id);
+      // We are shifting the dagre node position (anchor=center center) to the top left
+      // so it matches the React Flow node anchor point (top left).
+      const x = position.x - (node.measured?.width ?? 0) / 2;
+      const y = position.y - (node.measured?.height ?? 0) / 2;
+
+      return { ...node, position: { x, y } };
+    }),
+    edges,
+  };
+};
 
 export const FlowChart = () => {
   const [edges, setEdges] = useState(getEdges(classNodes));
   const [nodes, setNodes] = useState(getClasses(classNodes, edges));
+  const [fit, setFit] = useState(false);
   //const initialNodes = getClasses(classNodes, getEdges(classNodes));
 
   const nodeTypes = {
@@ -149,16 +193,32 @@ export const FlowChart = () => {
     console.log(edges);
     setEdges(newEdges);
     console.log(edges);
-  }
+  };
 
   const onNodesChange = useCallback(
-      (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
-      [],
+    (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
+    [],
   );
   const onEdgesChange = useCallback(
-      (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
-      [],
+    (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
+    [],
   );
+
+  const onLayout = useCallback(
+      (direction) => {
+        const layouted = getLayoutedElements(nodes, edges, { direction });
+
+        setNodes([...layouted.nodes]);
+        setEdges([...layouted.edges]);
+
+        setFit(true);
+      },
+      [nodes, edges],
+  );
+
+  window.onload = (event) => {
+    onLayout('TB');
+  };
 
   return (
     <div style={{ width: "100vw", height: "calc(100vh - 37px)" }}>
@@ -169,7 +229,7 @@ export const FlowChart = () => {
         onEdgesChange={onEdgesChange}
         onNodesChange={onNodesChange}
         nodeTypes={nodeTypes}
-        fitView
+        fitView={fit}
         proOptions={{ hideAttribution: true }}
         //onNodeClick={onNodeClick}
       >

@@ -34,7 +34,7 @@ function basicEdge(
     },
     style: { stroke: color },
     focusable: false,
-    animated: false
+    animated: false,
   };
 }
 

@@ -1,6 +1,6 @@
-import {Handle, Position} from "@xyflow/react";
+import { Handle, Position } from "@xyflow/react";
 import "@/styles/FlowNode.css";
-import React, {JSX, useCallback} from "react";
+import React, { JSX, useCallback } from "react";
 
 const width = 210;
 
@@ -42,12 +42,14 @@ export function ClassNode({ data }) {
 
   let outHandle = <></>;
   if (data.outHandle) {
-    outHandle = <Handle
+    outHandle = (
+      <Handle
         type="source"
         id={"-1"}
         position={Position.Bottom}
         isConnectable={true}
-    />;
+      />
+    );
   }
 
   return (
@@ -72,7 +74,6 @@ export function getClasses(nodes, initialEdges) {
   let loop = true;
   let index = 0;
   while (loop) {
-
     const oldNodes = addedNodes.slice(0);
 
     for (let i = 0; i < nodes.length; i++) {
@@ -88,8 +89,7 @@ export function getClasses(nodes, initialEdges) {
             }
           }
         }
-      }
-      else {
+      } else {
         valid = false;
       }
       if (valid) {
@@ -100,8 +100,7 @@ export function getClasses(nodes, initialEdges) {
 
     if (addedNodes.length >= nodes.length) {
       loop = false;
-    }
-    else {
+    } else {
       index++;
       rows.push([]);
     }
@@ -111,7 +110,13 @@ export function getClasses(nodes, initialEdges) {
     for (let j = 0; j < rows[i].length; j++) {
       let node = rows[i][j];
       node.outHandle = getOutHandle(node.id, initialEdges);
-      returnNodes.push({ id: node.id, position: { x: j*250, y: (i)*150 }, data: node, type: "custom", isFocusable: true },);
+      returnNodes.push({
+        id: node.id,
+        position: { x: j * 250, y: i * 150 },
+        data: node,
+        type: "custom",
+        isFocusable: true,
+      });
     }
   }
 
