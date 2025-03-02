@@ -3,27 +3,60 @@ import { useEffect, useState } from "react";
 import classes from "@/styles/tracking.module.css";
 import { getCourseData } from "@/hooks/data-fetches.ts";
 
-
 type Degree = {
   name: string;
   categories: Category[];
-
-}
+};
 
 type Category = {
   name: string;
   validSubjects: string[];
   requiredClasses: number;
-}
+};
 
-const CS:Category = {name: "Computer Science", validSubjects: ["CS"], requiredClasses: 18}
-const HUA:Category = {name: "Humanities and Arts", validSubjects: ["AR", "EN", "TH", "MU", "AB", "CN", "EN", "GN", "SP", "EN", "WR", "RH", "HI", "HU", "INTL", "PY", "RE"], requiredClasses: 6}
-const MA:Category = {name: "Mathematics", validSubjects: ["MA"], requiredClasses: 7}
-const PE:Category = {name: "Physical Education", validSubjects: ["PE, WPE"], requiredClasses: 4}
+const CS: Category = {
+  name: "Computer Science",
+  validSubjects: ["CS"],
+  requiredClasses: 18,
+};
+const HUA: Category = {
+  name: "Humanities and Arts",
+  validSubjects: [
+    "AR",
+    "EN",
+    "TH",
+    "MU",
+    "AB",
+    "CN",
+    "EN",
+    "GN",
+    "SP",
+    "EN",
+    "WR",
+    "RH",
+    "HI",
+    "HU",
+    "INTL",
+    "PY",
+    "RE",
+  ],
+  requiredClasses: 6,
+};
+const MA: Category = {
+  name: "Mathematics",
+  validSubjects: ["MA"],
+  requiredClasses: 7,
+};
+const PE: Category = {
+  name: "Physical Education",
+  validSubjects: ["PE, WPE"],
+  requiredClasses: 4,
+};
 
-
-
-const BSCS:Degree = {name: "Computer Science", categories:[CS,HUA,MA,PE]};
+const BSCS: Degree = {
+  name: "Computer Science",
+  categories: [CS, HUA, MA, PE],
+};
 
 export function Tracking() {
   const [panelsRows, setPanelRows] = useState([]);
@@ -33,7 +66,6 @@ export function Tracking() {
   async function createTrackingSheet() {
     try {
       for (let category in BSCS.categories) {
-
       }
       // Wait for all course data to resolve
       const courseDataArray = await Promise.all(subjects.map(getCourseData));
@@ -64,7 +96,7 @@ export function Tracking() {
             {subjects[i]}
             <select>
               {courseDataArray[i].courses.map((courseData) => (
-                  <option key={courseData._id}>{courseData.code}</option>
+                <option key={courseData._id}>{courseData.code}</option>
               ))}
             </select>
           </Panel>,
