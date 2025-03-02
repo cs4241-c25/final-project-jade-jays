@@ -13,14 +13,14 @@ export function useSubject() {
 
 export async function getCourseData(subject_id: string) {
   const res = await axios.get(
-    `http://localhost:8080/api/course/id:${subject_id}`,
+    `http://localhost:8080/api/course/code:${subject_id}`,
   );
   return res.data;
 }
 
-export function useCourse(subject_id: string) {
+export function useCourse(subject: string) {
   return useQuery({
-    queryKey: [`course${subject_id}`],
-    queryFn: () => getCourseData(subject_id),
+    queryKey: [`course${subject}`],
+    queryFn: () => getCourseData(subject),
   });
 }

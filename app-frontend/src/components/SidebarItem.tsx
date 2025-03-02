@@ -22,12 +22,7 @@ export function SidebarItem({ subject, ...props }: SidebarItemProp) {
   };
 
   return (
-    <UnstyledButton
-      className={classes.sidebarPanelItem}
-      mod={{ _id: subject._id }}
-      onMouseOver={() => prefetch()}
-      {...props}
-    >
+    <UnstyledButton className={classes.sidebarPanelItem} {...props}>
       <Text size={"sm"}>{subject.type}</Text>
     </UnstyledButton>
   );
