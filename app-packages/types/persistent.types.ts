@@ -18,7 +18,7 @@ export interface ClientCourseType {
   credits: number;
   subject: string;
   academic_level: string;
-  academic_terms_pattern: string;
+  academic_terms_pattern: string[];
   offering_periods: string[];
   academic_period: string;
   course_tags: string[]; // String array

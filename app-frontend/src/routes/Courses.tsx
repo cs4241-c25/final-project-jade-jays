@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import { ClientSubjectType } from "app-packages/types/persistent.types.ts";
 import { useSubject } from "@/hooks/data-fetches.ts";
-import { CourseView } from "@/components/CourseList";
+import { CourseView } from "@/components/CourseView.tsx";
 import { SidebarItem } from "@/components/SidebarItem";
 
 import classes from "@/styles/courses.module.css";

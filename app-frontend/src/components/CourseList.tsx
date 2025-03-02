@@ -1,79 +1,27 @@
-import { Text, UnstyledButton } from "@mantine/core";
+import { Text, ActionIcon, Box, Tooltip } from "@mantine/core";
+import AutoSizer from "react-virtualized-auto-sizer";
+import { FixedSizeList as List } from "react-window";
+import { useState, memo } from "react";
 import { useClickOutside } from "@mantine/hooks";
 import { useCourse } from "@/hooks/data-fetches.ts";
+import { Plus } from "lucide-react";
 import React from "react";
 
 import { ClientCourseType } from "app-packages/types/persistent.types.ts";
 import classes from "@/styles/courses.module.css";
-import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
-import { useState } from "react";
-
-type CourseViewProp = {
-  subject: string;
-};
 
 type CourseListProp = {
   subject: string;
   setCourse: React.Dispatch<React.SetStateAction<ClientCourseType | undefined>>;
 };
 
-export function CourseView({ subject }: CourseViewProp) {
-  const [currentCourse, setCurrentCourse] = useState<
-    ClientCourseType | undefined
-  >();
+const CourseItemMemo = memo(CourseItem);
+const TermButtonMemo = memo(TermButton);
 
-  return (
-    <>
-      <Panel
-        style={{
-          overflow: "auto",
-        }}
-        className={classes.panel}
-        id={"course-list"}
-        minSize={0}
-        order={2}
-      >
-        <CourseList subject={subject} setCourse={setCurrentCourse} />
-      </Panel>
-      <PanelResizeHandle className={classes.panelHandle} />
-      <Panel id={"course-info-group"} defaultSize={25} minSize={0} order={3}>
-        <PanelGroup
-          style={{ gap: "calc(var(--app-shell-padding)/4)" }}
-          direction={"vertical"}
-        >
-          <Panel
-            className={classes.panel}
-            id={"course-description"}
-            defaultSize={70}
-            minSize={70}
-            order={1}
-          >
-            <Text size={"sm"}>
-              {currentCourse
-                ? returnDescription(currentCourse.description)
-                : undefined}
-            </Text>
-          </Panel>
-          <PanelResizeHandle className={classes.panelHandle} />
-          <Panel
-            className={classes.panel}
-            id={"courses-added"}
-            defaultSize={30}
-            minSize={15}
-            order={1}
-          >
-            Main
-          </Panel>
-        </PanelGroup>
-      </Panel>
-    </>
-  );
-}
-
-function CourseList({ subject, setCourse, ...props }: CourseListProp) {
+export function CourseList({ subject, setCourse, ...props }: CourseListProp) {
   const { isPending, isError, data, error } = useCourse(subject);
   const [active, setActive] = useState("");
-  const ref = useClickOutside<HTMLDivElement>(() => setActive(""));
+  const ref = useClickOutside<HTMLUListElement>(() => setActive(""));
 
   if (isPending) {
     return <span>Loading...</span>;
@@ -85,63 +33,109 @@ function CourseList({ subject, setCourse, ...props }: CourseListProp) {
 
   return (
     <>
-      <div ref={ref}>
+      <ul className={classes.courseListContainer} ref={ref}>
         {data.courses
-          ? data.courses.map((course: ClientCourseType) => {
-              return (
-                <CourseItem
-                  key={course._id}
-                  course={course}
-                  active={active === course._id}
-                  setActive={setActive}
-                  setCourse={setCourse}
-                  {...props}
-                />
-              );
-            })
+          ? data.courses.map((course: ClientCourseType, index: number) => (
+              <CourseItemMemo
+                key={index}
+                course={course}
+                setActive={setActive}
+                setCourse={setCourse}
+                {...props}
+              />
+            ))
           : undefined}
-      </div>
+      </ul>
     </>
   );
 }
 
 type CourseItemProps<> = {
   course: ClientCourseType;
-  active: boolean;
+  active?: boolean;
   setActive: React.Dispatch<React.SetStateAction<string>>;
   setCourse: React.Dispatch<React.SetStateAction<ClientCourseType | undefined>>;
+  style?: React.CSSProperties;
 };
 
 function CourseItem({
   course,
-  active,
   setActive,
   setCourse,
   ...props
 }: CourseItemProps) {
+  const [status, setStatus] = useState<string>("not-available");
+
   return (
-    <UnstyledButton
+    <li
       className={classes.courseItem}
-      mod={active ? { active: true } : undefined}
       onClick={() => {
         setActive(course._id);
         setCourse(course);
       }}
       {...props}
     >
+      <ActionIcon className={`${classes.courseItemButton}`}>
+        <Plus size={"1rem"} />
+      </ActionIcon>
       <Text
-        className={classes.courseCode}
+        className={`${classes.courseItemSection} ${classes.courseCode}`}
         size={"sm"}
       >{`${course.subject} ${course.code}`}</Text>
-      <Text size={"sm"}>{`${course.title}`}</Text>
-    </UnstyledButton>
+      <div className={`${classes.termRibbon}`}>
+        <TermButtonMemo status={status} term={"A"} course={course} {...props} />
+        <TermButtonMemo status={status} term={"B"} course={course} {...props} />
+        <TermButtonMemo status={status} term={"C"} course={course} {...props} />
+        <TermButtonMemo status={status} term={"D"} course={course} {...props} />
+      </div>
+      <Text
+        className={`${classes.courseItemSection} ${classes.courseTitle}`}
+        size={"sm"}
+      >{`${course.title}`}</Text>
+    </li>
   );
 }
 
-function returnDescription(description: string) {
-  if (description === "") {
-    return "No description";
-  }
+type TermRibbonProps = {
+  status: string;
+  term: string;
+  course: ClientCourseType;
+};
+function TermButton({ status, term, course, ...props }: TermRibbonProps) {
+  return (
+    <Box
+      mod={{ status: status }}
+      className={`${classes.termButton}`}
+      {...props}
+    >
+      {term}
+    </Box>
+  );
+}
 
-  return description;
+function getTooltipDescription(status: string, term: string) {
+  let label = "";
+  switch (status) {
+    case "available":
+      {
+        label = `Course is available for ${term} Term`;
+      }
+      break;
+    case "not-available":
+      {
+        label = `Course not offered for ${term} Term`;
+      }
+      break;
+    case "under-waitlist":
+      {
+        label = `There are no seats left for ${term} Term `;
+      }
+      break;
+    case "closed":
+      {
+        label = "";
+      }
+      break;
+  }
+  return label;
 }
