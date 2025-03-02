@@ -26,9 +26,9 @@ export function AppLayout() {
         <div className={classes.headerGroup}>
           <div className={classes.headerMenu}>
             <UnstyledButton
-              renderRoot={({ className, ...others }) => (
-                <NavLink to={"/"} className={cx(className)} {...others} />
-              )}
+                renderRoot={({className, ...others}) => (
+                    <NavLink to={"/"} className={cx(className)} {...others} />
+                )}
             >
               <Title order={4} fw={"600"}>
                 Courses
@@ -37,16 +37,31 @@ export function AppLayout() {
           </div>
           <div className={classes.headerMenu}>
             <UnstyledButton
-              renderRoot={({ className, ...others }) => (
-                <NavLink
-                  to={"/schedule"}
-                  className={cx(className)}
-                  {...others}
-                />
-              )}
+                renderRoot={({className, ...others}) => (
+                    <NavLink
+                        to={"/schedule"}
+                        className={cx(className)}
+                        {...others}
+                    />
+                )}
             >
               <Title order={4} fw={"600"}>
                 Schedule
+              </Title>
+            </UnstyledButton>
+          </div>
+          <div className={classes.headerMenu}>
+            <UnstyledButton
+                renderRoot={({className, ...others}) => (
+                    <NavLink
+                        to={"/tracking"}
+                        className={cx(className)}
+                        {...others}
+                    />
+                )}
+            >
+              <Title order={4} fw={"600"}>
+                Tracking
               </Title>
             </UnstyledButton>
           </div>
@@ -54,7 +69,7 @@ export function AppLayout() {
       </AppShell.Header>
       <AppShell.Main className={classes.main}>
         <div className={classes.mainSection}>
-          <Outlet />
+          <Outlet/>
         </div>
       </AppShell.Main>
     </AppShell>
