@@ -1,18 +1,19 @@
+.tableContainer {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: var(--mantine-radius-default);
+}
 .table {
+  position: absolute;
+  height: 100%;
   width: 100%;
   background-color: var(--mantine-color-gray-1);
-  border: 2px solid var(--mantine-color-gray-6);
-  border-radius: var(--mantine-radius-md);
 }
-
 .tableHeader {
-  padding-inline-start: 3rem;
-  display: flex;
-  flex-direction: row;
+  font-size: var(--mantine-font-size-sm);
 }
-
-.tableCell {
-  margin: 0;
-  padding: 0;
-  flex-grow: 1;
+.timeColumn {
+  position: absolute;
+  font-size: var(--mantine-font-size-sm);
 }

@@ -1,0 +1,5 @@
+.grid {
+  position: absolute;
+  width: 50%;
+  height: calc(50% - var(--app-shell-header-offset));
+}

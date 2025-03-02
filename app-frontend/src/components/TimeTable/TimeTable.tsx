@@ -1,53 +1,120 @@
 import { getTimeRange } from "./TTTimeUtils.ts";
 import { RangeType } from "./TimeTable.types.ts";
-import { Table } from "@mantine/core";
 import React from "react";
 
+import useElementDimensions from "@/hooks/useElementDimensions.ts";
 import classes from "./timetable.module.css";
 
 interface TimeTableProps {
+  colHeader: number[] | string[];
   range: RangeType;
   style?: React.CSSProperties;
 }
 
-export function TimeTable({ range, style }: TimeTableProps) {
-  function getCell(start: number, end: number) {
-    const times = Array(end);
-    for (let i = start; i < end + 1; i++) {
-      times[i] = i;
-    }
+export function TimeTable({
+  colHeader,
+  range: { start, end },
+}: TimeTableProps) {
+  const { dimensions, ref } = useElementDimensions();
+  const { x, y, height, width } = dimensions ?? {};
+  const timeColWidth = 50,  headerRowHeight = 18; const borderSize = 0;
+  const timeRange: string[] = getTimeRange(start, end);
 
-    return times.map((time) => (
-      <Table.Tr key={time}>
-        <Table.Td>{getMilitaryTimeFormat(time)}</Table.Td>
-        <Table.Td></Table.Td>
-        <Table.Td></Table.Td>
-        <Table.Td></Table.Td>
-        <Table.Td></Table.Td>
-        <Table.Td></Table.Td>
-      </Table.Tr>
-    ));
-  }
+  console.log(width, height, x, y);
 
   return (
-    <Table style={style} className={classes.table}>
-      <Table.Thead>
-        <Table.Tr>
-          <Table.Th></Table.Th>
-          <Table.Th>Monday</Table.Th>
-          <Table.Th>Tuesday</Table.Th>
-          <Table.Th>Wednesday</Table.Th>
-          <Table.Th>Thursday</Table.Th>
-          <Table.Th>Friday</Table.Th>
-        </Table.Tr>
-      </Table.Thead>
-      <Table.Tbody>{getCell(range.start, range.end)}</Table.Tbody>
-    </Table>
+    <div ref={ref} className={classes.tableContainer}>
+      <table
+        cellPadding={0}
+        cellSpacing={0}
+        style={{
+          border: `${borderSize}px solid`,
+        }}
+        className={classes.table}>
+        <tbody>
+        {/* header */}
+        <tr
+          style={{
+            height: `${headerRowHeight}px`,
+          }}
+        >
+          <td></td>
+          {width
+            ? colHeader.map((time, index) => (
+              <td
+                key={time + index.toString() + Math.random().toString()}
+                style={{
+                  width: `${(width - timeColWidth - borderSize) / colHeader.length}px`,
+                  textAlign: "center",
+                }}
+                className={classes.tableHeader}
+              >
+                {time}
+              </td>
+            ))
+            : undefined}
+        </tr>
+        {/* time column */}
+        <tr>
+          <td
+            style={{
+              width: `${timeColWidth - borderSize}px`,
+            }}
+          >
+            {height
+              ? timeRange.map((time, index) => (
+                <div
+                  key={time + index + Math.random().toString()}
+                  className={classes.timeColumn}
+                  style={{
+                    top: `${index * ((height - headerRowHeight - 1 - borderSize) / (end - start + 1)) + headerRowHeight}px`,
+                    height: `${(height - headerRowHeight - 1 - borderSize) / (end - start + 1)}px`,
+                    width: `${timeColWidth - borderSize}px`,
+                  }}
+                >
+                  {time}
+                </div>
+              ))
+              : undefined}
+          </td>
+          {width
+            ? colHeader.map((col, i) => (
+              <td
+                key={col + i.toString()}
+                style={{
+                  width: `${(width - timeColWidth - borderSize) / colHeader.length}px`,
+                }}
+              ></td>
+            ))
+            : undefined}
+        </tr>
+        {/* grid */}
+        <tr
+          style={{
+            height: '1px'
+          }}
+        >
+          <td>
+            {(height && width && x && y)
+              ? timeRange.map((time, index) => (
+                <div
+                  key={time + index + Math.random().toString()}
+                  className={classes.timeColumn}
+                  style={{
+                    top: `${index * ((height - 1 - headerRowHeight - borderSize) / (end - start + 1)) + headerRowHeight}px`,
+                    left: `${timeColWidth}px`,
+                    height: `${(height - headerRowHeight - 1 - borderSize) / (2 * (end - start + 1))}px`,
+                    marginBottom: `${(height - headerRowHeight - 1 - borderSize) / (2 * (end - start + 1))}px`,
+                    width: `${width - timeColWidth - borderSize}px`,
+                  }}
+                >
+                </div>
+              ))
+              : undefined}
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
   );
-}
-
-function getMilitaryTimeFormat(time: number) {
-  if (time - 12 == 0) return `${time}:00 PM`;
-  else if (time - 12 > 0) return `${time - 12}:00 PM`;
-  return `${time}:00 AM`;
 }

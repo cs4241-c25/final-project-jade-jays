@@ -6,11 +6,7 @@ import classes from "./appLayout.module.css";
 
 export function AppLayout() {
   return (
-    <AppShell
-      withBorder={false}
-      padding={"0.5rem"}
-      header={{ height: "50", offset: true }}
-    >
+    <AppShell withBorder={false} header={{ height: "50", offset: true }}>
       <AppShell.Header className={classes.header}>
         <Group>
           <UnstyledButton
