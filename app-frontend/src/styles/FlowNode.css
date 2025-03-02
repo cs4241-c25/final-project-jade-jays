@@ -1,10 +1,10 @@
 :root {
   --node-width: 210px;
   --node-height: 85px;
-  --uncomplete-color: red;
-  --complete-color: green;
-  --confirm-color: blue;
-  --unconfirm-color: yellow;
+  --uncomplete-color: #FF0000;
+  --complete-color: #00E10B;
+  --confirm-color: #6166FF;
+  --unconfirm-color: #FFAA00;
   --prereq-color: black;
   --concurrent-color: blue;
   --recomend-color: green;

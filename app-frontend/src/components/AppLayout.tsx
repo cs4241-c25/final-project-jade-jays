@@ -30,6 +30,14 @@ export const AppLayout: React.FC = () => {
               >
                 Courses
               </NavigationMenu.Link>
+              &nbsp;
+              &nbsp;
+              <NavigationMenu.Link
+                  className={"text-primary-foreground text-lg font-semibold"}
+                  href="/flow"
+              >
+                Flowchart
+              </NavigationMenu.Link>
             </NavigationMenu.Item>
           </NavigationMenu.List>
         </header>
