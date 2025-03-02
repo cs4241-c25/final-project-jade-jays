@@ -22,23 +22,8 @@ const CS: Category = {
 const HUA: Category = {
   name: "Humanities and Arts",
   validSubjects: [
-    "AR",
-    "EN",
-    "TH",
-    "MU",
-    "AB",
-    "CN",
-    "EN",
-    "GN",
-    "SP",
-    "EN",
-    "WR",
-    "RH",
-    "HI",
-    "HU",
-    "INTL",
-    "PY",
-    "RE",
+    "AR", "EN", "TH", "MU", "AB", "CN", "EN", "GN", "SP",
+    "EN", "WR", "RH", "HI", "HU", "INTL", "PY", "RE",
   ],
   requiredClasses: 6,
 };
@@ -49,7 +34,7 @@ const MA: Category = {
 };
 const PE: Category = {
   name: "Physical Education",
-  validSubjects: ["PE, WPE"],
+  validSubjects: ["PE", "WPE"],
   requiredClasses: 4,
 };
 
@@ -59,60 +44,25 @@ const BSCS: Degree = {
 };
 
 export function Tracking() {
-  const [panelsRows, setPanelRows] = useState([]);
-  const [subjects, setSubjects] = useState(["67c2237ae95a42965244c0f2"]);
-  const [categories, setCategories] = useState<Category[]>([]);
+  const [panelRows, setPanelRows] = useState<JSX.Element[]>([]);
+  const [categories, setCategories] = useState<Category[]>(BSCS.categories);
+  const [courseDataMap, setCourseDataMap] = useState<Record<string, any[]>>({});
 
   async function createTrackingSheet() {
     try {
-      for (let category in BSCS.categories) {
-      }
-      // Wait for all course data to resolve
-      const courseDataArray = await Promise.all(subjects.map(getCourseData));
+      const courseDataEntries = await Promise.all(
+          categories.flatMap((category) =>
+              category.validSubjects.map((subject) => getCourseData(subject))
+          )
+      );
 
-      // Store data in an object mapped by subject
-      /*
-            const subjectDataMap = subjects.reduce((acc, subject, index) => {
-                acc[subject] = courseDataArray[index];
-                return acc;
-            }, {} as Record<string, string[]>);
+      const courseData: Record<string, any[]> = {};
+      courseDataEntries.forEach((data, index) => {
+        const subject = categories.flatMap((cat) => cat.validSubjects)[index];
+        courseData[subject] = data.courses;
+      });
 
-            console.log("Subject Data Map:", subjectDataMap);
-
-            {subjectDataMap[subject]?.map((collegeClass) => (
-                                <option key={collegeClass}>{collegeClass}</option>
-                            ))}
-
-             */
-      //console.log(courseDataArray[0]);
-
-      // Create panel rows after data is set
-      const rows = [];
-      let currentRow = [];
-      for (let i = 0; i < subjects.length; i++) {
-        console.log(courseDataArray[0].courses);
-        currentRow.push(
-          <Panel key={subjects[i]} className={classes.panel}>
-            {subjects[i]}
-            <select>
-              {courseDataArray[i].courses.map((courseData) => (
-                <option key={courseData._id}>{courseData.code}</option>
-              ))}
-            </select>
-          </Panel>,
-        );
-
-        // Every 3 subjects, push a new PanelGroup and reset the row
-        if (currentRow.length === 3 || i === subjects.length - 1) {
-          rows.push(
-            <PanelGroup key={i} direction="horizontal">
-              {currentRow}
-            </PanelGroup>,
-          );
-          currentRow = []; // Reset for the next row
-        }
-      }
-      setPanelRows(rows);
+      setCourseDataMap(courseData);
     } catch (error) {
       console.error("Error fetching course data:", error);
     }
@@ -122,12 +72,46 @@ export function Tracking() {
     createTrackingSheet();
   }, []);
 
+  useEffect(() => {
+    if (Object.keys(courseDataMap).length === 0) return;
+
+    const rows: JSX.Element[] = [];
+    let currentRow: JSX.Element[] = [];
+
+    for (let i = 0; i < categories.length; i++) {
+      currentRow.push(
+          <Panel key={categories[i].name} className={classes.panel}>
+            {categories[i].name}
+            {Array.from({ length: categories[i].requiredClasses }).map((_, index) => (
+                <select key={index}>
+                  <option value="" selected disabled hidden>Choose here</option>
+                  {categories[i].validSubjects.flatMap((subject) =>
+                      (courseDataMap[subject] || []).map((course) => (
+                          <option selected={false}
+                                  key={course.subject + course.code}>{course.subject + course.code + " - " + course.title}</option>
+                      ))
+                  )}
+                </select>
+            ))}
+          </Panel>
+      );
+
+      if (currentRow.length === 3 || i === categories.length - 1) {
+        rows.push(
+            <PanelGroup key={i} direction="horizontal">
+              {currentRow}
+            </PanelGroup>
+        );
+        currentRow = [];
+      }
+    }
+
+    setPanelRows(rows);
+  }, [courseDataMap]);
+
   return (
-    <>
-      <PanelGroup direction={"horizontal"}>
-        <select id={"DegreeSelector"}></select>
-      </PanelGroup>
-      <PanelGroup direction={"vertical"}>{panelsRows}</PanelGroup>
-    </>
+      <>
+        <PanelGroup direction={"vertical"}>{panelRows}</PanelGroup>
+      </>
   );
 }
