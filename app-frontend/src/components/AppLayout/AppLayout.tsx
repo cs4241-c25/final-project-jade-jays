@@ -1,8 +1,8 @@
-import cx from "clsx";
-import { Outlet, NavLink } from "react-router-dom";
 import { AppShell, UnstyledButton, Title, Group } from "@mantine/core";
+import { Outlet, NavLink } from "react-router-dom";
+import cx from "clsx";
 
-import classes from "../styles/appLayout.module.css";
+import classes from "./appLayout.module.css";
 
 export function AppLayout() {
   return (
@@ -26,6 +26,7 @@ export function AppLayout() {
         <div className={classes.headerGroup}>
           <div className={classes.headerMenu}>
             <UnstyledButton
+              className={classes.menuButton}
               renderRoot={({ className, ...others }) => (
                 <NavLink to={"/"} className={cx(className)} {...others} />
               )}
@@ -37,6 +38,7 @@ export function AppLayout() {
           </div>
           <div className={classes.headerMenu}>
             <UnstyledButton
+              className={classes.menuButton}
               renderRoot={({ className, ...others }) => (
                 <NavLink
                   to={"/schedule"}

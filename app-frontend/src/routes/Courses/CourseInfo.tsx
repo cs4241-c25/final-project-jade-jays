@@ -6,9 +6,9 @@ import { Minus } from "lucide-react";
 import {
   ClientCourseType,
   setLocalStorageValue,
-} from "app-packages/types/persistent.types.ts";
-import { TermButtonMemo } from "@/components/CourseComponents/CourseList.tsx";
-import classes from "@/styles/courses.module.css";
+} from "../../../../app-packages/types/persistent.types.ts";
+import { TermButtonMemo } from "@/routes/Courses/CourseList.tsx";
+import classes from "@/routes/Courses/courses.module.css";
 
 type CourseInfoProps = {
   status: string;

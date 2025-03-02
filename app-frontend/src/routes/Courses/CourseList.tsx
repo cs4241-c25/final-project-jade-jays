@@ -7,8 +7,8 @@ import React from "react";
 import {
   ClientCourseType,
   setLocalStorageValue,
-} from "app-packages/types/persistent.types.ts";
-import classes from "@/styles/courses.module.css";
+} from "../../../../app-packages/types/persistent.types.ts";
+import classes from "@/routes/Courses/courses.module.css";
 
 export const CourseListMemo = memo(CourseList);
 export const CourseItemMemo = memo(CourseItem);

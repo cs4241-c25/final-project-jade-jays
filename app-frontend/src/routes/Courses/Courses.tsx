@@ -2,12 +2,12 @@ import { PanelGroup, Panel, PanelResizeHandle } from "react-resizable-panels";
 import { useLocalStorage } from "@mantine/hooks";
 import { useState } from "react";
 
-import { ClientSubjectType } from "app-packages/types/persistent.types.ts";
+import { ClientSubjectType } from "../../../../app-packages/types/persistent.types.ts";
 import { useSubject } from "@/hooks/data-fetches.ts";
-import { SidebarItem } from "@/components/SidebarItem";
-import { CourseView } from "@/components/CourseComponents/CourseView";
+import { SidebarItem } from "@/routes/Courses/SidebarItem.tsx";
+import { CourseView } from "@/routes/Courses/CourseView.tsx";
 
-import classes from "@/styles/courses.module.css";
+import classes from "@/routes/Courses/courses.module.css";
 
 export function Courses() {
   const [currentSubject, setCurrentSubject] = useLocalStorage({

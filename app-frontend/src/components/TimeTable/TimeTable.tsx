@@ -1,20 +1,25 @@
 import { getTimeRange } from "./TTTimeUtils.ts";
 import { RangeType } from "./TimeTable.types.ts";
 import { Table } from "@mantine/core";
-import classes from "../../styles/timetable.module.css";
+import React from "react";
+
+import classes from "./timetable.module.css";
 
 interface TimeTableProps {
   range: RangeType;
+  style?: React.CSSProperties;
 }
 
-export function TimeTable({ range }: TimeTableProps) {
-  const { start, end } = range;
-
+export function TimeTable({ range, style }: TimeTableProps) {
   function getCell(start: number, end: number) {
-    const times = ["8", "9", "10", "11"];
+    const times = Array(end);
+    for (let i = start; i < end + 1; i++) {
+      times[i] = i;
+    }
+
     return times.map((time) => (
       <Table.Tr key={time}>
-        <Table.Td>{time}</Table.Td>
+        <Table.Td>{getMilitaryTimeFormat(time)}</Table.Td>
         <Table.Td></Table.Td>
         <Table.Td></Table.Td>
         <Table.Td></Table.Td>
@@ -25,7 +30,7 @@ export function TimeTable({ range }: TimeTableProps) {
   }
 
   return (
-    <Table className={classes.table}>
+    <Table style={style} className={classes.table}>
       <Table.Thead>
         <Table.Tr>
           <Table.Th></Table.Th>
@@ -36,7 +41,13 @@ export function TimeTable({ range }: TimeTableProps) {
           <Table.Th>Friday</Table.Th>
         </Table.Tr>
       </Table.Thead>
-      <Table.Tbody>{getCell(start, end)}</Table.Tbody>
+      <Table.Tbody>{getCell(range.start, range.end)}</Table.Tbody>
     </Table>
   );
+}
+
+function getMilitaryTimeFormat(time: number) {
+  if (time - 12 == 0) return `${time}:00 PM`;
+  else if (time - 12 > 0) return `${time - 12}:00 PM`;
+  return `${time}:00 AM`;
 }

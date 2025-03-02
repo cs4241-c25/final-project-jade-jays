@@ -1,11 +1,11 @@
 import { Panel, PanelResizeHandle } from "react-resizable-panels";
 import { readLocalStorageValue, useLocalStorage } from "@mantine/hooks";
 
-import { ClientCourseType } from "app-packages/types/persistent.types.ts";
-import { CourseListMemo } from "@/components/CourseComponents/CourseList.tsx";
-import { CourseInfo } from "@/components/CourseComponents/CourseInfo.tsx";
+import { ClientCourseType } from "../../../../app-packages/types/persistent.types.ts";
+import { CourseListMemo } from "@/routes/Courses/CourseList.tsx";
+import { CourseInfo } from "@/routes/Courses/CourseInfo.tsx";
 import { useCourse } from "@/hooks/data-fetches.ts";
-import classes from "@/styles/courses.module.css";
+import classes from "@/routes/Courses/courses.module.css";
 
 export function CourseView() {
   const subject = readLocalStorageValue<string>({ key: "subject" });
