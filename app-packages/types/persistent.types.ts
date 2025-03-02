@@ -1,5 +1,7 @@
 import { Types } from "mongoose";
 
+export type setLocalStorageValue<T> = (val: T | ((prevState: T) => T)) => void;
+
 export interface ClientSubjectType {
   _id: string;
   type: string;

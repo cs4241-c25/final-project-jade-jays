@@ -98,7 +98,6 @@
   flex-direction: row;
   gap: var(--mantine-spacing-md);
   border-radius: var(--mantine-radius-sm);
-  transition: background-color 250ms;
 }
 .sidebarPanelItem:hover {
   background-color: var(--mantine-color-gray-2);

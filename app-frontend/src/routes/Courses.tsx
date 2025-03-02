@@ -1,15 +1,19 @@
 import { PanelGroup, Panel, PanelResizeHandle } from "react-resizable-panels";
+import { useLocalStorage } from "@mantine/hooks";
 import { useState } from "react";
 
 import { ClientSubjectType } from "app-packages/types/persistent.types.ts";
 import { useSubject } from "@/hooks/data-fetches.ts";
-import { CourseView } from "@/components/CourseView.tsx";
 import { SidebarItem } from "@/components/SidebarItem";
+import { CourseView } from "@/components/CourseComponents/CourseView";
 
 import classes from "@/styles/courses.module.css";
 
 export function Courses() {
-  const [currentSubject, setCurrentSubject] = useState("ACC");
+  const [currentSubject, setCurrentSubject] = useLocalStorage({
+    key: "subject",
+    defaultValue: "ACC",
+  });
   const { isPending, isError, data, error } = useSubject();
 
   if (isPending) {
@@ -51,7 +55,7 @@ export function Courses() {
           : undefined}
       </Panel>
       <PanelResizeHandle className={classes.panelHandle} />
-      <CourseView subject={currentSubject} />
+      <CourseView />
     </PanelGroup>
   );
 }

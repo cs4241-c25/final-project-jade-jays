@@ -1,4 +1,4 @@
-import { useCourseContext } from "@/components/CourseProvider/CourseProvider";
+import { useCourseContext } from "@/components/CourseComponents/CourseProvider";
 import { TimeTable } from "@/components/TimeTable/TimeTable";
 import { Grid } from "@mantine/core";
 
