@@ -56,7 +56,6 @@ export default function App() {
               <Route path={"/"} index element={<Courses />} />
               <Route path={"/schedule"} index element={<Schedule />} />
               <Route path={"/tracking"} index element={<Tracking />} />
-
             </Route>
           </Routes>
         </BrowserRouter>
