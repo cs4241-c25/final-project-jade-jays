@@ -1,9 +1,7 @@
 import { useQuery, useQueries } from "@tanstack/react-query";
 import axios from "axios";
 
-import {
-  ClientCourseType,
-} from "app-packages/types/persistent.types.ts";
+import { ClientCourseType } from "app-packages/types/persistent.types.ts";
 import { parseSectionData } from "./data-fetches.util.ts";
 
 export function getSubjectData() {

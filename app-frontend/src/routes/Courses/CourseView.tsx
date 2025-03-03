@@ -1,7 +1,7 @@
 import { readLocalStorageValue, useLocalStorage } from "@mantine/hooks";
 import { Panel, PanelResizeHandle } from "react-resizable-panels";
 
-import { ClientCourseType } from "../../../../app-packages/types/persistent.types.ts";
+import { ClientCourseType } from "app-packages/types/persistent.types.ts";
 import { CourseListMemo } from "@/routes/Courses/CourseList.tsx";
 import { CourseInfo } from "@/routes/Courses/CourseInfo.tsx";
 import { getCourseData } from "@/hooks/data-fetches.ts";

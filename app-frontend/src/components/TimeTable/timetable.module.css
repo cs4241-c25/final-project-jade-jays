@@ -32,11 +32,8 @@
   z-index: 2;
   display: inline-block;
   position: absolute;
-  padding: 1rem;
   box-sizing: border-box;
   background-color: var(--mantine-color-gray-5);
-  border: 1px solid var(--mantine-color-gray-5);
-  border-radius: var(--mantine-radius-default);
 }
 .tableGrid {
   position: absolute;

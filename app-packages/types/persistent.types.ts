@@ -10,7 +10,7 @@ export interface TableSectionDataType extends SectionType {
 }
 
 export type TablesType = {
-  [key: string]: TableSectionDataType[][];
+  [key: string]: Array<TableSectionDataType[]>;
 };
 
 export interface ClientSubjectType {

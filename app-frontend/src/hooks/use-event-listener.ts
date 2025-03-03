@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-type EventType = "resize" | "scroll";
+type EventType = "resize" | "scroll" | "navigate";
 
 const useEventListener = (
   event: EventType,

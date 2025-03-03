@@ -1,12 +1,14 @@
-import { Text } from "@mantine/core"
+import { Text } from "@mantine/core";
 import React from "react";
 
 import { getTimeRangeArrayMilitaryFormat } from "app-packages/util/time.utils.ts";
-import { RangeType, TableSectionDataType } from "app-packages/types/persistent.types.ts";
+import {
+  RangeType,
+  TableSectionDataType,
+} from "app-packages/types/persistent.types.ts";
 import { stringToDecimal } from "app-packages/util/util.ts";
 import useElementDimensions from "@/hooks/use-element-dimensions.ts";
 import classes from "./timetable.module.css";
-
 
 interface TimeTableProps {
   title: string;
@@ -86,7 +88,10 @@ export function TimeTable({
           let sections: React.ReactNode[] = [];
           if (data[index] && data[index][0]) {
             const hash = stringToDecimal(data[index][0].course);
-            let randomColor = Math.floor(hash * 16777215).toString(16).padStart(6, '0').substring(0, 6);
+            let randomColor = Math.floor(hash * 16777215)
+              .toString(16)
+              .padStart(6, "0")
+              .substring(0, 6);
             let hexColor = `#${randomColor}`;
 
             sections = data[index].map((section) => {
@@ -101,8 +106,10 @@ export function TimeTable({
                     backgroundColor: hexColor,
                   }}
                 >
-                  <Text>{section.course}</Text>
-                  <Text>{section.section_start_time} - {section.section_end_time}</Text>
+                  <Text size={"xs"}>{section.course}</Text>
+                  <Text size={"xs"}>
+                    {section.section_start_time} - {section.section_end_time}
+                  </Text>
                 </div>
               );
             });

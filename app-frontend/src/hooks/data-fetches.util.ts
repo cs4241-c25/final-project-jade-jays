@@ -1,4 +1,7 @@
-import { TableSectionDataType, TablesType } from "app-packages/types/persistent.types.ts";
+import {
+  TableSectionDataType,
+  TablesType,
+} from "app-packages/types/persistent.types.ts";
 import { convertTimeStringToInteger } from "../../../app-packages/util/time.utils.ts";
 import { SectionType } from "app-packages/types/persistent.types.ts";
 
@@ -49,29 +52,29 @@ function determineSection(
 ) {
   switch (day) {
     case "M":
-    {
-      section_times[0].push({ start: start, end: end, ...section });
-    }
+      {
+        section_times[0].push({ start: start, end: end, ...section });
+      }
       break;
     case "T":
-    {
-      section_times[1].push({ start: start, end: end, ...section });
-    }
+      {
+        section_times[1].push({ start: start, end: end, ...section });
+      }
       break;
     case "W":
-    {
-      section_times[2].push({ start: start, end: end, ...section });
-    }
+      {
+        section_times[2].push({ start: start, end: end, ...section });
+      }
       break;
     case "R":
-    {
-      section_times[3].push({ start: start, end: end, ...section });
-    }
+      {
+        section_times[3].push({ start: start, end: end, ...section });
+      }
       break;
     case "F":
-    {
-      section_times[4].push({ start: start, end: end, ...section });
-    }
+      {
+        section_times[4].push({ start: start, end: end, ...section });
+      }
       break;
   }
 }

@@ -1,5 +1,13 @@
 .grid {
   position: absolute;
-  width: 100%;
-  height: calc(100vh - var(--app-shell-header-height));
+  width: calc(50% - var(--schedule-list-width) / 2);
+  height: calc(50vh - var(--app-shell-header-height) / 2);
+}
+.scheduleListContainer {
+  display: flex;
+  flex-direction: column;
+  height: calc(
+    100vh - var(--app-shell-header-height) - 2 * var(--app-shell-padding)
+  );
+  width: var(--schedule-list-width);
 }
