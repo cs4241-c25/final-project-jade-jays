@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import {
   ReactFlow,
   MiniMap,
@@ -170,7 +170,6 @@ const getLayoutedElements = (nodes, edges, options) => {
 export const FlowChart = () => {
   const [edges, setEdges] = useState(getEdges(classNodes));
   const [nodes, setNodes] = useState(getClasses(classNodes, edges));
-  const [fit, setFit] = useState(false);
   //const initialNodes = getClasses(classNodes, getEdges(classNodes));
 
   const nodeTypes = {
@@ -211,23 +210,24 @@ export const FlowChart = () => {
 
       setNodes([...layouted.nodes]);
       setEdges([...layouted.edges]);
-
-      setFit(false);
-      setFit(true);
     },
     [nodes, edges],
   );
 
-  /*window.onload = (event) => {
-    onLayout("TB");
-  };*/
+  useEffect(() => {
 
-  onpageshow = () => {
-    onLayout("TB");
-  }
+    const onPageLoad = () => {
+      onLayout("TB");
+    };
+    if (document.readyState === 'complete') {
+      onPageLoad();
+    } else {
+      return () => window.removeEventListener('load', onPageLoad);
+    }
+  }, []);
 
   return (
-    <div style={{ width: "100vw - 20px", height: "calc(100vh - 90px)" }}>
+    <div style={{ width: "100vw - 0px", height: "calc(100vh - 90px)" }}>
       <Legend />
       <ReactFlow
         edges={edges}
@@ -235,7 +235,7 @@ export const FlowChart = () => {
         onEdgesChange={onEdgesChange}
         onNodesChange={onNodesChange}
         nodeTypes={nodeTypes}
-        fitView={fit}
+        fitView={false}
         proOptions={{ hideAttribution: true }}
         //onNodeClick={onNodeClick}
       >
