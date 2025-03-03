@@ -1,7 +1,7 @@
 import { MarkerType } from "reactflow";
 
 import "@/routes/FlowChart/FlowNode.css";
-import {classes} from "@/components/FlowChart/FlowChart.types.ts";
+import { classes } from "@/components/FlowChart/FlowChart.types.ts";
 
 const r = document.querySelector(":root");
 const rs = getComputedStyle(r);

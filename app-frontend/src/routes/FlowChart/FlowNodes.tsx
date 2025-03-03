@@ -1,7 +1,7 @@
 import { Handle, Position } from "@xyflow/react";
 import "@/routes/FlowChart/FlowNode.css";
 import React, { JSX, useCallback } from "react";
-import {classes} from "@/components/FlowChart/FlowChart.types.ts";
+import { classes } from "@/components/FlowChart/FlowChart.types.ts";
 
 const width = 210;
 
