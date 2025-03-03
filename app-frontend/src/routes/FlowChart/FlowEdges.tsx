@@ -1,6 +1,7 @@
 import { MarkerType } from "reactflow";
 
 import "@/routes/FlowChart/FlowNode.css";
+import {classes} from "@/components/FlowChart/FlowChart.types.ts";
 
 const r = document.querySelector(":root");
 const rs = getComputedStyle(r);
@@ -38,7 +39,7 @@ function basicEdge(
   };
 }
 
-export function getEdges(nodes: any[]) {
+export function getEdges(nodes: classes[]) {
   const edges: any[] = [];
 
   let edgeID = 0;
@@ -48,7 +49,7 @@ export function getEdges(nodes: any[]) {
     if (!Object.prototype.hasOwnProperty.call(node, "prereq")) {
       console.log("NOT!");
     } else {
-      const nodeID = node.id;
+      const nodeID = node.subject + " " + node.code;
       for (let reqI = 0; reqI < node.prereq.length; reqI++) {
         const prereqs = node.prereq[reqI];
         for (let reqJ = 0; reqJ < prereqs.length; reqJ++) {

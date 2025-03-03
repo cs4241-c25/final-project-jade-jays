@@ -127,7 +127,6 @@ router.get("/populate_database", async (req: Request, res: Response) => {
       }
 
       if (!courses[`${code_abbrev}${code_number}`]) {
-
         const courseID = code_abbrev + " " + code_number;
 
         const reqs = findreq(courseID);

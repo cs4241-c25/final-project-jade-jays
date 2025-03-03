@@ -28,37 +28,33 @@ import { classes } from "@/components/FlowChart/FlowChart.types.ts";
 //const uri = "mongodb+srv://cchraplak:a3Chraplak@a3.ouon6.mongodb.net/?retryWrites=true&w=majority&appName=a3";
 
 const obj: classes = {
-  name: "Object Oriented Design",
-  id: "CS 2102",
-  professor: "Mathew Ahrens",
-  time: "M-T-R-F 12:00PM-12:50PM",
+  title: "Object Oriented Design",
+  subject: "CS",
+  code: "2102",
   taken: "uncompleted",
   prereq: [],
 };
 
 const advObj: classes = {
-  name: "Accelerated Object Oriented Design Concepts",
-  id: "CS 2103",
-  professor: "Joshua Cuneo",
-  time: "M-T-R-F 12:00PM-12:50PM",
+  title: "Accelerated Object Oriented Design Concepts",
+  subject: "CS",
+  code: "2103",
   taken: "unconfirmed",
   prereq: [],
 };
 
-const discrete = {
-  name: "Discrete Mathematics",
-  id: "CS 2022",
-  professor: "Herman Servatius",
-  time: "M-T-R-F 4:00PM-4:50PM",
+const discrete: classes = {
+  title: "Discrete Mathematics",
+  subject: "CS",
+  code: "2022",
   taken: "completed",
   prereq: [],
 };
 
-const algo = {
-  name: "Algorithms",
-  id: "CS 2223",
-  professor: "Michael Engling",
-  time: "M-T-R-F 10:00AM-11:50AM",
+const algo: classes = {
+  title: "Algorithms",
+  subject: "CS",
+  code: "2223",
   taken: "confirmed",
   prereq: [
     [
@@ -69,29 +65,26 @@ const algo = {
   ],
 };
 
-const objApp = {
-  name: "Application Building With Object-Oriented Concept",
-  id: "CS 2119",
-  professor: "Shubbhi Taneja",
-  time: "T-F 11:00AM-12:50PM",
+const objApp: classes = {
+  title: "Application Building With Object-Oriented Concept",
+  subject: "CS",
+  code: "2119",
   taken: "confirmed",
   prereq: [],
 };
 
-const os = {
-  name: "Operating Systems",
-  id: "CS 3013",
-  professor: "Craig Wills",
-  time: "T-F 12:00PM-1:50PM",
+const os: classes = {
+  title: "Operating Systems",
+  subject: "CS",
+  code: "3013",
   taken: "confirmed",
   prereq: [],
 };
 
-const webware = {
-  name: "Webware: Computational Technology For Network Information Systems",
-  id: "CS 4241",
-  professor: "Joshua Cuneo",
-  time: "T-F 3:00PM-4:50 PM",
+const webware: classes = {
+  title: "Webware: Computational Technology For Network Information Systems",
+  subject: "CS",
+  code: "4241",
   taken: "confirmed",
   prereq: [
     [
@@ -103,11 +96,10 @@ const webware = {
   ],
 };
 
-const foundations = {
-  name: "Foundations Of Computer Science",
-  id: "CS 3133",
-  professor: "Hanmeng Zhan",
-  time: "M-R 3:00PM-4:50PM",
+const foundations: classes = {
+  title: "Foundations Of Computer Science",
+  subject: "CS",
+  code: "3133",
   taken: "confirmed",
   prereq: [
     [{ id: "CS 2022", req: "prereq" }],
@@ -115,11 +107,10 @@ const foundations = {
   ],
 };
 
-const introAI = {
-  name: "Introduction To Artificial Intelligence",
-  id: "CS 4341",
-  professor: "Unconfirmed",
-  time: "T-F 1:00PM-2:50PM",
+const introAI: classes = {
+  title: "Introduction To Artificial Intelligence",
+  subject: "CS",
+  code: "4341",
   taken: "confirmed",
   prereq: [
     [
@@ -131,7 +122,7 @@ const introAI = {
   ],
 };
 
-const classNodes = [
+const classNodes: classes[] = [
   obj,
   advObj,
   discrete,

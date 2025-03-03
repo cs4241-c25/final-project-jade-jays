@@ -24,3 +24,7 @@ export function useCourse(subject: string) {
     queryFn: () => getCourseData(subject),
   });
 }
+
+export function getCourse(subject: string, code: string) {
+
+}

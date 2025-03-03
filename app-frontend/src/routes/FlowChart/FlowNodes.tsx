@@ -1,6 +1,7 @@
 import { Handle, Position } from "@xyflow/react";
 import "@/routes/FlowChart/FlowNode.css";
 import React, { JSX, useCallback } from "react";
+import {classes} from "@/components/FlowChart/FlowChart.types.ts";
 
 const width = 210;
 
@@ -59,10 +60,8 @@ export function ClassNode({ data }) {
   return (
     <>
       <div className={"flow-node " + data.taken}>
-        <p className={"node-text"}>{data.name}</p>
-        <p className={"node-text"}>{data.id}</p>
-        <p className={"node-text"}>{data.professor}</p>
-        <p className={"node-text"}>{data.time}</p>
+        <p className={"node-text"}>{data.title}</p>
+        <p className={"node-text"}>{data.subject + " " + data.code}</p>
         {handlers}
         {outHandle}
       </div>
@@ -70,7 +69,7 @@ export function ClassNode({ data }) {
   );
 }
 
-export function getClasses(nodes, initialEdges) {
+export function getClasses(nodes: classes[], initialEdges) {
   let returnNodes = [];
   let addedNodes: string[] = [];
   let rows: any[][] = [[]];
@@ -83,9 +82,10 @@ export function getClasses(nodes, initialEdges) {
     for (let i = 0; i < nodes.length; i++) {
       let valid = true;
       const node = nodes[i];
+      const nodeID = node.subject + " " + node.code;
       if (!Object.prototype.hasOwnProperty.call(node, "prereq")) {
         valid = true;
-      } else if (oldNodes.indexOf(node.id) === -1) {
+      } else if (oldNodes.indexOf(nodeID) === -1) {
         for (let j = 0; j < node.prereq.length; j++) {
           const prereqs = node.prereq[j];
           for (let k = 0; k < prereqs.length; k++) {
@@ -100,7 +100,7 @@ export function getClasses(nodes, initialEdges) {
       }
       if (valid) {
         rows[index].push(node);
-        addedNodes.push(node.id);
+        addedNodes.push(nodeID);
       }
     }
 
@@ -115,9 +115,10 @@ export function getClasses(nodes, initialEdges) {
   for (let i = 0; i < rows.length; i++) {
     for (let j = 0; j < rows[i].length; j++) {
       let node = rows[i][j];
-      node.outHandle = getOutHandle(node.id, initialEdges);
+      const nodeID = node.subject + " " + node.code;
+      node.outHandle = getOutHandle(nodeID, initialEdges);
       returnNodes.push({
-        id: node.id,
+        id: nodeID,
         position: { x: j * 250, y: i * 150 },
         data: node,
         type: "custom",

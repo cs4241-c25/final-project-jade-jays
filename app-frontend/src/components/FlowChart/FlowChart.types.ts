@@ -1,6 +1,7 @@
 export type classes = {
-  name: string;
-  id: string;
+  title: string;
+  subject: string;
+  code: string;
   taken: string; //"uncompleted" | "completed" | "unconfirmed" | "confirmed"
   prereq: {
     id: string;
