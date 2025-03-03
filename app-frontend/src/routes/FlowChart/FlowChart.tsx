@@ -143,6 +143,10 @@ const classTitles = [
   "CS 3133",
   "CS 4341",
   "CS 4342",
+    "MA 1021",
+    "MA 1022",
+    "MA 1023",
+    "MA 1024",
 ];
 const classNodes = [];
 for (let i = 0; i < classTitles.length; i++) {

@@ -86,9 +86,7 @@ const Prereqs = [
         { id: "CS 2303", req: "recomended" },
         { id: "CS 2301", req: "recomended" },
       ],
-      [
-        { id: "CS 2011", req: "recomended" },
-      ],
+      [{ id: "CS 2011", req: "recomended" }],
     ],
   },
   {
@@ -108,18 +106,12 @@ const Prereqs = [
         { id: "CS 2022", req: "recomended" },
         { id: "MA 2201", req: "recomended" },
       ],
-      [
-        { id: "CS 2223", req: "recomended" },
-      ],
+      [{ id: "CS 2223", req: "recomended" }],
     ],
   },
   {
     courseID: "CS 340X",
-    reqs: [
-      [
-        { id: "CS 2303", req: "recomended" },
-      ],
-    ],
+    reqs: [[{ id: "CS 2303", req: "recomended" }]],
   },
   {
     courseID: "CS 3431",
@@ -129,9 +121,7 @@ const Prereqs = [
         { id: "CS 2103", req: "recomended" },
         { id: "CS 2119", req: "recomended" },
       ],
-      [
-        { id: "CS 2022", req: "recomended" },
-      ],
+      [{ id: "CS 2022", req: "recomended" }],
     ],
   },
   {
@@ -155,19 +145,11 @@ const Prereqs = [
   },
   {
     courseID: "CS 4032",
-    reqs: [
-      [
-        { id: "MA 2071", req: "recomended" },
-      ],
-    ],
+    reqs: [[{ id: "MA 2071", req: "recomended" }]],
   },
   {
     courseID: "CS 4033",
-    reqs: [
-      [
-        { id: "MA 2051", req: "recomended" },
-      ],
-    ],
+    reqs: [[{ id: "MA 2051", req: "recomended" }]],
   },
   {
     courseID: "CS 4100",
@@ -176,12 +158,8 @@ const Prereqs = [
         { id: "CS 2102", req: "recomended" },
         { id: "CS 2103", req: "recomended" },
       ],
-      [
-        { id: "CS 2223", req: "recomended" },
-      ],
-      [
-        { id: "IMGD 3000", req: "recomended" },
-      ],
+      [{ id: "CS 2223", req: "recomended" }],
+      [{ id: "IMGD 3000", req: "recomended" }],
     ],
   },
   {
@@ -191,42 +169,24 @@ const Prereqs = [
         { id: "CS 2301", req: "recomended" },
         { id: "CS 2303", req: "recomended" },
       ],
-      [
-        { id: "CS 3013", req: "recomended" },
-      ],
-      [
-        { id: "CS 3516", req: "recomended" },
-      ],
-      [
-        { id: "IMGD 3000", req: "recomended" },
-      ],
+      [{ id: "CS 3013", req: "recomended" }],
+      [{ id: "CS 3516", req: "recomended" }],
+      [{ id: "IMGD 3000", req: "recomended" }],
     ],
   },
   {
     courseID: "CS 4120",
-    reqs: [
-      [
-        { id: "CS 2223", req: "recomended" },
-      ],
-    ],
+    reqs: [[{ id: "CS 2223", req: "recomended" }]],
   },
   {
     courseID: "CS 4123",
-    reqs: [
-      [
-        { id: "CS 3133", req: "recomended" },
-      ],
-    ],
+    reqs: [[{ id: "CS 3133", req: "recomended" }]],
   },
   {
     courseID: "CS 4233",
     reqs: [
-      [
-        { id: "CS 2303", req: "recomended" },
-      ],
-      [
-        { id: "CS 3733", req: "recomended" },
-      ],
+      [{ id: "CS 2303", req: "recomended" }],
+      [{ id: "CS 3733", req: "recomended" }],
     ],
   },
   {
@@ -237,9 +197,7 @@ const Prereqs = [
         { id: "CS 2103", req: "recomended" },
         { id: "CS 2119", req: "recomended" },
       ],
-      [
-        { id: "CS 3013", req: "recomended" },
-      ],
+      [{ id: "CS 3013", req: "recomended" }],
     ],
   },
   {
@@ -259,12 +217,8 @@ const Prereqs = [
         { id: "CS 2102", req: "recomended" },
         { id: "CS 2103", req: "recomended" },
       ],
-      [
-        { id: "CS 2223", req: "recomended" },
-      ],
-      [
-        { id: "CS 3133", req: "recomended" },
-      ],
+      [{ id: "CS 2223", req: "recomended" }],
+      [{ id: "CS 3133", req: "recomended" }],
     ],
   },
   {
@@ -274,63 +228,41 @@ const Prereqs = [
         { id: "MA 1024", req: "recomended" },
         { id: "MA 1034", req: "recomended" },
       ],
-      [
-        { id: "MA 2071", req: "recomended" },
-      ],
+      [{ id: "MA 2071", req: "recomended" }],
       [
         { id: "MA 2621", req: "recomended" },
         { id: "MA 2631", req: "recomended" },
       ],
-      [
-        { id: "CS 2223", req: "recomended" },
-      ],
+      [{ id: "CS 2223", req: "recomended" }],
     ],
   },
   {
     courseID: "CS 4401",
     reqs: [
-      [
-        { id: "CS 3013", req: "recomended" },
-      ],
-      [
-        { id: "CS 3733", req: "recomended" },
-      ],
-      [
-        { id: "CS 4241", req: "recomended" },
-      ],
+      [{ id: "CS 3013", req: "recomended" }],
+      [{ id: "CS 3733", req: "recomended" }],
+      [{ id: "CS 4241", req: "recomended" }],
     ],
   },
   {
     courseID: "CS 4404",
     reqs: [
-      [
-        { id: "CS 3013", req: "recomended" },
-      ],
-      [
-        { id: "CS 3516", req: "recomended" },
-      ],
+      [{ id: "CS 3013", req: "recomended" }],
+      [{ id: "CS 3516", req: "recomended" }],
     ],
   },
   {
     courseID: "CS 4432",
     reqs: [
-      [
-        { id: "CS 3431", req: "recomended" },
-      ],
-      [
-        { id: "CS 3733", req: "recomended" },
-      ],
+      [{ id: "CS 3431", req: "recomended" }],
+      [{ id: "CS 3733", req: "recomended" }],
     ],
   },
   {
     courseID: "CS 4445",
     reqs: [
-      [
-        { id: "MA 2611", req: "recomended" },
-      ],
-      [
-        { id: "CS 2223", req: "recomended" },
-      ],
+      [{ id: "MA 2611", req: "recomended" }],
+      [{ id: "CS 2223", req: "recomended" }],
       [
         { id: "CS 3431", req: "recomended" },
         { id: "CS 3733", req: "recomended" },
@@ -340,12 +272,8 @@ const Prereqs = [
   {
     courseID: "CS 4513",
     reqs: [
-      [
-        { id: "CS 3013", req: "recomended" },
-      ],
-      [
-        { id: "CS 3516", req: "recomended" },
-      ],
+      [{ id: "CS 3013", req: "recomended" }],
+      [{ id: "CS 3516", req: "recomended" }],
     ],
   },
   {
@@ -355,29 +283,19 @@ const Prereqs = [
         { id: "CS 2011", req: "recomended" },
         { id: "ECE 2049", req: "recomended" },
       ],
-      [
-        { id: "CS 3013", req: "recomended" },
-      ],
+      [{ id: "CS 3013", req: "recomended" }],
     ],
   },
   {
     courseID: "CS 4516",
     reqs: [
-      [
-        { id: "CS 3013", req: "recomended" },
-      ],
-      [
-        { id: "CS 3516", req: "recomended" },
-      ],
+      [{ id: "CS 3013", req: "recomended" }],
+      [{ id: "CS 3516", req: "recomended" }],
     ],
   },
   {
     courseID: "CS 4518",
-    reqs: [
-      [
-        { id: "CS 2102", req: "recomended" },
-      ],
-    ],
+    reqs: [[{ id: "CS 2102", req: "recomended" }]],
   },
   {
     courseID: "CS 4533",
@@ -386,9 +304,7 @@ const Prereqs = [
         { id: "CS 2102", req: "recomended" },
         { id: "CS 2103", req: "recomended" },
       ],
-      [
-        { id: "CS 3133", req: "recomended" },
-      ],
+      [{ id: "CS 3133", req: "recomended" }],
     ],
   },
   {
@@ -398,39 +314,25 @@ const Prereqs = [
         { id: "MA 1024", req: "recomended" },
         { id: "MA 1034", req: "recomended" },
       ],
-      [
-        { id: "MA 2071", req: "recomended" },
-      ],
+      [{ id: "MA 2071", req: "recomended" }],
       [
         { id: "MA 2621", req: "recomended" },
         { id: "MA 2631", req: "recomended" },
       ],
-      [
-        { id: "CS 2223", req: "recomended" },
-      ],
+      [{ id: "CS 2223", req: "recomended" }],
     ],
   },
   {
     courseID: "CS 4731",
     reqs: [
-      [
-        { id: "CS 2223", req: "recomended" },
-      ],
-      [
-        { id: "CS 2303", req: "recomended" },
-      ],
-      [
-        { id: "MA 2071", req: "recomended" },
-      ],
+      [{ id: "CS 2223", req: "recomended" }],
+      [{ id: "CS 2303", req: "recomended" }],
+      [{ id: "MA 2071", req: "recomended" }],
     ],
   },
   {
     courseID: "CS 4732",
-    reqs: [
-      [
-        { id: "CS 4731", req: "recomended" },
-      ],
-    ],
+    reqs: [[{ id: "CS 4731", req: "recomended" }]],
   },
   {
     courseID: "CS 4801",
@@ -452,23 +354,15 @@ const Prereqs = [
         { id: "CS 2102", req: "recomended" },
         { id: "CS 2103", req: "recomended" },
       ],
-      [
-        { id: "CS 2223", req: "recomended" },
-      ],
+      [{ id: "CS 2223", req: "recomended" }],
     ],
   },
   {
     courseID: "CS 480X",
     reqs: [
-      [
-        { id: "MA 2071", req: "recomended" },
-      ],
-      [
-        { id: "MA 2621", req: "recomended" },
-      ],
-      [
-        { id: "CS 3733", req: "recomended" },
-      ],
+      [{ id: "MA 2071", req: "recomended" }],
+      [{ id: "MA 2621", req: "recomended" }],
+      [{ id: "CS 3733", req: "recomended" }],
     ],
   },
   {
@@ -482,11 +376,7 @@ const Prereqs = [
   },
   {
     courseID: "CS 5008",
-    reqs: [
-      [
-        { id: "CS 5007", req: "prereq" },
-      ],
-    ],
+    reqs: [[{ id: "CS 5007", req: "prereq" }]],
   },
   {
     courseID: "CS 503",
@@ -495,9 +385,7 @@ const Prereqs = [
         { id: "CS 2022", req: "prereq" },
         { id: "MA 2201", req: "prereq" },
       ],
-      [
-        { id: "CS 2223", req: "prereq" },
-      ],
+      [{ id: "CS 2223", req: "prereq" }],
     ],
   },
   {
@@ -511,11 +399,7 @@ const Prereqs = [
   },
   {
     courseID: "CS 509",
-    reqs: [
-      [
-        { id: "CS 3733", req: "prereq" },
-      ],
-    ],
+    reqs: [[{ id: "CS 3733", req: "prereq" }]],
   },
   {
     courseID: "CS 513",
@@ -530,78 +414,44 @@ const Prereqs = [
   {
     courseID: "CS 522",
     reqs: [
-      [
-        { id: "MA 2051", req: "prereq" },
-      ],
-      [
-        { id: "MA 2071", req: "prereq" },
-      ],
+      [{ id: "MA 2051", req: "prereq" }],
+      [{ id: "MA 2071", req: "prereq" }],
     ],
   },
   {
     courseID: "CS 526",
-    reqs: [
-      [
-        { id: "CS 3431", req: "prereq" },
-      ],
-    ],
+    reqs: [[{ id: "CS 3431", req: "prereq" }]],
   },
   {
     courseID: "CS 528",
     reqs: [
-      [
-        { id: "CS 502", req: "prereq" },
-      ],
-      [
-        { id: "CS 513", req: "prereq" },
-      ],
+      [{ id: "CS 502", req: "prereq" }],
+      [{ id: "CS 513", req: "prereq" }],
     ],
   },
   {
     courseID: "CS 539",
-    reqs: [
-      [
-        { id: "CS 534", req: "prereq" },
-      ],
-    ],
+    reqs: [[{ id: "CS 534", req: "prereq" }]],
   },
   {
     courseID: "CS 541",
     reqs: [
-      [
-        { id: "CS 539", req: "prereq" },
-      ],
-      [
-        { id: "MA 2071", req: "prereq" },
-      ],
-      [
-        { id: "CS 2223", req: "prereq" },
-      ],
+      [{ id: "CS 539", req: "prereq" }],
+      [{ id: "MA 2071", req: "prereq" }],
+      [{ id: "CS 2223", req: "prereq" }],
     ],
   },
   {
     courseID: "CS 542",
-    reqs: [
-      [
-        { id: "CS 5084", req: "prereq" },
-      ],
-    ],
+    reqs: [[{ id: "CS 5084", req: "prereq" }]],
   },
   {
     courseID: "CS 545",
-    reqs: [
-      [
-        { id: "CS 2223", req: "prereq" },
-      ],
-    ],
+    reqs: [[{ id: "CS 2223", req: "prereq" }]],
   },
   {
     courseID: "CS 546",
-    reqs: [
-      [
-        { id: "CS 3733", req: "prereq" },
-      ],
-    ],
+    reqs: [[{ id: "CS 3733", req: "prereq" }]],
   },
   {
     courseID: "CS 547",
@@ -610,9 +460,7 @@ const Prereqs = [
         { id: "DS 502", req: "prereq" },
         { id: "MA 543", req: "prereq" },
       ],
-      [
-        { id: "CS 5007", req: "prereq" },
-      ],
+      [{ id: "CS 5007", req: "prereq" }],
     ],
   },
   {
@@ -628,36 +476,24 @@ const Prereqs = [
   {
     courseID: "CS 551",
     reqs: [
-      [
-        { id: "CS 539", req: "prereq" },
-      ],
+      [{ id: "CS 539", req: "prereq" }],
       [
         { id: "DS 502", req: "prereq" },
         { id: "MA 543", req: "prereq" },
       ],
-      [
-        { id: "CS 5007", req: "prereq" },
-      ],
+      [{ id: "CS 5007", req: "prereq" }],
     ],
   },
   {
     courseID: "CS 552",
     reqs: [
-      [
-        { id: "CS 539", req: "recomended" },
-      ],
-      [
-        { id: "CS 541", req: "recomended" },
-      ],
+      [{ id: "CS 539", req: "recomended" }],
+      [{ id: "CS 541", req: "recomended" }],
     ],
   },
   {
     courseID: "CS 554",
-    reqs: [
-      [
-        { id: "CS 5007", req: "recomended" },
-      ],
-    ],
+    reqs: [[{ id: "CS 5007", req: "recomended" }]],
   },
   {
     courseID: "CS 557",
@@ -702,11 +538,7 @@ const Prereqs = [
   },
   {
     courseID: "CS 585",
-    reqs: [
-      [
-        { id: "CS 4432", req: "prereq" },
-      ],
-    ],
+    reqs: [[{ id: "CS 4432", req: "prereq" }]],
   },
   {
     courseID: "CS 673",
