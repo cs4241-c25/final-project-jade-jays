@@ -1,0 +1,24 @@
+{
+  "name": "final-project-jade-jays",
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm run -r dev",
+    "prettier:all": "prettier . --write",
+    "prettier:client": "prettier ./frontend/src --write",
+    "prettier:server": "prettier ./backend/src --write"
+  },
+  "devDependencies": {
+    "prettier": "3.5.2"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "pnpm": {
+    "ignoredBuiltDependencies": [
+      "esbuild"
+    ],
+    "onlyBuiltDependencies": [
+      "@swc/core"
+    ]
+  }
+}
