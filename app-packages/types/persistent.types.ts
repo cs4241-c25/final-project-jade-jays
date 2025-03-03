@@ -31,6 +31,7 @@ export interface SectionType {
   locations: string;
   instructional_format: string;
   delivery_mode: string;
+  course: string;
   section_code: string;
   section_status: string;
   section_start_date: string;

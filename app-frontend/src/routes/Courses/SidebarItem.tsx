@@ -1,5 +1,5 @@
 import { useQueryClient } from "@tanstack/react-query";
-import { getCourseData } from "@/hooks/data-fetches.ts";
+import { fetchCourseData } from "@/hooks/data-fetches.ts";
 import { Text, UnstyledButton } from "@mantine/core";
 
 import { ClientSubjectType } from "../../../../app-packages/types/persistent.types.ts";
@@ -16,7 +16,7 @@ export function SidebarItem({ subject, ...props }: SidebarItemProp) {
   const prefetch = () => {
     queryClient.prefetchQuery({
       queryKey: [`course${subject._id}`],
-      queryFn: () => getCourseData(subject._id),
+      queryFn: () => fetchCourseData(subject._id),
       staleTime: 1000 * 60,
     });
   };

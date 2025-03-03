@@ -1,8 +1,8 @@
 import { PanelGroup, Panel, PanelResizeHandle } from "react-resizable-panels";
 import { useLocalStorage } from "@mantine/hooks";
 
-import { ClientSubjectType } from "../../../../app-packages/types/persistent.types.ts";
-import { useSubject } from "@/hooks/data-fetches.ts";
+import { ClientSubjectType } from "app-packages/types/persistent.types.ts";
+import { getSubjectData } from "@/hooks/data-fetches.ts";
 import { SidebarItem } from "@/routes/Courses/SidebarItem.tsx";
 import { CourseView } from "@/routes/Courses/CourseView.tsx";
 
@@ -13,7 +13,7 @@ export function Courses() {
     key: "subject",
     defaultValue: "ACC",
   });
-  const { isPending, isError, data, error } = useSubject();
+  const { isPending, isError, data, error } = getSubjectData();
 
   if (isPending) {
     return <span>Loading...</span>;

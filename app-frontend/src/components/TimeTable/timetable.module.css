@@ -11,9 +11,31 @@
   background-color: var(--mantine-color-gray-1);
 }
 .tableHeader {
+  background-color: var(--mantine-color-gray-1);
   font-size: var(--mantine-font-size-sm);
+  text-align: center;
 }
 .timeColumn {
   position: absolute;
   font-size: var(--mantine-font-size-sm);
+  box-sizing: border-box;
+  border-top: 1px solid var(--mantine-color-gray-3);
+  border-right: 1px solid var(--mantine-color-gray-3);
+}
+.dayColumn {
+  vertical-align: top;
+}
+.dayColumn:nth-child(even) {
+  background-color: #e2e2e6;
+}
+.section {
+  position: absolute;
+  z-index: 2;
+  background-color: var(--mantine-color-gray-5);
+}
+.tableGrid {
+  position: absolute;
+  box-sizing: border-box;
+  border-top: 1px solid var(--mantine-color-gray-3);
+  border-bottom: 1px dotted var(--mantine-color-gray-3);
 }
