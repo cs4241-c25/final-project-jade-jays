@@ -1,6 +1,6 @@
 import React from "react";
 
-import "@/styles/Legend.css";
+import "@/routes/FlowChart/Legend.css";
 
 export const Legend: React.FC = () => {
   return (

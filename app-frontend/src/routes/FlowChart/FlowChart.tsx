@@ -13,14 +13,14 @@ import {
 import Dagre from "@dagrejs/dagre";
 
 import "@xyflow/react/dist/style.css";
-import "@/styles/FlowNode.css";
+import "@/routes/FlowChart/FlowNode.css";
 
 const r = document.querySelector(":root");
 const rs = getComputedStyle(r);
 
-import { ClassNode, getClasses } from "@/components/FlowNodes.tsx";
-import { getEdges } from "@/components/FlowEdges.tsx";
-import { Legend } from "@/components/Legend.tsx";
+import { ClassNode, getClasses } from "@/routes/FlowChart/FlowNodes.tsx";
+import { getEdges } from "@/routes/FlowChart/FlowEdges.tsx";
+import { Legend } from "@/routes/FlowChart/Legend.tsx";
 
 const obj = {
   name: "Object Oriented Design",

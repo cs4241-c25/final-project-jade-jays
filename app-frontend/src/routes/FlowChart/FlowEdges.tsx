@@ -1,6 +1,6 @@
 import { MarkerType } from "reactflow";
 
-import "@/styles/FlowNode.css";
+import "@/routes/FlowChart/FlowNode.css";
 
 const r = document.querySelector(":root");
 const rs = getComputedStyle(r);
@@ -32,7 +32,7 @@ function basicEdge(
       type: MarkerType.ArrowClosed,
       color: color,
     },
-    style: { stroke: color, strokeWidth: 3 },
+    style: { stroke: color, strokeWidth: 2.5 },
     focusable: false,
     animated: false,
   };

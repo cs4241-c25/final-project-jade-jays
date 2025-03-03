@@ -5,7 +5,7 @@ import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { AppLayout } from "@/components/AppLayout/AppLayout.tsx";
 import { Courses } from "@/routes/Courses/Courses.tsx";
 import { Schedule } from "@/routes/Schedule/Schedule.tsx";
-import { FlowChart } from "@/routes/FlowChart.tsx";
+import { FlowChart } from "@/routes/FlowChart/FlowChart.tsx";
 
 const theme = createTheme({
   activeClassName: "",

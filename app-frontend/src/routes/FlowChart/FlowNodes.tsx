@@ -1,5 +1,5 @@
 import { Handle, Position } from "@xyflow/react";
-import "@/styles/FlowNode.css";
+import "@/routes/FlowChart/FlowNode.css";
 import React, { JSX, useCallback } from "react";
 
 const width = 210;
