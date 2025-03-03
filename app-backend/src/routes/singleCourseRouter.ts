@@ -4,8 +4,7 @@ import Course from "../persistent/CoursePersistence.js";
 const router: Router = Router();
 
 router.get("/::class", async (req: Request, res: Response) => {
-
-    try {
+  try {
     const params = req.params.class.split(",");
     const courseData = await Course.find({
       subject: params[0],
@@ -15,7 +14,7 @@ router.get("/::class", async (req: Request, res: Response) => {
       .sort({ code: 1 });
 
     if (!courseData) {
-        console.log("Course not found");
+      console.log("Course not found");
       throw new Error("Course Not Found");
     }
 

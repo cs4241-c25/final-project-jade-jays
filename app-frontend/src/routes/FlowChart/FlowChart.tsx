@@ -18,7 +18,7 @@ const rs = getComputedStyle(r);
 import { ClassNode, getClasses } from "@/routes/FlowChart/FlowNodes.tsx";
 import { getEdges } from "@/routes/FlowChart/FlowEdges.tsx";
 import { Legend } from "@/routes/FlowChart/Legend.tsx";
-import {getCourseObject} from "@/hooks/data-fetches.ts";
+import { getCourseObject } from "@/hooks/data-fetches.ts";
 
 /*const obj: classes = {
   title: "Object Oriented Design",
@@ -132,12 +132,25 @@ async function retrieveClass(subject: string, code: string) {
   return await getCourseObject(subject, code);
 }
 
-const classTitles = ["CS 2102", "CS 2119", "CS 3013", "CS 2103", "CS 2022", "CS 4241", "CS 2223", "CS 3133", "CS 4341"];
+const classTitles = [
+  "CS 2102",
+  "CS 2119",
+  "CS 3013",
+  "CS 2103",
+  "CS 2022",
+  "CS 4241",
+  "CS 2223",
+  "CS 3133",
+  "CS 4341",
+  "CS 4342",
+];
 const classNodes = [];
 for (let i = 0; i < classTitles.length; i++) {
   const params = classTitles[i].split(" ");
   const data = await retrieveClass(params[0], params[1]);
-  classNodes.push(data);
+  if (data !== undefined) {
+    classNodes.push(data);
+  }
 }
 
 const getLayoutedElements = (nodes, edges, options) => {

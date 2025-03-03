@@ -10,7 +10,7 @@ import {
 import Course from "../persistent/CoursePersistence.js";
 import Section from "../persistent/SectionPersistence.js";
 import Subject from "../persistent/SubjectPersistence.js";
-import findreq from "@/persistent/Prereqs";
+import findreqCS from "@/Prereqs/PrereqsCS";
 
 const router: Router = Router();
 
@@ -129,7 +129,13 @@ router.get("/populate_database", async (req: Request, res: Response) => {
       if (!courses[`${code_abbrev}${code_number}`]) {
         const courseID = code_abbrev + " " + code_number;
 
-        const reqs = findreq(courseID);
+        let reqs = [];
+
+        switch (code_abbrev) {
+          case "CS":
+            reqs = findreqCS(courseID);
+            break;
+        }
 
         courses[`${code_abbrev}${code_number}`] = {
           code: code_number,
