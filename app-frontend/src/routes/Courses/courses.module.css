@@ -27,9 +27,6 @@
 .courseItem:nth-child(even) {
   background-color: #e4e4e7;
 }
-.courseItem:hover {
-  border-color: var(--mantine-color-gray-4);
-}
 .courseItem[data-active] {
   background-color: var(--mantine-color-gray-3);
   transition: background-color 0ms;
@@ -74,9 +71,15 @@
   background-color: var(--mantine-color-red-4);
 }
 .courseTitle {
+  cursor: default;
 }
-.mantine-Tooltip-tooltip {
+
+.tooltip {
+  position: absolute;
+  padding: calc(0.25rem * var(--mantine-scale));
+  color: var(--mantine-color-gray-3);
   background-color: var(--mantine-color-dark-9);
+  border-radius: var(--mantine-radius-md);
 }
 
 .sidebarPanelItem {

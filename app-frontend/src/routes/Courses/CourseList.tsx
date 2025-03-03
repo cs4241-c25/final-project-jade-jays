@@ -1,14 +1,15 @@
-import { Text, ActionIcon, Box } from "@mantine/core";
-import { useClickOutside, readLocalStorageValue } from "@mantine/hooks";
+import { Text, ActionIcon, Box, Tooltip } from "@mantine/core";
+import { useClickOutside, readLocalStorageValue, useHover } from "@mantine/hooks";
 import { useState, memo } from "react";
 import { Plus } from "lucide-react";
 import React from "react";
 
 import {
   ClientCourseType,
-  setLocalStorageValue,
-} from "../../../../app-packages/types/persistent.types.ts";
+  SetLocalStorageValue,
+} from "app-packages/types/persistent.types.ts";
 import classes from "@/routes/Courses/courses.module.css";
+import useElementDimensions from "@/hooks/use-element-dimensions.ts";
 
 export const CourseListMemo = memo(CourseList);
 export const CourseItemMemo = memo(CourseItem);
@@ -18,7 +19,7 @@ type CourseListProp = {
   status: string;
   data: { courses: ClientCourseType[] };
   setCourse: React.Dispatch<React.SetStateAction<ClientCourseType>>;
-  setAddedCourseList: setLocalStorageValue<{ [key: string]: ClientCourseType }>;
+  setAddedCourseList: SetLocalStorageValue<{ [key: string]: ClientCourseType }>;
 };
 
 function CourseList({
@@ -58,7 +59,7 @@ type CourseItemProps<> = {
   active?: boolean;
   setActive: React.Dispatch<React.SetStateAction<string>>;
   setCourse: React.Dispatch<React.SetStateAction<ClientCourseType>>;
-  setAddedCourseList: setLocalStorageValue<{ [key: string]: ClientCourseType }>;
+  setAddedCourseList: SetLocalStorageValue<{ [key: string]: ClientCourseType }>;
   style?: React.CSSProperties;
 };
 
@@ -112,22 +113,64 @@ function CourseItem({
   );
 }
 
+const mergeRefs = (...refs) => {
+  return node => {
+    for (const ref of refs) {
+      ref.current = node
+    }
+  }
+}
+
 type TermRibbonProps = {
   term: string;
   course: ClientCourseType;
+  innerRef?: React.ForwardedRef<HTMLDivElement>;
 };
-function TermButton({ term, course, ...props }: TermRibbonProps) {
-  const [status, setStatus] = useState<string>("not-available");
+function TermButton({ term, course, innerRef, ...props }: TermRibbonProps) {
+  const { hovered, ref: hoverRef } = useHover();
+  const { dimensions, ref: dimensionRef } = useElementDimensions();
+  const { x, y } = dimensions ?? {};
+
+  const status = React.useMemo(
+    () => getStatus(term, course),
+    [term, course]
+  );
 
   return (
     <Box
+      ref={mergeRefs(hoverRef, dimensionRef)}
       mod={{ status: status }}
       className={`${classes.termButton}`}
       {...props}
     >
       {term}
+      {hovered ? (
+        <div
+          className={classes.tooltip}
+          style={{
+            top: `calc(${y}px + 2.25rem)`,
+            left: `calc(${x}px + 0.25rem)`,
+          }}>
+          <Text size={"xs"}>
+            {getTooltipDescription(status, term)}
+          </Text>
+        </div>
+      ) : undefined}
     </Box>
   );
+}
+
+function getStatus(term: string, course: ClientCourseType) {
+  if (term === course.academic_period[0]) {
+    return 'available';
+  }
+
+  const [seats, capacity] = course.enrolled_capacity.split("/");
+  if (seats >= capacity) {
+    return 'under-waitlist';
+  }
+
+  return 'not-available';
 }
 
 function getTooltipDescription(status: string, term: string) {

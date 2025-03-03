@@ -1,21 +1,18 @@
-import { getTimeRange } from "./TTTimeUtils.ts";
-import { RangeType } from "./TimeTable.types.ts";
+import { Text } from "@mantine/core"
 import React from "react";
 
-import useElementDimensions from "@/hooks/useElementDimensions.ts";
+import { getTimeRangeArrayMilitaryFormat } from "app-packages/util/time.utils.ts";
+import { RangeType, TableSectionDataType } from "app-packages/types/persistent.types.ts";
+import { stringToDecimal } from "app-packages/util/util.ts";
+import useElementDimensions from "@/hooks/use-element-dimensions.ts";
 import classes from "./timetable.module.css";
 
-type timeSectionType = {
-  day: string;
-  start: number;
-  end: number;
-};
 
 interface TimeTableProps {
   title: string;
   colHeader: number[] | string[];
   defaultRange: RangeType;
-  data: timeSectionType[][];
+  data: TableSectionDataType[][];
   style?: React.CSSProperties;
 }
 
@@ -30,7 +27,7 @@ export function TimeTable({
   const timeColWidth = 50;
   const headerRowHeight = 18;
   const borderSize = 0;
-  const timeRange: string[] = getTimeRange(start, end);
+  const timeRange: string[] = getTimeRangeArrayMilitaryFormat(start, end);
 
   function Header() {
     return (
@@ -87,18 +84,26 @@ export function TimeTable({
     return width && height
       ? colHeader.map((col, index) => {
           let sections: React.ReactNode[] = [];
-          if (data[index]) {
+          if (data[index] && data[index][0]) {
+            const hash = stringToDecimal(data[index][0].course);
+            let randomColor = Math.floor(hash * 16777215).toString(16).padStart(6, '0').substring(0, 6);
+            let hexColor = `#${randomColor}`;
+
             sections = data[index].map((section) => {
               return (
                 <div
-                  key={index + section.day}
+                  key={index + Math.random()}
                   className={classes.section}
                   style={{
-                    top: `${(section.end - section.start) * ((height - headerRowHeight) / (end - start + 1) - 2)}px`,
-                    height: `${(section.end - section.start) * ((height - headerRowHeight) / (end - start + 1)) - 1}px`,
+                    top: `${(end - section.start) * ((height - headerRowHeight) / (end - start + 1)) - 3}px`,
+                    height: `${(section.end - section.start) * ((height - headerRowHeight) / (end - start + 1))}px`,
                     width: `${(width - timeColWidth - borderSize) / colHeader.length}px`,
+                    backgroundColor: hexColor,
                   }}
-                ></div>
+                >
+                  <Text>{section.course}</Text>
+                  <Text>{section.section_start_time} - {section.section_end_time}</Text>
+                </div>
               );
             });
           }

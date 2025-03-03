@@ -5,7 +5,7 @@ import { Minus } from "lucide-react";
 
 import {
   ClientCourseType,
-  setLocalStorageValue,
+  SetLocalStorageValue,
 } from "../../../../app-packages/types/persistent.types.ts";
 import { TermButtonMemo } from "@/routes/Courses/CourseList.tsx";
 
@@ -15,7 +15,7 @@ import courseClasses from "@/routes/Courses/courses.module.css";
 type CourseInfoProps = {
   status: string;
   course: ClientCourseType | undefined;
-  setAddedCourseList: setLocalStorageValue<{ [key: string]: ClientCourseType }>;
+  setAddedCourseList: SetLocalStorageValue<{ [key: string]: ClientCourseType }>;
 };
 export function CourseInfo({
   status,
@@ -64,7 +64,7 @@ export function CourseInfo({
 }
 
 type AddedCourseListProps = {
-  setAddedCourseList: setLocalStorageValue<{ [key: string]: ClientCourseType }>;
+  setAddedCourseList: SetLocalStorageValue<{ [key: string]: ClientCourseType }>;
 };
 function AddedCourseList({ setAddedCourseList }: AddedCourseListProps) {
   const value = readLocalStorageValue<{ [key: string]: ClientCourseType }>({
@@ -90,7 +90,7 @@ function AddedCourseList({ setAddedCourseList }: AddedCourseListProps) {
 
 type AddedCourseListItemProps = {
   course: ClientCourseType;
-  setAddedCourseList: setLocalStorageValue<{ [key: string]: ClientCourseType }>;
+  setAddedCourseList: SetLocalStorageValue<{ [key: string]: ClientCourseType }>;
 };
 function AddedCourseListItem({
   course,

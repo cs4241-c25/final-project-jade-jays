@@ -11,9 +11,15 @@ export function Schedule() {
   const value: { [key: string]: ClientCourseType } = readLocalStorageValue({
     key: "added_course_list",
   });
-  const queryResults = getSectionData(value);
+  const { data, isPending, isError } = getSectionData(value);
 
-  console.log(queryResults);
+  if (isPending) {
+    return <span>Loading...</span>;
+  }
+
+  if (isError) {
+    return <span>Error</span>;
+  }
 
   return (
     <PanelGroup
@@ -32,40 +38,20 @@ export function Schedule() {
           <tbody>
             <tr>
               <td className={scheduleClasses.grid}>
-                <TimeTable
-                  title={"A"}
-                  colHeader={[
-                    "MONDAY",
-                    "TUESDAY",
-                    "WEDNESDAY",
-                    "THURSDAY",
-                    "FRIDAY",
-                  ]}
-                  data={[
-                    [
-                      {
-                        day: "MONDAY",
-                        start: 1,
-                        end: 2.5,
-                      },
-                    ],
-                    [
-                      {
-                        day: "TUESDAY",
-                        start: 1,
-                        end: 2.5,
-                      },
-                    ],
-                    [
-                      {
-                        day: "THURSDAY",
-                        start: 1,
-                        end: 2.5,
-                      },
-                    ],
-                  ]}
-                  defaultRange={{ start: 8, end: 18 }}
-                ></TimeTable>
+                {data && data["A"] ? (
+                  <TimeTable
+                    title={"A"}
+                    colHeader={[
+                      "MONDAY",
+                      "TUESDAY",
+                      "WEDNESDAY",
+                      "THURSDAY",
+                      "FRIDAY",
+                    ]}
+                    data={data["A"]}
+                    defaultRange={{ start: 8, end: 18 }}
+                  ></TimeTable>
+                ) : undefined}
               </td>
             </tr>
           </tbody>

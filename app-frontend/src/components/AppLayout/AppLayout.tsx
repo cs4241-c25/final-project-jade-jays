@@ -51,9 +51,7 @@ export function AppLayout() {
         </div>
       </AppShell.Header>
       <AppShell.Main className={classes.main}>
-        <div className={classes.mainSection}>
-          <Outlet />
-        </div>
+        <Outlet />
       </AppShell.Main>
     </AppShell>
   );
