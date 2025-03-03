@@ -14,9 +14,9 @@ export function AppLayout() {
       <AppShell.Header className={classes.header}>
         <Group>
           <UnstyledButton
-            renderRoot={({ className, ...others }) => (
-              <NavLink to={"/"} className={cx(className)} {...others} />
-            )}
+              renderRoot={({className, ...others}) => (
+                  <NavLink to={"/"} className={cx(className)} {...others} />
+              )}
           >
             <Title order={2} fw={"700"}>
               Planner
@@ -26,10 +26,10 @@ export function AppLayout() {
         <div className={classes.headerGroup}>
           <div className={classes.headerMenu}>
             <UnstyledButton
-              className={classes.menuButton}
-              renderRoot={({ className, ...others }) => (
-                <NavLink to={"/"} className={cx(className)} {...others} />
-              )}
+                className={classes.menuButton}
+                renderRoot={({className, ...others}) => (
+                    <NavLink to={"/"} className={cx(className)} {...others} />
+                )}
             >
               <Title order={4} fw={"600"}>
                 Courses
@@ -38,14 +38,14 @@ export function AppLayout() {
           </div>
           <div className={classes.headerMenu}>
             <UnstyledButton
-              className={classes.menuButton}
-              renderRoot={({ className, ...others }) => (
-                <NavLink
-                  to={"/schedule"}
-                  className={cx(className)}
-                  {...others}
-                />
-              )}
+                className={classes.menuButton}
+                renderRoot={({className, ...others}) => (
+                    <NavLink
+                        to={"/schedule"}
+                        className={cx(className)}
+                        {...others}
+                    />
+                )}
             >
               <Title order={4} fw={"600"}>
                 Schedule
@@ -54,36 +54,34 @@ export function AppLayout() {
           </div>
           <div className={classes.headerMenu}>
             <UnstyledButton
-              className={classes.menuButton}
-              renderRoot={({ className, ...others }) => (
-                <NavLink to={"/flow"} className={cx(className)} {...others} />
-              )}
-            >
-              <Title order={4} fw={"600"}>
-                Flow Chart
-              </Title>
-            </UnstyledButton>
-          </div>
-          <div className={classes.headerMenu}>
-            <UnstyledButton
-              renderRoot={({ className, ...others }) => (
-                <NavLink
-                  to={"/tracking"}
-                  className={cx(className)}
-                  {...others}
-                />
-              )}
+                className={classes.menuButton}
+                renderRoot={({className, ...others}) => (
+                    <NavLink to={"/tracking"} className={cx(className)} {...others} />
+                )}
             >
               <Title order={4} fw={"600"}>
                 Tracking
               </Title>
             </UnstyledButton>
           </div>
+          <div className={classes.headerMenu}>
+            <UnstyledButton
+                className={classes.menuButton}
+                renderRoot={({className, ...others}) => (
+                    <NavLink to={"/flow"} className={cx(className)} {...others} />
+                )}
+            >
+              <Title order={4} fw={"600"}>
+                Flow Chart
+              </Title>
+            </UnstyledButton>
+          </div>
         </div>
+
       </AppShell.Header>
       <AppShell.Main className={classes.main}>
         <div className={classes.mainSection}>
-          <Outlet />
+          <Outlet/>
         </div>
       </AppShell.Main>
     </AppShell>

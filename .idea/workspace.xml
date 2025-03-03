@@ -5,56 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca76c244-651c-4a03-b8ec-f5a9db95d904" name="Changes" comment="Created Tracking Page, currently in progress">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-backend/nodemon.json" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/nodemon.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-backend/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/app.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-backend/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-backend/src/persistent/CoursePersistence.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/persistent/CoursePersistence.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-backend/src/persistent/SubjectPersistence.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/persistent/SubjectPersistence.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsMA.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsMA.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app-backend/src/routes/adminRouter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/routes/adminRouter.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-backend/src/routes/courseRouter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/routes/courseRouter.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-backend/src/routes/pageRouter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/routes/pageRouter.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-backend/src/routes/subjectRouter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/routes/subjectRouter.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-backend/src/util/DatabaseUtil.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/util/DatabaseUtil.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-backend/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/eslint.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/eslint.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/postcss.config.cjs" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/postcss.config.cjs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app-frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/src/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/Main.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/src/components/AppLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/components/AppLayout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/src/components/Authenticate.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/components/Authenticate.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/src/components/CourseList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/components/CourseList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/src/components/CourseProvider/CourseProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/components/CourseProvider/CourseProvider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/src/components/CourseProvider/CourseProvider.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/components/CourseProvider/CourseProvider.types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/src/components/Redirect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/components/Redirect.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/src/components/SidebarItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/components/SidebarItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/src/components/TimeTable/TTTimeUtils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/components/TimeTable/TTTimeUtils.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/src/components/TimeTable/TimeTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/components/TimeTable/TimeTable.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/src/components/TimeTable/TimeTable.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/components/TimeTable/TimeTable.types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/src/hooks/data-fetches.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/hooks/data-fetches.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/src/routes/Courses.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/routes/Courses.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/src/routes/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/routes/Login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/src/routes/Schedule.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/routes/Schedule.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/src/components/AppLayout/AppLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/components/AppLayout/AppLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/src/components/DegreeLayout.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/components/DegreeLayout.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/src/routes/FlowChart/FlowChart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/routes/FlowChart/FlowChart.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app-frontend/src/routes/Tracking.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/routes/Tracking.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/src/styles/appLayout.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/styles/appLayout.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/src/styles/courses.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/styles/courses.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/src/styles/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/styles/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/src/styles/timetable.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/styles/timetable.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/src/styles/tracking.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/styles/tracking.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/src/vite-env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/vite-env.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/tsconfig.app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/tsconfig.app.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/tsconfig.node.json" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/tsconfig.node.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/vite.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-packages/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/app-packages/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-packages/types/persistent.types.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-packages/types/persistent.types.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-packages/types/persistent.types.js" beforeDir="false" afterPath="$PROJECT_DIR$/app-packages/types/persistent.types.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-packages/types/persistent.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-packages/types/persistent.types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-workspace.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-workspace.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +60,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "SCRUM-3",
+    "git-widget-placeholder": "SCRUM-2",
     "last_opened_file_path": "C:/Users/sidog/WebstormProjects/final-project-jade-jays/app-backend",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
@@ -111,8 +69,9 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_interpreter_path": "node",
     "nodejs_package_manager_path": "pnpm",
+    "npm.dev.executor": "Run",
     "settings.editor.selected.configurable": "settings.nodejs",
-    "ts.external.directory.path": "C:\\Users\\sidog\\WebstormProjects\\final-project-jade-jays\\app-backend\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "/media/Files/WPI/CS_4241/final-project-jade-jays/app-frontend/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -120,6 +79,23 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\sidog\WebstormProjects\final-project-jade-jays\app-backend" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.dev" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>

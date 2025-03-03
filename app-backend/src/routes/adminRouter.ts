@@ -136,9 +136,9 @@ router.get("/populate_database", async (req: Request, res: Response) => {
           case "CS":
             reqs = findreqCS(courseID);
             break;
-            case "MA":
-              reqs = findreqMA(courseID);
-              break;
+          case "MA":
+            reqs = findreqMA(courseID);
+            break;
         }
 
         courses[`${code_abbrev}${code_number}`] = {
