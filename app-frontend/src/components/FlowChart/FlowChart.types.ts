@@ -1,9 +1,9 @@
 export type classes = {
-    name: string;
+  name: string;
+  id: string;
+  taken: string; //"uncompleted" | "completed" | "unconfirmed" | "confirmed"
+  prereq: {
     id: string;
-    taken: string; //"uncompleted" | "completed" | "unconfirmed" | "confirmed"
-    prereq: {
-        id: string;
-        req: string;
-    }[][];
+    req: string;
+  }[][];
 };

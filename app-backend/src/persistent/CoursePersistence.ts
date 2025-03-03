@@ -15,6 +15,7 @@ const course = new mongoose.Schema<CourseType>({
   offering_periods: { type: [String] },
   academic_period: { type: String },
   course_tags: [String], // String array
+  prereq: { type: Schema.Types.Mixed, default: [] },
 });
 
 const Course = mongoose.model("Course", course, "courses");

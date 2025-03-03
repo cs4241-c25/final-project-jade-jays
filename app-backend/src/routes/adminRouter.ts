@@ -126,6 +126,9 @@ router.get("/populate_database", async (req: Request, res: Response) => {
       }
 
       if (!courses[`${code_abbrev}${code_number}`]) {
+
+        const courseID = code_abbrev + " " + code_number;
+
         courses[`${code_abbrev}${code_number}`] = {
           code: code_number,
           title: title,
@@ -143,6 +146,7 @@ router.get("/populate_database", async (req: Request, res: Response) => {
           offering_periods: Array.from(terms),
           academic_period: courseData.Starting_Academic_Period_Type,
           course_tags: courseData.Course_Tags.split(" :: "),
+          prereq: [],
         };
       }
     }

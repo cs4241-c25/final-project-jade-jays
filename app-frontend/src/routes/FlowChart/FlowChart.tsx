@@ -21,8 +21,8 @@ const rs = getComputedStyle(r);
 import { ClassNode, getClasses } from "@/routes/FlowChart/FlowNodes.tsx";
 import { getEdges } from "@/routes/FlowChart/FlowEdges.tsx";
 import { Legend } from "@/routes/FlowChart/Legend.tsx";
-import {useLocalStorage} from "@mantine/hooks";
-import {classes} from "@/components/FlowChart/FlowChart.types.ts"
+import { useLocalStorage } from "@mantine/hooks";
+import { classes } from "@/components/FlowChart/FlowChart.types.ts";
 
 //const { MongoClient } = require('mongodb');
 //const uri = "mongodb+srv://cchraplak:a3Chraplak@a3.ouon6.mongodb.net/?retryWrites=true&w=majority&appName=a3";
