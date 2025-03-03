@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   ReactFlow,
   MiniMap,
@@ -146,8 +146,8 @@ const getLayoutedElements = (nodes, edges, options) => {
   nodes.forEach((node) =>
     g.setNode(node.id, {
       ...node,
-      width: rs.getPropertyValue("--node-width").replace("px", ""),
-      height: rs.getPropertyValue("--node-height").replace("px", ""),
+      width: rs.getPropertyValue("--node-width").replace("px", "") * 2,
+      height: rs.getPropertyValue("--node-height").replace("px", "") * 2,
     }),
   );
 
@@ -215,14 +215,13 @@ export const FlowChart = () => {
   );
 
   useEffect(() => {
-
     const onPageLoad = () => {
       onLayout("TB");
     };
-    if (document.readyState === 'complete') {
+    if (document.readyState === "complete") {
       onPageLoad();
     } else {
-      return () => window.removeEventListener('load', onPageLoad);
+      return () => window.removeEventListener("load", onPageLoad);
     }
   }, []);
 
