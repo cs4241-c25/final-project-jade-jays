@@ -64,8 +64,8 @@ export interface CourseType {
   academic_period: string;
   course_tags: string[]; // String array
   prereq: {
-    id: string
-    req: string
+    id: string;
+    req: string;
   }[][];
 }
 
