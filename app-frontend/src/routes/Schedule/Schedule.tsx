@@ -34,12 +34,12 @@ export function Schedule() {
           --schedule-list-width: 20rem;
         }
       `}</style>
-      <SectionList data={data} />
+      <SectionList data={data?.sectionList} />
       <table cellPadding={0} cellSpacing={0}>
         <tbody>
           <tr>
             <td className={scheduleClasses.grid}>
-              {data && data["A"] ? (
+              {data && data.timeTable["A"] ? (
                 <TimeTable
                   title={"A"}
                   colHeader={[
@@ -49,13 +49,13 @@ export function Schedule() {
                     "THURSDAY",
                     "FRIDAY",
                   ]}
-                  data={data["A"]}
+                  data={data.timeTable["A"]}
                   defaultRange={{ start: 8, end: 18 }}
                 />
               ) : undefined}
             </td>
             <td style={{ right: 0 }} className={scheduleClasses.grid}>
-              {data && data["B"] ? (
+              {data && data.timeTable["B"] ? (
                 <TimeTable
                   title={"B"}
                   colHeader={[
@@ -65,13 +65,13 @@ export function Schedule() {
                     "THURSDAY",
                     "FRIDAY",
                   ]}
-                  data={data["B"]}
+                  data={data.timeTable["B"]}
                   defaultRange={{ start: 8, end: 18 }}
                 />
               ) : undefined}
             </td>
             <td style={{ bottom: 0 }} className={scheduleClasses.grid}>
-              {data && data["C"] ? (
+              {data && data.timeTable["C"] ? (
                 <TimeTable
                   title={"C"}
                   colHeader={[
@@ -81,7 +81,7 @@ export function Schedule() {
                     "THURSDAY",
                     "FRIDAY",
                   ]}
-                  data={data["C"]}
+                  data={data.timeTable["C"]}
                   defaultRange={{ start: 8, end: 18 }}
                 />
               ) : undefined}
@@ -90,7 +90,7 @@ export function Schedule() {
               style={{ bottom: 0, right: 0 }}
               className={scheduleClasses.grid}
             >
-              {data && data["D"] ? (
+              {data && data.timeTable["D"] ? (
                 <TimeTable
                   title={"D"}
                   colHeader={[
@@ -100,7 +100,7 @@ export function Schedule() {
                     "THURSDAY",
                     "FRIDAY",
                   ]}
-                  data={data["D"]}
+                  data={data.timeTable["D"]}
                   defaultRange={{ start: 8, end: 18 }}
                 />
               ) : undefined}

@@ -1,13 +1,24 @@
 .grid {
   position: absolute;
+  border-color: var(--mantine-color-gray-6);
+  border-style: solid;
+  border-top: 1px;
   width: calc(50% - var(--schedule-list-width) / 2);
   height: calc(50vh - var(--app-shell-header-height) / 2);
 }
 .scheduleListContainer {
   display: flex;
+  padding: 0.5rem;
   flex-direction: column;
   height: calc(
     100vh - var(--app-shell-header-height) - 2 * var(--app-shell-padding)
   );
+  background-color: var(--mantine-color-gray-1);
   width: var(--schedule-list-width);
+}
+.sectionInfo {
+  padding-inline-start: 1rem;
+}
+.courseTitle {
+  font-weight: bold;
 }

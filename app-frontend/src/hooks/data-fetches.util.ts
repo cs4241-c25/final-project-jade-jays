@@ -1,9 +1,9 @@
 import {
   TableSectionDataType,
   TablesType,
+  SectionType,
 } from "app-packages/types/persistent.types.ts";
-import { convertTimeStringToInteger } from "../../../app-packages/util/time.utils.ts";
-import { SectionType } from "app-packages/types/persistent.types.ts";
+import { convertTimeStringToInteger } from "app-packages/util/time.utils.ts";
 
 export function parseSectionData(results: any[]) {
   const timeTable: TablesType = {
@@ -12,35 +12,45 @@ export function parseSectionData(results: any[]) {
     C: [[], [], [], [], []],
     D: [[], [], [], [], []],
   };
+  const sectionList: SectionType[][] = [];
 
   for (const queryResult of results) {
     if (!queryResult.data) {
       return;
     }
 
-    queryResult.data.sections.map((section: SectionType) => {
-      section.meeting_day_patterns.split("-").map((day) => {
+    const course: SectionType[] = [];
+    queryResult.data.sections.map((sectionData: SectionType, index) => {
+      course.push(sectionData);
+      sectionData.meeting_day_patterns.split("-").map((day) => {
         if (
-          !section.section_start_time.length ||
-          !section.section_end_time.length
+          !sectionData.section_start_time.length ||
+          !sectionData.section_end_time.length
         ) {
           return;
         }
 
-        const start = convertTimeStringToInteger(section.section_start_time);
-        const end = convertTimeStringToInteger(section.section_end_time);
-        const sectionTimes = timeTable[section.section_code[0]];
+        const start = convertTimeStringToInteger(
+          sectionData.section_start_time,
+        );
+        const end = convertTimeStringToInteger(sectionData.section_end_time);
+        const sectionTimes = timeTable[sectionData.section_code[0]];
 
         if (!sectionTimes) {
           return;
         }
 
-        determineSection(day, start, end, section, sectionTimes);
+        determineSection(day, start, end, sectionData, sectionTimes);
       });
     });
+
+    sectionList.push(course);
   }
 
-  return timeTable;
+  return {
+    timeTable,
+    sectionList: sectionList,
+  };
 }
 
 function determineSection(
@@ -53,28 +63,70 @@ function determineSection(
   switch (day) {
     case "M":
       {
-        section_times[0].push({ start: start, end: end, ...section });
+        const currentSection = { start: start, end: end, ...section };
+        if (checkConflictingTimes(currentSection, section_times[0])) {
+          break;
+        }
+        section_times[0].push(currentSection);
       }
       break;
     case "T":
       {
-        section_times[1].push({ start: start, end: end, ...section });
+        const currentSection = { start: start, end: end, ...section };
+        if (checkConflictingTimes(currentSection, section_times[1])) {
+          break;
+        }
+        section_times[1].push(currentSection);
       }
       break;
     case "W":
       {
-        section_times[2].push({ start: start, end: end, ...section });
+        const currentSection = { start: start, end: end, ...section };
+        if (checkConflictingTimes(currentSection, section_times[2])) {
+          break;
+        }
+        section_times[2].push(currentSection);
       }
       break;
     case "R":
       {
-        section_times[3].push({ start: start, end: end, ...section });
+        const currentSection = { start: start, end: end, ...section };
+        if (checkConflictingTimes(currentSection, section_times[4])) {
+          break;
+        }
+        section_times[4].push(currentSection);
       }
       break;
     case "F":
       {
-        section_times[4].push({ start: start, end: end, ...section });
+        const currentSection = { start: start, end: end, ...section };
+        if (checkConflictingTimes(currentSection, section_times[4])) {
+          break;
+        }
+        section_times[4].push(currentSection);
       }
       break;
   }
+}
+
+function checkConflictingTimes(
+  currentSection: TableSectionDataType,
+  section_times: TableSectionDataType[],
+) {
+  let conflict = false;
+  for (const section of section_times) {
+    if (
+      currentSection.start > section.start &&
+      currentSection.start < section.end
+    ) {
+      conflict = true;
+      break;
+    }
+
+    if (currentSection.end > section.start) {
+      conflict = true;
+      break;
+    }
+  }
+  return conflict;
 }

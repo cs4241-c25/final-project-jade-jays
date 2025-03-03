@@ -1,4 +1,4 @@
-import { AppShell, UnstyledButton, Title, Group } from "@mantine/core";
+import { AppShell, Group, Title, UnstyledButton } from "@mantine/core";
 import { Outlet, NavLink } from "react-router-dom";
 import cx from "clsx";
 
