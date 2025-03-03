@@ -55,7 +55,7 @@ export default function App() {
             <Route element={<AppLayout />}>
               <Route path={"/"} index element={<Courses />} />
               <Route path={"/schedule"} index element={<Schedule />} />
-                <Route path={"/flow"} element={<FlowChart />} />
+              <Route path={"/flow"} index element={<FlowChart />} />
             </Route>
           </Routes>
         </BrowserRouter>

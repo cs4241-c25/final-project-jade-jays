@@ -7,9 +7,10 @@ import {
   useEdgesState,
   applyEdgeChanges,
   applyNodeChanges,
-  useNodesState, useReactFlow,
+  useNodesState,
+  useReactFlow,
 } from "@xyflow/react";
-import Dagre from '@dagrejs/dagre';
+import Dagre from "@dagrejs/dagre";
 
 import "@xyflow/react/dist/style.css";
 import "@/styles/FlowNode.css";
@@ -143,11 +144,11 @@ const getLayoutedElements = (nodes, edges, options) => {
 
   edges.forEach((edge) => g.setEdge(edge.source, edge.target));
   nodes.forEach((node) =>
-      g.setNode(node.id, {
-        ...node,
-        width: rs.getPropertyValue("--node-width").replace("px", ""),
-        height: rs.getPropertyValue("--node-height").replace("px", ""),
-      }),
+    g.setNode(node.id, {
+      ...node,
+      width: rs.getPropertyValue("--node-width").replace("px", ""),
+      height: rs.getPropertyValue("--node-height").replace("px", ""),
+    }),
   );
 
   Dagre.layout(g);
@@ -205,23 +206,28 @@ export const FlowChart = () => {
   );
 
   const onLayout = useCallback(
-      (direction) => {
-        const layouted = getLayoutedElements(nodes, edges, { direction });
+    (direction) => {
+      const layouted = getLayoutedElements(nodes, edges, { direction });
 
-        setNodes([...layouted.nodes]);
-        setEdges([...layouted.edges]);
+      setNodes([...layouted.nodes]);
+      setEdges([...layouted.edges]);
 
-        setFit(true);
-      },
-      [nodes, edges],
+      setFit(false);
+      setFit(true);
+    },
+    [nodes, edges],
   );
 
-  window.onload = (event) => {
-    onLayout('TB');
-  };
+  /*window.onload = (event) => {
+    onLayout("TB");
+  };*/
+
+  onpageshow = () => {
+    onLayout("TB");
+  }
 
   return (
-    <div style={{ width: "100vw", height: "calc(100vh - 37px)" }}>
+    <div style={{ width: "100vw - 20px", height: "calc(100vh - 90px)" }}>
       <Legend />
       <ReactFlow
         edges={edges}

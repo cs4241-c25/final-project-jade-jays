@@ -1,22 +1,25 @@
 @import "./FlowNode.css";
 
-:root {
-  --left-transform: 10px;
-  --top-transform: 0px;
-  --start-top: 5px;
-  --text-left: 70px;
-}
-
 .legend {
-  width: 200px;
-  height: 130px;
+  width: fit-content;
+  height: auto;
   background-color: white;
   border: 2px solid black;
   position: fixed;
   left: 20px;
-  top: 50px;
+  top: 60px;
   border-radius: 15px;
   z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+}
+
+.legend-row {
+  display: flex;
+  flex-direction: row;
+  height: 1.6rem;
+  align-items: center;
 }
 
 .class-fill {
@@ -28,41 +31,19 @@
 }
 
 .uncompleted-line {
-  transform: translate(var(--left-transform), calc(var(--start-top)));
   background-color: var(--uncomplete-color);
-  position: fixed;
 }
 
 .completed-line {
-  transform: translate(
-    var(--left-transform),
-    calc(var(--start-top) + var(--top-transform))
-  );
   background-color: var(--complete-color);
-  position: fixed;
 }
 
 .confirmed-line {
-  transform: translate(
-    var(--left-transform),
-    calc(var(--start-top) + 2 * var(--top-transform))
-  );
   background-color: var(--confirm-color);
-  position: fixed;
 }
 
 .unconfirmed-line {
-  transform: translate(
-    var(--left-transform),
-    calc(var(--start-top) + 3 * var(--top-transform))
-  );
   background-color: var(--unconfirm-color);
-  position: fixed;
-}
-
-.prereq-arrow {
-  transform: translate(var(--left-transform), 4px);
-  position: fixed;
 }
 
 .prereq-path {
@@ -70,19 +51,9 @@
   stroke: black;
 }
 
-.concurrent-arrow {
-  transform: translate(var(--left-transform), 4px);
-  position: fixed;
-}
-
 .concurrent-path {
   fill: var(--concurrent-color);
   stroke: black;
-}
-
-.recommended-arrow {
-  transform: translate(var(--left-transform), 4px);
-  position: fixed;
 }
 
 .recommended-path {
@@ -91,7 +62,6 @@
 }
 
 .shift-left {
-  transform: translate(var(--text-left), 0px);
-  padding: 0px;
+  padding: 5px;
   font-size: 12px;
 }

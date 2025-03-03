@@ -11,7 +11,7 @@ function basicEdge(
   target: string,
   targetHandle: string,
   req: string,
-): any {
+) {
   let color = "";
   if (req === "prereq") {
     color = rs.getPropertyValue("--prereq-color");
@@ -32,14 +32,14 @@ function basicEdge(
       type: MarkerType.ArrowClosed,
       color: color,
     },
-    style: { stroke: color },
+    style: { stroke: color, strokeWidth: 3 },
     focusable: false,
     animated: false,
   };
 }
 
-export function getEdges(nodes: any[]): any[] {
-  let edges: any[] = [];
+export function getEdges(nodes: any[]) {
+  const edges: any[] = [];
 
   let edgeID = 0;
 

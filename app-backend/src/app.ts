@@ -26,5 +26,5 @@ export function initApp(): express.Express {
   app.use("/api/course/", courseRoutes);
   app.use("/api/subject/", subjectRoutes);
 
-    return app;
+  return app;
 }
