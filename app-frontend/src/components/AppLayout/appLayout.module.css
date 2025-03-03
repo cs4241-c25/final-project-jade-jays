@@ -1,0 +1,46 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-inline: 1rem;
+  background-color: var(--mantine-primary-color-6, #c41230);
+  color: var(--mantine-color-white, #ffffff);
+}
+
+.headerGroup {
+  display: flex;
+  flex-direction: row;
+}
+
+.headerMenu {
+}
+
+.headerMenu:hover {
+  cursor: pointer;
+  background-color: var(--mantine-primary-color-7);
+}
+
+.headerMenu:active {
+  transition: 0ms;
+  background-color: var(--mantine-primary-color-8);
+}
+
+.menuButton {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  padding: var(--mantine-spacing-xs, 0.25rem);
+}
+.menuButton[data-locked] {
+  cursor: default;
+  color: var(--mantine-color-gray-7);
+  background-color: var(--mantine-color-gray-4);
+}
+
+.main {
+  background-color: var(--mantine-color-dark-7, #0f0f0f);
+}
+
+.mainSection {
+  border-radius: var(--mantine-radius-md);
+}

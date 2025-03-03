@@ -5,11 +5,9 @@
     "dev": "pnpm run -r dev",
     "prettier:all": "prettier . --write",
     "prettier:client": "prettier ./frontend/src --write",
-    "prettier:server": "prettier ./backend/src --write",
-    "prepare": "husky"
+    "prettier:server": "prettier ./backend/src --write"
   },
   "devDependencies": {
-    "husky": "^9.1.7",
     "prettier": "3.5.2"
   },
   "engines": {

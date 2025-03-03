@@ -1,0 +1,95 @@
+.courseContainer {
+  height: 100%;
+  width: 100%;
+}
+.courseListContainer {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.courseItem {
+  height: 2.5rem;
+  width: 100%;
+  padding: 0 calc(0.75rem * var(--mantine-scale)) 0
+    calc(0.75rem * var(--mantine-scale));
+  margin: 0 0 0.4rem 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--mantine-spacing-md);
+  border-top: 1px;
+  border-bottom: 1px;
+  border-left: 0;
+  border-right: 0;
+  border-style: solid;
+  border-color: #e7e7e7;
+}
+.courseItem:nth-child(even) {
+  background-color: #e4e4e7;
+}
+.courseItem[data-active] {
+  background-color: var(--mantine-color-gray-3);
+  transition: background-color 0ms;
+}
+.courseItemButton {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
+.courseItemSection {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: calc(0.25rem * var(--mantine-scale)) 0
+    calc(0.25rem * var(--mantine-scale)) 0;
+}
+.courseCode {
+  width: calc(4.5rem * var(--mantine-scale));
+}
+.termRibbon {
+  display: flex;
+  flex-direction: row;
+  gap: calc(0.4rem * var(--mantine-scale));
+}
+.termButton {
+  padding: 0.3rem;
+  cursor: default;
+  border: 1px solid var(--mantine-color-gray-1);
+  border-radius: 6px;
+}
+.termButton[data-status="not-available"] {
+  color: var(--mantine-color-gray-6);
+  border-color: #d8d8d8;
+}
+.termButton[data-status="available"] {
+  background-color: var(--mantine-color-green-3);
+}
+.termButton[data-status="under-waitlist"] {
+  background-color: var(--mantine-color-yellow-3);
+}
+.termButton[data-status="close"] {
+  background-color: var(--mantine-color-red-4);
+}
+.courseTitle {
+  cursor: default;
+}
+
+.tooltip {
+  position: absolute;
+  padding: calc(0.25rem * var(--mantine-scale));
+  color: var(--mantine-color-gray-3);
+  background-color: var(--mantine-color-dark-9);
+  border-radius: var(--mantine-radius-md);
+}
+
+.sidebarPanelItem {
+  width: 100%;
+  padding: calc(0.25rem * var(--mantine-scale));
+  display: flex;
+  flex-direction: row;
+  gap: var(--mantine-spacing-md);
+  border-radius: var(--mantine-radius-sm);
+}
+.sidebarPanelItem:hover {
+  background-color: var(--mantine-color-gray-2);
+}
