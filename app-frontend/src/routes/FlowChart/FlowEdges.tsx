@@ -45,25 +45,29 @@ export function getEdges(nodes: any[]) {
 
   for (let nodeI = 0; nodeI < nodes.length; nodeI++) {
     const node = nodes[nodeI];
-    const nodeID = node.id;
-    for (let reqI = 0; reqI < node.prereq.length; reqI++) {
-      const prereqs = node.prereq[reqI];
-      for (let reqJ = 0; reqJ < prereqs.length; reqJ++) {
-        const sourceClass = prereqs[reqJ];
-        const sourceID = sourceClass.id;
-        edges.push(
-          basicEdge(
-            String(edgeID),
-            sourceID,
-            nodeID,
-            String(reqI),
-            sourceClass.req,
-          ),
-        );
-        edgeID++;
+    if (!Object.prototype.hasOwnProperty.call(node, 'prereq')) {
+      console.log("NOT!");
+    }
+    else {
+      const nodeID = node.id;
+      for (let reqI = 0; reqI < node.prereq.length; reqI++) {
+        const prereqs = node.prereq[reqI];
+        for (let reqJ = 0; reqJ < prereqs.length; reqJ++) {
+          const sourceClass = prereqs[reqJ];
+          const sourceID = sourceClass.id;
+          edges.push(
+              basicEdge(
+                  String(edgeID),
+                  sourceID,
+                  nodeID,
+                  String(reqI),
+                  sourceClass.req,
+              ),
+          );
+          edgeID++;
+        }
       }
     }
   }
-
   return edges;
 }

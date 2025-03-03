@@ -38,7 +38,11 @@ function getOutHandle(nodeID: string, edges) {
 }
 
 export function ClassNode({ data }) {
-  const handlers = getHandles(data.prereq.length);
+  let handlers = <></>;
+
+  if (Object.prototype.hasOwnProperty.call(data, 'prereq')) {
+    handlers = getHandles(data.prereq.length);
+  }
 
   let outHandle = <></>;
   if (data.outHandle) {
@@ -79,7 +83,10 @@ export function getClasses(nodes, initialEdges) {
     for (let i = 0; i < nodes.length; i++) {
       let valid = true;
       const node = nodes[i];
-      if (oldNodes.indexOf(node.id) === -1) {
+      if (!Object.prototype.hasOwnProperty.call(node, 'prereq')) {
+        valid = true;
+      }
+      else if (oldNodes.indexOf(node.id) === -1) {
         for (let j = 0; j < node.prereq.length; j++) {
           const prereqs = node.prereq[j];
           for (let k = 0; k < prereqs.length; k++) {

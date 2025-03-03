@@ -21,8 +21,13 @@ const rs = getComputedStyle(r);
 import { ClassNode, getClasses } from "@/routes/FlowChart/FlowNodes.tsx";
 import { getEdges } from "@/routes/FlowChart/FlowEdges.tsx";
 import { Legend } from "@/routes/FlowChart/Legend.tsx";
+import {useLocalStorage} from "@mantine/hooks";
+import {classes} from "@/components/FlowChart/FlowChart.types.ts"
 
-const obj = {
+//const { MongoClient } = require('mongodb');
+//const uri = "mongodb+srv://cchraplak:a3Chraplak@a3.ouon6.mongodb.net/?retryWrites=true&w=majority&appName=a3";
+
+const obj: classes = {
   name: "Object Oriented Design",
   id: "CS 2102",
   professor: "Mathew Ahrens",
@@ -31,7 +36,7 @@ const obj = {
   prereq: [],
 };
 
-const advObj = {
+const advObj: classes = {
   name: "Accelerated Object Oriented Design Concepts",
   id: "CS 2103",
   professor: "Joshua Cuneo",
@@ -136,6 +141,7 @@ const classNodes = [
   objApp,
   foundations,
   introAI,
+  //localStorage.getItem("added_course_list")
 ];
 
 const getLayoutedElements = (nodes, edges, options) => {
