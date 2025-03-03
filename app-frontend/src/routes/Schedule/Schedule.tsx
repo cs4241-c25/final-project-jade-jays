@@ -13,10 +13,7 @@ export function Schedule() {
   });
   const queryResults = getSectionData(value);
 
-  const isLoading = queryResults.some((result) => result.isLoading);
-  if (isLoading) {
-    return <span>Loading...</span>;
-  }
+  console.log(queryResults);
 
   return (
     <PanelGroup
@@ -67,7 +64,7 @@ export function Schedule() {
                       },
                     ],
                   ]}
-                  range={{ start: 8, end: 18 }}
+                  defaultRange={{ start: 8, end: 18 }}
                 ></TimeTable>
               </td>
             </tr>

@@ -14,23 +14,22 @@ type timeSectionType = {
 interface TimeTableProps {
   title: string;
   colHeader: number[] | string[];
-  range: RangeType;
+  defaultRange: RangeType;
   data: timeSectionType[][];
   style?: React.CSSProperties;
 }
 
 export function TimeTable({
   colHeader,
-  range: { start, end },
+  defaultRange: { start, end },
   data,
 }: TimeTableProps) {
   const { dimensions, ref } = useElementDimensions();
   const { height, width } = dimensions ?? {};
 
-  const timeColWidth = 50,
-    headerRowHeight = 18;
+  const timeColWidth = 50;
+  const headerRowHeight = 18;
   const borderSize = 0;
-  const appShellHeaderHeight = 50;
   const timeRange: string[] = getTimeRange(start, end);
 
   function Header() {
@@ -71,8 +70,8 @@ export function TimeTable({
                 key={time}
                 className={classes.timeColumn}
                 style={{
-                  top: `${index * ((height - headerRowHeight - 1 - borderSize) / (end - start + 1)) + headerRowHeight}px`,
-                  height: `${(height - headerRowHeight - 1 - borderSize) / (end - start + 1)}px`,
+                  top: `${index * ((height - headerRowHeight - borderSize) / (end - start + 1)) + headerRowHeight}px`,
+                  height: `${(height - headerRowHeight - borderSize) / (end - start + 1)}px`,
                   width: `${timeColWidth - borderSize}px`,
                 }}
               >
@@ -140,10 +139,10 @@ export function TimeTable({
                   key={time + index + Math.random().toString()}
                   className={classes.tableGrid}
                   style={{
-                    top: `${index * ((height - 1 - headerRowHeight - borderSize) / (end - start + 1)) + headerRowHeight}px`,
+                    top: `${index * ((height - headerRowHeight - borderSize) / (end - start + 1)) + headerRowHeight}px`,
                     left: `${timeColWidth}px`,
-                    height: `${(height - headerRowHeight - 1 - borderSize) / (2 * (end - start + 1))}px`,
-                    marginBottom: `${(height - headerRowHeight - 1 - borderSize) / (2 * (end - start + 1))}px`,
+                    height: `${(height - headerRowHeight - borderSize) / (2 * (end - start + 1))}px`,
+                    marginBottom: `${(height - headerRowHeight - borderSize) / (2 * (end - start + 1))}px`,
                     width: `${width - timeColWidth - borderSize}px`,
                   }}
                 ></div>

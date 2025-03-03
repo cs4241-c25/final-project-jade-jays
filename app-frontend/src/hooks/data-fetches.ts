@@ -44,5 +44,10 @@ export function getSectionData(data: { [key: string]: ClientCourseType }) {
             .then((res) => res.data),
       };
     }),
+    combine: (results) => {
+      return {
+        data: results.map((result) => result.data),
+      };
+    },
   });
 }
