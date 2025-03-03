@@ -1,14 +1,11 @@
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   ReactFlow,
   MiniMap,
   Controls,
   getConnectedEdges,
-  useEdgesState,
   applyEdgeChanges,
   applyNodeChanges,
-  useNodesState,
-  useReactFlow,
 } from "@xyflow/react";
 import Dagre from "@dagrejs/dagre";
 
@@ -21,13 +18,9 @@ const rs = getComputedStyle(r);
 import { ClassNode, getClasses } from "@/routes/FlowChart/FlowNodes.tsx";
 import { getEdges } from "@/routes/FlowChart/FlowEdges.tsx";
 import { Legend } from "@/routes/FlowChart/Legend.tsx";
-import { useLocalStorage } from "@mantine/hooks";
-import { classes } from "@/components/FlowChart/FlowChart.types.ts";
+import {getCourseObject} from "@/hooks/data-fetches.ts";
 
-//const { MongoClient } = require('mongodb');
-//const uri = "mongodb+srv://cchraplak:a3Chraplak@a3.ouon6.mongodb.net/?retryWrites=true&w=majority&appName=a3";
-
-const obj: classes = {
+/*const obj: classes = {
   title: "Object Oriented Design",
   subject: "CS",
   code: "2102",
@@ -122,7 +115,7 @@ const introAI: classes = {
   ],
 };
 
-const classNodes: classes[] = [
+/*const classNodes: classes[] = [
   obj,
   advObj,
   discrete,
@@ -133,7 +126,19 @@ const classNodes: classes[] = [
   foundations,
   introAI,
   //localStorage.getItem("added_course_list")
-];
+];*/
+
+async function retrieveClass(subject: string, code: string) {
+  return await getCourseObject(subject, code);
+}
+
+const classTitles = ["CS 2102", "CS 2119", "CS 3013", "CS 2103", "CS 2022", "CS 4241", "CS 2223", "CS 3133", "CS 4341"];
+const classNodes = [];
+for (let i = 0; i < classTitles.length; i++) {
+  const params = classTitles[i].split(" ");
+  const data = await retrieveClass(params[0], params[1]);
+  classNodes.push(data);
+}
 
 const getLayoutedElements = (nodes, edges, options) => {
   const g = new Dagre.graphlib.Graph().setDefaultEdgeLabel(() => ({}));

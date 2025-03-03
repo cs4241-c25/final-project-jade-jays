@@ -27,14 +27,7 @@ export function useCourse(subject: string) {
 
 export async function getCourseObject(subject_id: string, code_id: string) {
   const res = await axios.get(
-      `http://localhost:8080/api/singlecourse//${subject_id},${code_id}`,
+    `http://localhost:8080/api/singlecourse/:${subject_id},${code_id}`,
   );
-  return res.data;
-}
-
-export async function getCourse(subject: string, code: string) {
-  return useQuery({
-    queryKey: [`course${subject}`],
-    queryFn: () => getCourseObject(subject, code),
-  });
+  return res.data.course[0];
 }
