@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ca76c244-651c-4a03-b8ec-f5a9db95d904" name="Changes" comment="Created Tracking Page, currently in progress">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-backend/nodemon.json" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/nodemon.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-backend/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/app.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-backend/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-backend/src/persistent/CoursePersistence.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/persistent/CoursePersistence.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-backend/src/persistent/SubjectPersistence.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/persistent/SubjectPersistence.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-backend/src/routes/adminRouter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/routes/adminRouter.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-backend/src/routes/courseRouter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/routes/courseRouter.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-backend/src/routes/pageRouter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/routes/pageRouter.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-backend/src/routes/subjectRouter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/routes/subjectRouter.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-backend/src/util/DatabaseUtil.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/util/DatabaseUtil.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-backend/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/eslint.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/eslint.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/postcss.config.cjs" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/postcss.config.cjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/src/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/Main.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/src/components/AppLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/components/AppLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/src/components/Authenticate.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/components/Authenticate.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/src/components/CourseList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/components/CourseList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/src/components/CourseProvider/CourseProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/components/CourseProvider/CourseProvider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/src/components/CourseProvider/CourseProvider.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/components/CourseProvider/CourseProvider.types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/src/components/Redirect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/components/Redirect.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/src/components/SidebarItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/components/SidebarItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/src/components/TimeTable/TTTimeUtils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/components/TimeTable/TTTimeUtils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/src/components/TimeTable/TimeTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/components/TimeTable/TimeTable.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/src/components/TimeTable/TimeTable.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/components/TimeTable/TimeTable.types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/src/hooks/data-fetches.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/hooks/data-fetches.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/src/routes/Courses.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/routes/Courses.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/src/routes/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/routes/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/src/routes/Schedule.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/routes/Schedule.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/src/routes/Tracking.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/routes/Tracking.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/src/styles/appLayout.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/styles/appLayout.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/src/styles/courses.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/styles/courses.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/src/styles/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/styles/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/src/styles/timetable.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/styles/timetable.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/src/styles/tracking.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/styles/tracking.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/src/vite-env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/vite-env.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/tsconfig.app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/tsconfig.app.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/tsconfig.node.json" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/tsconfig.node.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/vite.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-packages/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/app-packages/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-packages/types/persistent.types.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-packages/types/persistent.types.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-packages/types/persistent.types.js" beforeDir="false" afterPath="$PROJECT_DIR$/app-packages/types/persistent.types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-packages/types/persistent.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-packages/types/persistent.types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-workspace.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-workspace.yaml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript JSX File" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="dev" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;SilasJoy&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/cs4241-c25/final-project-jade-jays.git&quot;,
+    &quot;accountId&quot;: &quot;c9f48dd9-0808-46f4-ac40-d5e9ab0f5303&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2tgZGXpLhDLeRT1pQgCH8rMdpfg" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "SCRUM-3",
+    "last_opened_file_path": "C:/Users/sidog/WebstormProjects/final-project-jade-jays/app-backend",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "node",
+    "nodejs_package_manager_path": "pnpm",
+    "settings.editor.selected.configurable": "settings.nodejs",
+    "ts.external.directory.path": "C:\\Users\\sidog\\WebstormProjects\\final-project-jade-jays\\app-backend\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\sidog\WebstormProjects\final-project-jade-jays\app-backend" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-WS-243.22562.222" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ca76c244-651c-4a03-b8ec-f5a9db95d904" name="Changes" comment="" />
+      <created>1740775583237</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1740775583237</updated>
+      <workItem from="1740775584418" duration="182000" />
+      <workItem from="1740775781392" duration="140000" />
+      <workItem from="1740775934059" duration="21789000" />
+    </task>
+    <task id="LOCAL-00001" summary="Created Tracking Page, currently in progress">
+      <option name="closed" value="true" />
+      <created>1740886193888</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1740886193888</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Created Tracking Page, currently in progress" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created Tracking Page, currently in progress" />
+  </component>
+</project>
