@@ -58,7 +58,7 @@ export function ClassNode({ data }) {
   }
 
   let taken = "completed";
-  if (!Object.prototype.hasOwnProperty.call(data, "taken")) {
+  if (Object.prototype.hasOwnProperty.call(data, "taken")) {
     if (data.taken !== undefined) {
       taken = data.taken;
     }

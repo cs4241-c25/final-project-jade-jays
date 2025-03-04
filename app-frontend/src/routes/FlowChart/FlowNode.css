@@ -1,6 +1,6 @@
 :root {
-  --node-width: 210px;
-  --node-height: 85px;
+  --node-width: 280px;
+  --node-height: 60px;
   --uncomplete-color: #ff0000;
   --complete-color: #00e10b;
   --confirm-color: #6166ff;
@@ -26,7 +26,7 @@
   min-height: var(--node-height) !important;
   border: 2px solid white;
   border-radius: 5px;
-  font-size: 12px;
+  font-size: 16px;
   padding: 5px;
 }
 

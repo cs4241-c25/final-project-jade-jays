@@ -6,6 +6,7 @@ import {
   getConnectedEdges,
   applyEdgeChanges,
   applyNodeChanges,
+  Panel,
 } from "@xyflow/react";
 import Dagre from "@dagrejs/dagre";
 
@@ -71,7 +72,7 @@ const getLayoutedElements = (nodes, edges, options) => {
   nodes.forEach((node) =>
     g.setNode(node.id, {
       ...node,
-      width: rs.getPropertyValue("--node-width").replace("px", "") * 2,
+      width: rs.getPropertyValue("--node-width").replace("px", "") * 1.2,
       height: rs.getPropertyValue("--node-height").replace("px", "") * 2,
     }),
   );
@@ -95,6 +96,7 @@ const getLayoutedElements = (nodes, edges, options) => {
 export const FlowChart = () => {
   const [edges, setEdges] = useState(getEdges([]));
   const [nodes, setNodes] = useState(getClasses([], edges));
+  const [fullReq, setFullReq] = useState<boolean>(false);
 
   const nodeTypes = {
     custom: ClassNode,
@@ -139,27 +141,90 @@ export const FlowChart = () => {
 
   let initNodes = [];
   let finishLoading = false;
+  let addedNodes = [];
+  let countNodes = 0;
+
+  function inNodeList(node) {
+    const nodeID = node.subject + " " + node.code;
+    for (let i = 0; i < addedNodes.length; i++) {
+      const existID = addedNodes[i].subject + " " + addedNodes[i].code;
+      if (existID === nodeID) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  async function recursiveGet(node) {
+    //const params = [];
+    const data = await retrieveClass(node.subject, node.code);
+    const addedClasses = [];
+    for (let i = 0; i < data.prereq.length; i++) {
+      for (let j = 0; j < data.prereq[i].length; j++) {
+        const prereqParams = data.prereq[i][j].id.split(" ");
+        const prereqNode = await retrieveClass(prereqParams[0], prereqParams[1]);
+        if (prereqNode) {
+          //console.log(prereqNode);
+          prereqNode.taken = "uncompleted";
+          if (!inNodeList(prereqNode)) {
+            addedClasses.push(prereqNode);
+            addedNodes.push(prereqNode);
+          }
+        }
+
+      }
+    }
+
+    for (let i = 0; i < addedClasses.length; i++) {
+      await recursiveGet(addedClasses[i]);
+    }
+  }
+
+  const onPageLoad = (getFullTree: boolean) => {
+    getClassNodes().then((nodes) => {
+      addedNodes = [];
+      countNodes = 0;
+      finishLoading = false;
+      initNodes = [];
+      const resultNodes = nodes;
+      if (getFullTree) {
+        for (let i = 0; i < nodes.length; i++) {
+          nodes[i].taken = "completed";
+          addedNodes.push(nodes[i]);
+        }
+        for (let i = 0; i < nodes.length; i++) {
+          recursiveGet(nodes[i]).then(() => {
+            countNodes++;
+            if (countNodes >= nodes.length) {
+              initNodes = addedNodes;
+              finishLoading = true;
+            }
+          });
+        }
+      }
+      else {
+        initNodes = nodes;
+        finishLoading = true;
+      }
+    });
+    loadData();
+  };
 
   function loadData() {
     if (!finishLoading) {
       setTimeout(loadData, 10);
-    }
-    else {
-      onLayout("TB", getClasses(initNodes, getEdges(initNodes)), getEdges(initNodes));
+    } else {
+      onLayout(
+        "TB",
+        getClasses(initNodes, getEdges(initNodes)),
+        getEdges(initNodes),
+      );
     }
   }
 
   useEffect(() => {
-
-    const onPageLoad = () => {
-      getClassNodes().then((nodes) => {
-        initNodes = nodes;
-        finishLoading = true;
-      })
-      loadData();
-    };
     if (document.readyState === "complete") {
-      onPageLoad();
+      onPageLoad(fullReq);
     } else {
       return () => window.removeEventListener("load", onPageLoad);
     }
@@ -167,7 +232,7 @@ export const FlowChart = () => {
 
   return (
     <div style={{ width: "100vw - 0px", height: "calc(100vh - 90px)" }}>
-      <Legend />
+
       <ReactFlow
         edges={edges}
         nodes={nodes}
@@ -178,8 +243,28 @@ export const FlowChart = () => {
         proOptions={{ hideAttribution: true }}
         //onNodeClick={onNodeClick}
       >
-        <MiniMap nodeStrokeWidth={30} />
-        <Controls />
+        <Panel position="top-left">
+          <Legend/>
+        </Panel>
+        <Panel position="top-right">
+          <div>
+            <label htmlFor="fullDepth">
+              <input
+                  id="fullDepth"
+                  type="checkbox"
+                  checked={fullReq}
+                  onChange={(event) => {
+                    setFullReq(event.target.checked);
+                    onPageLoad(event.target.checked);
+                  }}
+                  className=""
+              />
+              Full Prereqs
+            </label>
+          </div>
+        </Panel>
+        <MiniMap nodeStrokeWidth={30}/>
+        <Controls/>
       </ReactFlow>
     </div>
   );
