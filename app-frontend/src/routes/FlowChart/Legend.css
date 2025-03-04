@@ -19,6 +19,14 @@
   align-items: center;
 }
 
+.prereq {
+  color: white;
+}
+
+.legend input:checked ~ .prereq:after {
+  background-color: #2196F3;
+}
+
 .class-fill {
   width: 50px;
   height: 10px;

@@ -98,32 +98,38 @@ export const FlowChart = () => {
   const [nodes, setNodes] = useState(getClasses([], edges));
   const [fullReq, setFullReq] = useState<boolean>(false);
 
+  //const { fitView } = useReactFlow();
+  //const reactFlow = useReactFlow();
+  //reactFlow.fitView();
+
   const nodeTypes = {
     custom: ClassNode,
   };
 
   const onNodeClick = (event, node) => {
     setEdges((edges) =>
-    edges.map((edg) => {
-          const connectedEdges = getConnectedEdges([node], edges);
-          if (connectedEdges.indexOf(edg) === -1) {
-            return { ...edg, animated: false };
-          }
-          return { ...edg, animated: true };
-        })
+      edges.map((edg) => {
+        const connectedEdges = getConnectedEdges([node], edges);
+        if (connectedEdges.indexOf(edg) === -1) {
+          return { ...edg, animated: false };
+        }
+        return { ...edg, animated: true };
+      }),
     );
   };
 
   const onNodesChange = useCallback(
-    (changes) => setNodes((nds) => {
-      return applyNodeChanges(changes, nds)
-    }),
+    (changes) =>
+      setNodes((nds) => {
+        return applyNodeChanges(changes, nds);
+      }),
     [],
   );
   const onEdgesChange = useCallback(
-    (changes) => setEdges((eds) => {
-      return applyEdgeChanges(changes, eds);
-    }),
+    (changes) =>
+      setEdges((eds) => {
+        return applyEdgeChanges(changes, eds);
+      }),
     [],
   );
 
@@ -229,37 +235,37 @@ export const FlowChart = () => {
   return (
     <div style={{ width: "100vw - 0px", height: "calc(100vh - 90px)" }}>
       <ReactFlow
-        edges={edges}
-        nodes={nodes}
-        onEdgesChange={onEdgesChange}
-        onNodesChange={onNodesChange}
-        nodeTypes={nodeTypes}
-        fitView={false}
-        proOptions={{ hideAttribution: true }}
-        onNodeClick={onNodeClick}
+          edges={edges}
+          nodes={nodes}
+          onEdgesChange={onEdgesChange}
+          onNodesChange={onNodesChange}
+          nodeTypes={nodeTypes}
+          fitView={false}
+          proOptions={{hideAttribution: true}}
+          onNodeClick={onNodeClick}
       >
         <Panel position="top-left">
-          <Legend />
+          <Legend/>
         </Panel>
         <Panel position="top-right">
-          <div>
+          <div className={"legend"}>
             <label htmlFor="fullDepth">
               <input
-                id="fullDepth"
-                type="checkbox"
-                checked={fullReq}
-                onChange={(event) => {
-                  setFullReq(event.target.checked);
-                  onPageLoad(event.target.checked);
-                }}
-                className=""
+                  id="fullDepth"
+                  type="checkbox"
+                  checked={fullReq}
+                  onChange={(event) => {
+                    setFullReq(event.target.checked);
+                    onPageLoad(event.target.checked);
+                  }}
+                  className="prereq"
               />
               Full Prereqs
             </label>
           </div>
         </Panel>
-        <MiniMap nodeStrokeWidth={30} />
-        <Controls />
+        <MiniMap nodeStrokeWidth={30}/>
+        <Controls/>
       </ReactFlow>
     </div>
   );

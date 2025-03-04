@@ -3,7 +3,10 @@ import "@/routes/FlowChart/FlowNode.css";
 import { JSX } from "react";
 import { classes } from "@/components/FlowChart/FlowChart.types.ts";
 
-const width = 210;
+const r = document.querySelector(":root");
+const rs = getComputedStyle(r);
+
+const width = rs.getPropertyValue("--node-width").replace("px", "");
 
 function getHandles(count: number): any {
   const spacing: number = 40;
