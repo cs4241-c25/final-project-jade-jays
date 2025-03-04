@@ -33,11 +33,13 @@ export function localToArray() {
     for (let i = 0; i < splitted.length; i++) {
       if (splitted[i] !== "undefined") {
         const codeStart = splitted[i].search(/\d/);
-        returnArray[index] = splitted[i].substring(0, codeStart) + " " + splitted[i].substring(codeStart);
+        returnArray[index] =
+          splitted[i].substring(0, codeStart) +
+          " " +
+          splitted[i].substring(codeStart);
         index++;
       }
     }
-    console.log("Retrieved", returnArray);
     return returnArray;
   } else {
     return [];
@@ -48,15 +50,17 @@ async function retrieveClass(subject: string, code: string) {
   return await getCourseObject(subject, code);
 }
 
-const classTitles = localToArray();
-
-const classNodes = [];
-for (let i = 0; i < classTitles.length; i++) {
-  const params = classTitles[i].split(" ");
-  const data = await retrieveClass(params[0], params[1]);
-  if (data !== undefined) {
-    classNodes.push(data);
+async function getClassNodes() {
+  const classTitles = localToArray();
+  const classNodes = [];
+  for (let i = 0; i < classTitles.length; i++) {
+    const params = classTitles[i].split(" ");
+    const data = await retrieveClass(params[0], params[1]);
+    if (data !== undefined) {
+      classNodes.push(data);
+    }
   }
+  return classNodes;
 }
 
 const getLayoutedElements = (nodes, edges, options) => {
@@ -89,9 +93,8 @@ const getLayoutedElements = (nodes, edges, options) => {
 };
 
 export const FlowChart = () => {
-  const [edges, setEdges] = useState(getEdges(classNodes));
-  const [nodes, setNodes] = useState(getClasses(classNodes, edges));
-  //const initialNodes = getClasses(classNodes, getEdges(classNodes));
+  const [edges, setEdges] = useState(getEdges([]));
+  const [nodes, setNodes] = useState(getClasses([], edges));
 
   const nodeTypes = {
     custom: ClassNode,
@@ -99,7 +102,7 @@ export const FlowChart = () => {
 
   const onNodeClick = (event, node) => {
     console.log(node);
-    let newEdges = edges.slice(0);
+    const newEdges = edges.slice(0);
     for (let newEdge of newEdges) {
       newEdge.animated = false;
     }
@@ -126,18 +129,34 @@ export const FlowChart = () => {
   );
 
   const onLayout = useCallback(
-    (direction) => {
-      const layouted = getLayoutedElements(nodes, edges, { direction });
-
+    (direction, newNodes, newEdges) => {
+      const layouted = getLayoutedElements(newNodes, newEdges, { direction });
       setNodes([...layouted.nodes]);
       setEdges([...layouted.edges]);
     },
     [nodes, edges],
   );
 
+  let initNodes = [];
+  let finishLoading = false;
+
+  function loadData() {
+    if (!finishLoading) {
+      setTimeout(loadData, 10);
+    }
+    else {
+      onLayout("TB", getClasses(initNodes, getEdges(initNodes)), getEdges(initNodes));
+    }
+  }
+
   useEffect(() => {
+
     const onPageLoad = () => {
-      onLayout("TB");
+      getClassNodes().then((nodes) => {
+        initNodes = nodes;
+        finishLoading = true;
+      })
+      loadData();
     };
     if (document.readyState === "complete") {
       onPageLoad();
