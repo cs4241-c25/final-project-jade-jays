@@ -7,19 +7,19 @@ export const Legend: React.FC = () => {
     <div className="legend">
       <div className="legend-row">
         <div className="class-fill completed-line"></div>
-        <p className={"shift-left"}>Completed Course</p>
+        <p className={"shift-left"} aria-label={"Completed Course"}>Completed Course</p>
       </div>
       <div className="legend-row">
         <div className="class-fill uncompleted-line"></div>
-        <div className={"shift-left"}>Uncompleted Course</div>
+        <div className={"shift-left"} aria-label={"Uncompleted Course"}>Uncompleted Course</div>
       </div>
       <div className="legend-row">
         <div className="class-fill confirmed-line"></div>
-        <p className={"shift-left"}>Confirmed Course</p>
+        <p className={"shift-left"} aria-label={"Confirmed Course"}>Confirmed Course</p>
       </div>
       <div className="legend-row">
         <div className="class-fill unconfirmed-line"></div>
-        <p className={"shift-left"}>Unconfirmed Course</p>
+        <p className={"shift-left"} aria-label={"Unconfirmed Course"}>Unconfirmed Course</p>
       </div>
       <div className="legend-row">
         <svg
@@ -44,7 +44,7 @@ export const Legend: React.FC = () => {
             d="M48.9734 5.20818C49.4924 5.6085 49.4924 6.3915 48.9734 6.79182L44.8742 9.95371C44.2168 10.4608 43.2635 9.99218 43.2635 9.1619V2.8381C43.2635 2.00782 44.2168 1.53918 44.8742 2.04629L48.9734 5.20818Z"
           />
         </svg>
-        <p className={"shift-left"}>Prereq Course</p>
+        <p className={"shift-left"} aria-label={"Prereq Course"}>Prereq Course</p>
       </div>
       <div className="legend-row">
         <svg
@@ -68,7 +68,7 @@ export const Legend: React.FC = () => {
             d="M48.9734 5.20818C49.4924 5.6085 49.4924 6.3915 48.9734 6.79182L44.8742 9.95371C44.2168 10.4608 43.2635 9.99218 43.2635 9.1619V2.8381C43.2635 2.00782 44.2168 1.53918 44.8742 2.04629L48.9734 5.20818Z"
           />
         </svg>
-        <p className={"shift-left"}>Concurrent Course</p>
+        <p className={"shift-left"} aria-label={"Concurrent Course"}>Concurrent Course</p>
       </div>
       <div className="legend-row">
         <svg
@@ -92,7 +92,7 @@ export const Legend: React.FC = () => {
             d="M48.9734 5.20818C49.4924 5.6085 49.4924 6.3915 48.9734 6.79182L44.8742 9.95371C44.2168 10.4608 43.2635 9.99218 43.2635 9.1619V2.8381C43.2635 2.00782 44.2168 1.53918 44.8742 2.04629L48.9734 5.20818Z"
           />
         </svg>
-        <p className={"shift-left"}>Recommended Course</p>
+        <p className={"shift-left"} aria-label={"Recommended Course"}>Recommended Course</p>
       </div>
     </div>
   );

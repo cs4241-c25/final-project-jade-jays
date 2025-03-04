@@ -70,8 +70,8 @@ export function ClassNode({ data }) {
   return (
     <>
       <div className={"flow-node " + taken}>
-        <p className={"node-text"}>{data.title}</p>
-        <p className={"node-text"}>{data.subject + " " + data.code}</p>
+        <p className={"node-text"} aria-label={data.title}>{data.title}</p>
+        <p className={"node-text"} aria-label={data.subject + " " + data.code}>{data.subject + " " + data.code}</p>
         {handlers}
         {outHandle}
       </div>
