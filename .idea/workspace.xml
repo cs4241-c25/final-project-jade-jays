@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca76c244-651c-4a03-b8ec-f5a9db95d904" name="Changes" comment="Created Tracking Page, currently in progress">
+    <list default="true" id="ca76c244-651c-4a03-b8ec-f5a9db95d904" name="Changes" comment="Merged Scrum 3 into branch">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsMA.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsMA.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-backend/src/routes/adminRouter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/routes/adminRouter.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app-frontend/src/components/AppLayout/AppLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/components/AppLayout/AppLayout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/src/components/DegreeLayout.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/components/DegreeLayout.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/src/routes/FlowChart/FlowChart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/routes/FlowChart/FlowChart.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app-frontend/src/routes/Tracking.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/routes/Tracking.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -124,7 +119,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740886193888</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Merged Scrum 3 into branch">
+      <option name="closed" value="true" />
+      <created>1741045507110</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1741045507110</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -132,6 +135,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Created Tracking Page, currently in progress" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created Tracking Page, currently in progress" />
+    <MESSAGE value="Merged Scrum 3 into branch" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merged Scrum 3 into branch" />
   </component>
 </project>

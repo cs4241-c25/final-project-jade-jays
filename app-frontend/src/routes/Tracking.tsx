@@ -1,14 +1,50 @@
 import { Panel, PanelGroup } from "react-resizable-panels";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "@/styles/tracking.module.css";
 import { getCourseData } from "@/hooks/data-fetches.ts";
 import { BSCS } from "@/components/DegreeLayout.ts";
+
+if (!localStorage.getItem("selectedCourses")) {
+  localStorage.setItem("selectedCourses", "");
+}
+
+export function localToArray() {
+  const stored = localStorage.getItem("selectedCourses");
+  if (stored) {
+    const splitted = stored.split(";");
+    let returnArray = [];
+    for (let i = 0; i < splitted.length; i++) {
+      if (splitted[i] !== "undefined") {
+        returnArray[i] = splitted[i];
+      }
+      else {
+        returnArray[i] = undefined;
+      }
+    }
+    console.log("Retrieved", returnArray);
+    return returnArray;
+  }
+  else {
+    return [];
+  }
+}
+
+export function arrayToLocal(selectedCourses: string[]) {
+  let transformed = "";
+  for (let i = 0; i < selectedCourses.length; i++) {
+    transformed += selectedCourses[i] + ";";
+  }
+  transformed = transformed.substring(0, transformed.length - 1);
+  console.log("Original", selectedCourses);
+  console.log("Sending", transformed);
+  localStorage.setItem("selectedCourses", transformed);
+}
 
 export function Tracking() {
   const [panelRows, setPanelRows] = useState<JSX.Element[]>([]);
   const [categories, setCategories] = useState<Category[]>(BSCS.categories);
   const [courseDataMap, setCourseDataMap] = useState<Record<string, any[]>>({});
-  const [selectedCourses, setSelectedCourses] = useState<string[]>([]); // Changed to an array
+  const [selectedCourses, setSelectedCourses] = useState<string[]>(localToArray()); // Changed to an array
 
   async function createTrackingSheet() {
     try {
@@ -56,6 +92,7 @@ export function Tracking() {
                     setSelectedCourses((prev) => {
                       const newSelections = [...prev];
                       newSelections[courseIndex] = e.target.value;
+                      arrayToLocal(newSelections);
                       return newSelections;
                     });
                   }}
