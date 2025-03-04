@@ -103,30 +103,27 @@ export const FlowChart = () => {
   };
 
   const onNodeClick = (event, node) => {
-    console.log(node);
-    const newEdges = edges.slice(0);
-    for (let newEdge of newEdges) {
-      newEdge.animated = false;
-    }
-    const connectedEdges = getConnectedEdges([node], newEdges);
-    console.log(connectedEdges);
-
-    for (let i = 0; i < connectedEdges.length; i++) {
-      const index = edges.indexOf(connectedEdges[i]);
-      newEdges[index].animated = true;
-    }
-
-    console.log(edges);
-    setEdges(newEdges);
-    console.log(edges);
+    setEdges((edges) =>
+    edges.map((edg) => {
+          const connectedEdges = getConnectedEdges([node], edges);
+          if (connectedEdges.indexOf(edg) === -1) {
+            return { ...edg, animated: false };
+          }
+          return { ...edg, animated: true };
+        })
+    );
   };
 
   const onNodesChange = useCallback(
-    (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
+    (changes) => setNodes((nds) => {
+      return applyNodeChanges(changes, nds)
+    }),
     [],
   );
   const onEdgesChange = useCallback(
-    (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
+    (changes) => setEdges((eds) => {
+      return applyEdgeChanges(changes, eds);
+    }),
     [],
   );
 
@@ -162,16 +159,17 @@ export const FlowChart = () => {
     for (let i = 0; i < data.prereq.length; i++) {
       for (let j = 0; j < data.prereq[i].length; j++) {
         const prereqParams = data.prereq[i][j].id.split(" ");
-        const prereqNode = await retrieveClass(prereqParams[0], prereqParams[1]);
+        const prereqNode = await retrieveClass(
+          prereqParams[0],
+          prereqParams[1],
+        );
         if (prereqNode) {
-          //console.log(prereqNode);
           prereqNode.taken = "uncompleted";
           if (!inNodeList(prereqNode)) {
             addedClasses.push(prereqNode);
             addedNodes.push(prereqNode);
           }
         }
-
       }
     }
 
@@ -186,7 +184,6 @@ export const FlowChart = () => {
       countNodes = 0;
       finishLoading = false;
       initNodes = [];
-      const resultNodes = nodes;
       if (getFullTree) {
         for (let i = 0; i < nodes.length; i++) {
           nodes[i].taken = "completed";
@@ -201,8 +198,7 @@ export const FlowChart = () => {
             }
           });
         }
-      }
-      else {
+      } else {
         initNodes = nodes;
         finishLoading = true;
       }
@@ -232,7 +228,6 @@ export const FlowChart = () => {
 
   return (
     <div style={{ width: "100vw - 0px", height: "calc(100vh - 90px)" }}>
-
       <ReactFlow
         edges={edges}
         nodes={nodes}
@@ -241,30 +236,30 @@ export const FlowChart = () => {
         nodeTypes={nodeTypes}
         fitView={false}
         proOptions={{ hideAttribution: true }}
-        //onNodeClick={onNodeClick}
+        onNodeClick={onNodeClick}
       >
         <Panel position="top-left">
-          <Legend/>
+          <Legend />
         </Panel>
         <Panel position="top-right">
           <div>
             <label htmlFor="fullDepth">
               <input
-                  id="fullDepth"
-                  type="checkbox"
-                  checked={fullReq}
-                  onChange={(event) => {
-                    setFullReq(event.target.checked);
-                    onPageLoad(event.target.checked);
-                  }}
-                  className=""
+                id="fullDepth"
+                type="checkbox"
+                checked={fullReq}
+                onChange={(event) => {
+                  setFullReq(event.target.checked);
+                  onPageLoad(event.target.checked);
+                }}
+                className=""
               />
               Full Prereqs
             </label>
           </div>
         </Panel>
-        <MiniMap nodeStrokeWidth={30}/>
-        <Controls/>
+        <MiniMap nodeStrokeWidth={30} />
+        <Controls />
       </ReactFlow>
     </div>
   );
