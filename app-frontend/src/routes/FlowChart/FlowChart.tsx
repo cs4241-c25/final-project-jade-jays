@@ -20,134 +20,36 @@ import { getEdges } from "@/routes/FlowChart/FlowEdges.tsx";
 import { Legend } from "@/routes/FlowChart/Legend.tsx";
 import { getCourseObject } from "@/hooks/data-fetches.ts";
 
-/*const obj: classes = {
-  title: "Object Oriented Design",
-  subject: "CS",
-  code: "2102",
-  taken: "uncompleted",
-  prereq: [],
-};
+if (!localStorage.getItem("selectedCourses")) {
+  localStorage.setItem("selectedCourses", "");
+}
 
-const advObj: classes = {
-  title: "Accelerated Object Oriented Design Concepts",
-  subject: "CS",
-  code: "2103",
-  taken: "unconfirmed",
-  prereq: [],
-};
-
-const discrete: classes = {
-  title: "Discrete Mathematics",
-  subject: "CS",
-  code: "2022",
-  taken: "completed",
-  prereq: [],
-};
-
-const algo: classes = {
-  title: "Algorithms",
-  subject: "CS",
-  code: "2223",
-  taken: "confirmed",
-  prereq: [
-    [
-      { id: "CS 2102", req: "prereq" },
-      { id: "CS 2103", req: "concurrent" },
-    ],
-    [{ id: "CS 2022", req: "recomended" }],
-  ],
-};
-
-const objApp: classes = {
-  title: "Application Building With Object-Oriented Concept",
-  subject: "CS",
-  code: "2119",
-  taken: "confirmed",
-  prereq: [],
-};
-
-const os: classes = {
-  title: "Operating Systems",
-  subject: "CS",
-  code: "3013",
-  taken: "confirmed",
-  prereq: [],
-};
-
-const webware: classes = {
-  title: "Webware: Computational Technology For Network Information Systems",
-  subject: "CS",
-  code: "4241",
-  taken: "confirmed",
-  prereq: [
-    [
-      { id: "CS 2102", req: "prereq" },
-      { id: "CS 2103", req: "prereq" },
-      { id: "CS 2119", req: "prereq" },
-    ],
-    [{ id: "CS 3013", req: "prereq" }],
-  ],
-};
-
-const foundations: classes = {
-  title: "Foundations Of Computer Science",
-  subject: "CS",
-  code: "3133",
-  taken: "confirmed",
-  prereq: [
-    [{ id: "CS 2022", req: "prereq" }],
-    [{ id: "CS 2223", req: "prereq" }],
-  ],
-};
-
-const introAI: classes = {
-  title: "Introduction To Artificial Intelligence",
-  subject: "CS",
-  code: "4341",
-  taken: "confirmed",
-  prereq: [
-    [
-      { id: "CS 2102", req: "prereq" },
-      { id: "CS 2103", req: "prereq" },
-    ],
-    [{ id: "CS 2223", req: "prereq" }],
-    [{ id: "CS 3133", req: "prereq" }],
-  ],
-};
-
-/*const classNodes: classes[] = [
-  obj,
-  advObj,
-  discrete,
-  algo,
-  webware,
-  os,
-  objApp,
-  foundations,
-  introAI,
-  //localStorage.getItem("added_course_list")
-];*/
+export function localToArray() {
+  const stored = localStorage.getItem("selectedCourses");
+  if (stored) {
+    const splitted = stored.split(";");
+    const returnArray = [];
+    let index = 0;
+    for (let i = 0; i < splitted.length; i++) {
+      if (splitted[i] !== "undefined") {
+        const codeStart = splitted[i].search(/\d/);
+        returnArray[index] = splitted[i].substring(0, codeStart) + " " + splitted[i].substring(codeStart);
+        index++;
+      }
+    }
+    console.log("Retrieved", returnArray);
+    return returnArray;
+  } else {
+    return [];
+  }
+}
 
 async function retrieveClass(subject: string, code: string) {
   return await getCourseObject(subject, code);
 }
 
-const classTitles = [
-  "CS 2102",
-  "CS 2119",
-  "CS 3013",
-  "CS 2103",
-  "CS 2022",
-  "CS 4241",
-  "CS 2223",
-  "CS 3133",
-  "CS 4341",
-  "CS 4342",
-  "MA 1021",
-  "MA 1022",
-  "MA 1023",
-  "MA 1024",
-];
+const classTitles = localToArray();
+
 const classNodes = [];
 for (let i = 0; i < classTitles.length; i++) {
   const params = classTitles[i].split(" ");

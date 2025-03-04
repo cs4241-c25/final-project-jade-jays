@@ -12,19 +12,17 @@ export function localToArray() {
   const stored = localStorage.getItem("selectedCourses");
   if (stored) {
     const splitted = stored.split(";");
-    let returnArray = [];
+    const returnArray = [];
     for (let i = 0; i < splitted.length; i++) {
       if (splitted[i] !== "undefined") {
         returnArray[i] = splitted[i];
-      }
-      else {
+      } else {
         returnArray[i] = undefined;
       }
     }
     console.log("Retrieved", returnArray);
     return returnArray;
-  }
-  else {
+  } else {
     return [];
   }
 }
@@ -44,7 +42,8 @@ export function Tracking() {
   const [panelRows, setPanelRows] = useState<JSX.Element[]>([]);
   const [categories, setCategories] = useState<Category[]>(BSCS.categories);
   const [courseDataMap, setCourseDataMap] = useState<Record<string, any[]>>({});
-  const [selectedCourses, setSelectedCourses] = useState<string[]>(localToArray()); // Changed to an array
+  const [selectedCourses, setSelectedCourses] =
+    useState<string[]>(localToArray()); // Changed to an array
 
   async function createTrackingSheet() {
     try {
