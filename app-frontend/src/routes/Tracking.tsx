@@ -2,41 +2,7 @@ import { Panel, PanelGroup } from "react-resizable-panels";
 import React, { useEffect, useState } from "react";
 import classes from "@/styles/tracking.module.css";
 import { getCourseData } from "@/hooks/data-fetches.ts";
-import { BSCS } from "@/components/DegreeLayout.ts";
-
-if (!localStorage.getItem("selectedCourses")) {
-  localStorage.setItem("selectedCourses", "");
-}
-
-export function localToArray() {
-  const stored = localStorage.getItem("selectedCourses");
-  if (stored) {
-    const splitted = stored.split(";");
-    const returnArray = [];
-    for (let i = 0; i < splitted.length; i++) {
-      if (splitted[i] !== "undefined") {
-        returnArray[i] = splitted[i];
-      } else {
-        returnArray[i] = undefined;
-      }
-    }
-    console.log("Retrieved", returnArray);
-    return returnArray;
-  } else {
-    return [];
-  }
-}
-
-export function arrayToLocal(selectedCourses: string[]) {
-  let transformed = "";
-  for (let i = 0; i < selectedCourses.length; i++) {
-    transformed += selectedCourses[i] + ";";
-  }
-  transformed = transformed.substring(0, transformed.length - 1);
-  console.log("Original", selectedCourses);
-  console.log("Sending", transformed);
-  localStorage.setItem("selectedCourses", transformed);
-}
+import { BSCS } from "../components/CSDegree.ts";
 
 export function Tracking() {
   const [panelRows, setPanelRows] = useState<JSX.Element[]>([]);
