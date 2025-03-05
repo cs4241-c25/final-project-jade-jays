@@ -1,14 +1,20 @@
-import { Text, ActionIcon, Box } from "@mantine/core";
-import { useClickOutside, readLocalStorageValue } from "@mantine/hooks";
-import { useState, memo } from "react";
+import { Text, ActionIcon, Box, Transition } from "@mantine/core";
+import {
+  useClickOutside,
+  readLocalStorageValue,
+  useHover,
+  mergeRefs,
+} from "@mantine/hooks";
+import { memo } from "react";
 import { Plus } from "lucide-react";
 import React from "react";
 
 import {
   ClientCourseType,
-  setLocalStorageValue,
-} from "../../../../app-packages/types/persistent.types.ts";
+  SetLocalStorageValue,
+} from "app-packages/types/persistent.types.ts";
 import classes from "@/routes/Courses/courses.module.css";
+import useElementDimensions from "@/hooks/use-element-dimensions.ts";
 
 export const CourseListMemo = memo(CourseList);
 export const CourseItemMemo = memo(CourseItem);
@@ -18,7 +24,7 @@ type CourseListProp = {
   status: string;
   data: { courses: ClientCourseType[] };
   setCourse: React.Dispatch<React.SetStateAction<ClientCourseType>>;
-  setAddedCourseList: setLocalStorageValue<{ [key: string]: ClientCourseType }>;
+  setAddedCourseList: SetLocalStorageValue<{ [key: string]: ClientCourseType }>;
 };
 
 function CourseList({
@@ -27,8 +33,7 @@ function CourseList({
   setCourse,
   setAddedCourseList,
 }: CourseListProp) {
-  const [active, setActive] = useState("");
-  const ref = useClickOutside<HTMLUListElement>(() => setActive(""));
+  const ref = useClickOutside<HTMLUListElement>(() => setCourse(null));
 
   return (
     <>
@@ -42,7 +47,6 @@ function CourseList({
             <CourseItemMemo
               key={index}
               course={course}
-              setActive={setActive}
               setCourse={setCourse}
               setAddedCourseList={setAddedCourseList}
             />
@@ -55,16 +59,13 @@ function CourseList({
 
 type CourseItemProps<> = {
   course: ClientCourseType;
-  active?: boolean;
-  setActive: React.Dispatch<React.SetStateAction<string>>;
   setCourse: React.Dispatch<React.SetStateAction<ClientCourseType>>;
-  setAddedCourseList: setLocalStorageValue<{ [key: string]: ClientCourseType }>;
+  setAddedCourseList: SetLocalStorageValue<{ [key: string]: ClientCourseType }>;
   style?: React.CSSProperties;
 };
 
 function CourseItem({
   course,
-  setActive,
   setCourse,
   setAddedCourseList,
 }: CourseItemProps) {
@@ -72,7 +73,6 @@ function CourseItem({
     <li
       className={classes.courseItem}
       onClick={() => {
-        setActive(course._id);
         setCourse(course);
       }}
     >
@@ -115,19 +115,62 @@ function CourseItem({
 type TermRibbonProps = {
   term: string;
   course: ClientCourseType;
+  innerRef?: React.ForwardedRef<HTMLDivElement>;
 };
-function TermButton({ term, course, ...props }: TermRibbonProps) {
-  const [status, setStatus] = useState<string>("not-available");
+function TermButton({ term, course, innerRef, ...props }: TermRibbonProps) {
+  const { hovered, ref: hoverRef } = useHover();
+  const { dimensions, ref: dimensionRef } = useElementDimensions();
+  const { x, y } = dimensions ?? {};
+
+  const status = React.useMemo(() => getStatus(term, course), [term, course]);
 
   return (
     <Box
+      ref={mergeRefs(hoverRef, dimensionRef)}
       mod={{ status: status }}
       className={`${classes.termButton}`}
       {...props}
     >
       {term}
+      {x && y ? (
+        <Transition
+          mounted={hovered}
+          transition={"fade"}
+          duration={200}
+          enterDelay={200}
+          exitDelay={100}
+          timingFunction="ease"
+        >
+          {(transitionStyle) => (
+            <div
+              className={classes.tooltip}
+              style={{
+                top: `calc(${y}px + 2.25rem)`,
+                left: `calc(${x}px + 0.5rem)`,
+                zIndex: 3,
+                ...transitionStyle,
+              }}
+            >
+              <Text size={"xs"}>{getTooltipDescription(status, term)}</Text>
+            </div>
+          )}
+        </Transition>
+      ) : undefined}
     </Box>
   );
+}
+
+function getStatus(term: string, course: ClientCourseType) {
+  if (term === course.academic_period[0]) {
+    return "available";
+  }
+
+  const [seats, capacity] = course.enrolled_capacity.split("/");
+  if (seats >= capacity) {
+    return "under-waitlist";
+  }
+
+  return "not-available";
 }
 
 function getTooltipDescription(status: string, term: string) {

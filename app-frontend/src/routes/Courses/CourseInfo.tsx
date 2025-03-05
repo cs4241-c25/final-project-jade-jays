@@ -5,15 +5,17 @@ import { Minus } from "lucide-react";
 
 import {
   ClientCourseType,
-  setLocalStorageValue,
+  SetLocalStorageValue,
 } from "../../../../app-packages/types/persistent.types.ts";
 import { TermButtonMemo } from "@/routes/Courses/CourseList.tsx";
-import classes from "@/routes/Courses/courses.module.css";
+
+import panelClasses from "@/routes/panel.module.css";
+import courseClasses from "@/routes/Courses/courses.module.css";
 
 type CourseInfoProps = {
   status: string;
   course: ClientCourseType | undefined;
-  setAddedCourseList: setLocalStorageValue<{ [key: string]: ClientCourseType }>;
+  setAddedCourseList: SetLocalStorageValue<{ [key: string]: ClientCourseType }>;
 };
 export function CourseInfo({
   status,
@@ -26,7 +28,7 @@ export function CourseInfo({
       direction={"vertical"}
     >
       <Panel
-        className={classes.panel}
+        className={panelClasses.panel}
         id={"course-description"}
         defaultSize={70}
         minSize={70}
@@ -47,9 +49,9 @@ export function CourseInfo({
           </Box>
         )}
       </Panel>
-      <PanelResizeHandle className={classes.panelHandle} />
+      <PanelResizeHandle className={panelClasses.panelHandle} />
       <Panel
-        className={classes.panel}
+        className={panelClasses.panel}
         id={"courses-added"}
         defaultSize={30}
         minSize={15}
@@ -62,7 +64,7 @@ export function CourseInfo({
 }
 
 type AddedCourseListProps = {
-  setAddedCourseList: setLocalStorageValue<{ [key: string]: ClientCourseType }>;
+  setAddedCourseList: SetLocalStorageValue<{ [key: string]: ClientCourseType }>;
 };
 function AddedCourseList({ setAddedCourseList }: AddedCourseListProps) {
   const value = readLocalStorageValue<{ [key: string]: ClientCourseType }>({
@@ -88,7 +90,7 @@ function AddedCourseList({ setAddedCourseList }: AddedCourseListProps) {
 
 type AddedCourseListItemProps = {
   course: ClientCourseType;
-  setAddedCourseList: setLocalStorageValue<{ [key: string]: ClientCourseType }>;
+  setAddedCourseList: SetLocalStorageValue<{ [key: string]: ClientCourseType }>;
 };
 function AddedCourseListItem({
   course,
@@ -96,9 +98,9 @@ function AddedCourseListItem({
 }: AddedCourseListItemProps) {
   return (
     <div>
-      <li className={classes.courseItem}>
+      <li className={courseClasses.courseItem}>
         <ActionIcon
-          className={`${classes.courseItemButton}`}
+          className={`${courseClasses.courseItemButton}`}
           onClick={() => {
             const newValue = readLocalStorageValue<{
               [key: string]: ClientCourseType;
@@ -112,10 +114,10 @@ function AddedCourseListItem({
           <Minus size={"1rem"} />
         </ActionIcon>
         <Text
-          className={`${classes.courseItemSection} ${classes.courseCode}`}
+          className={`${courseClasses.courseItemSection} ${courseClasses.courseCode}`}
           size={"sm"}
         >{`${course.subject} ${course.code}`}</Text>
-        <div className={`${classes.termRibbon}`}>
+        <div className={`${courseClasses.termRibbon}`}>
           <TermButtonMemo term={"A"} course={course} />
           <TermButtonMemo term={"B"} course={course} />
           <TermButtonMemo term={"C"} course={course} />

@@ -96,6 +96,7 @@ router.get("/populate_database", async (req: Request, res: Response) => {
             instructional_format: sectionData.Instructional_Format,
             meeting_day_patterns: sectionData.Meeting_Day_Patterns,
             delivery_mode: sectionData.Delivery_Mode,
+            course: code_abbrev + code_number,
             section_code: section_code,
             section_status: sectionData.Section_Status,
             section_start_date: sectionData.Course_Section_Start_Date,
@@ -162,16 +163,6 @@ router.get("/populate_database", async (req: Request, res: Response) => {
         };
       }
     }
-
-    Object.values(courses)
-      .sort((a: CourseType, b: CourseType) => {
-        if (a.title > b.title) return 1;
-        else if (a.title < b.title) return -1;
-        return 0;
-      })
-      .forEach((course) => {
-        console.log(course.title, course.offering_periods);
-      });
 
     await Section.deleteMany({});
     console.log("[STATUS] Database successfully dumped.");

@@ -1,4 +1,4 @@
-import { AppShell, UnstyledButton, Title, Group } from "@mantine/core";
+import { AppShell, Group, Title, UnstyledButton } from "@mantine/core";
 import { Outlet, NavLink } from "react-router-dom";
 import cx from "clsx";
 
@@ -6,11 +6,7 @@ import classes from "./appLayout.module.css";
 
 export function AppLayout() {
   return (
-    <AppShell
-      withBorder={false}
-      padding={"0.5rem"}
-      header={{ height: "50", offset: true }}
-    >
+    <AppShell withBorder={false} header={{ height: "50", offset: true }}>
       <AppShell.Header className={classes.header}>
         <Group>
           <UnstyledButton
@@ -83,9 +79,7 @@ export function AppLayout() {
         </div>
       </AppShell.Header>
       <AppShell.Main className={classes.main}>
-        <div className={classes.mainSection}>
-          <Outlet />
-        </div>
+        <Outlet />
       </AppShell.Main>
     </AppShell>
   );

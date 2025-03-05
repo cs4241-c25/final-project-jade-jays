@@ -5,6 +5,7 @@ const subject = new mongoose.Schema<SectionType>({
   locations: { type: String },
   instructional_format: { type: String },
   delivery_mode: { type: String },
+  course: { type: String },
   section_code: { type: String },
   section_status: { type: String },
   section_start_date: { type: String },

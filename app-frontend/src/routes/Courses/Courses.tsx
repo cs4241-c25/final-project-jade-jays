@@ -1,20 +1,19 @@
 import { PanelGroup, Panel, PanelResizeHandle } from "react-resizable-panels";
 import { useLocalStorage } from "@mantine/hooks";
-import { useState } from "react";
 
-import { ClientSubjectType } from "../../../../app-packages/types/persistent.types.ts";
-import { useSubject } from "@/hooks/data-fetches.ts";
+import { ClientSubjectType } from "app-packages/types/persistent.types.ts";
+import { getSubjectData } from "@/hooks/data-fetches.ts";
 import { SidebarItem } from "@/routes/Courses/SidebarItem.tsx";
 import { CourseView } from "@/routes/Courses/CourseView.tsx";
 
-import classes from "@/routes/Courses/courses.module.css";
+import panelClasses from "@/routes/panel.module.css";
 
 export function Courses() {
   const [currentSubject, setCurrentSubject] = useLocalStorage({
     key: "subject",
     defaultValue: "ACC",
   });
-  const { isPending, isError, data, error } = useSubject();
+  const { isPending, isError, data, error } = getSubjectData();
 
   if (isPending) {
     return <span>Loading...</span>;
@@ -37,7 +36,7 @@ export function Courses() {
         style={{
           overflow: "auto",
         }}
-        className={classes.panel}
+        className={panelClasses.panel}
         defaultSize={15}
         minSize={12}
         order={1}
@@ -54,7 +53,7 @@ export function Courses() {
             })
           : undefined}
       </Panel>
-      <PanelResizeHandle className={classes.panelHandle} />
+      <PanelResizeHandle className={panelClasses.panelHandle} />
       <CourseView />
     </PanelGroup>
   );

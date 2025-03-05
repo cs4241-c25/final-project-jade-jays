@@ -2,6 +2,7 @@ import React, { useState, useContext, createContext } from "react";
 import { useLocalStorage } from "@mantine/hooks";
 
 import { ClientCourseType } from "../../../../app-packages/types/persistent.types.ts";
+import { getCourseData } from "@/hooks/data-fetches.ts";
 
 export function createCourseContext() {
   return createContext<ClientCourseType>();

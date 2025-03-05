@@ -1,6 +1,17 @@
 import { Types } from "mongoose";
 
-export type setLocalStorageValue<T> = (val: T | ((prevState: T) => T)) => void;
+export type SetLocalStorageValue<T> = (val: T | ((prevState: T) => T)) => void;
+
+export type RangeType = { start: number; end: number };
+
+export interface TableSectionDataType extends SectionType {
+  start: number;
+  end: number;
+}
+
+export type TablesType = {
+  [key: string]: Array<TableSectionDataType[]>;
+};
 
 export interface ClientSubjectType {
   _id: string;
@@ -31,6 +42,7 @@ export interface SectionType {
   locations: string;
   instructional_format: string;
   delivery_mode: string;
+  course: string;
   section_code: string;
   section_status: string;
   section_start_date: string;
