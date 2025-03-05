@@ -6,7 +6,7 @@ import {
   RangeType,
   TableSectionDataType,
 } from "app-packages/types/persistent.types.ts";
-import { stringToDecimal } from "app-packages/util/util.ts";
+import { stringToDecimal } from "../../../../app-packages/util/utils.ts";
 import useElementDimensions from "@/hooks/use-element-dimensions.ts";
 import classes from "./timetable.module.css";
 

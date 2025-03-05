@@ -13,29 +13,6 @@ export type TablesType = {
   [key: string]: Array<TableSectionDataType[]>;
 };
 
-export interface ClientSubjectType {
-  _id: string;
-  type: string;
-  code: string;
-  department: string;
-}
-
-export interface ClientCourseType {
-  _id: string;
-  code: string;
-  title: string;
-  description: string;
-  instructors: string;
-  waitlist_capacity: string;
-  enrolled_capacity: string;
-  credits: number;
-  subject: string;
-  academic_level: string;
-  academic_terms_pattern: string[];
-  offering_periods: string[];
-  academic_period: string;
-  course_tags: string[]; // String array
-}
 
 export interface SectionType {
   _id?: Types.ObjectId;
@@ -58,6 +35,7 @@ export interface SubjectType {
   type: string;
   code: string;
   department: string;
+  category: string;
 }
 
 export interface CourseType {
