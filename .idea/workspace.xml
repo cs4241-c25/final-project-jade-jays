@@ -6,10 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ca76c244-651c-4a03-b8ec-f5a9db95d904" name="Changes" comment="Slightly improved styling">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/src/routes/FlowChart/FlowChart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/routes/FlowChart/FlowChart.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/src/routes/FlowChart/FlowNodes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/routes/FlowChart/FlowNodes.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/src/routes/FlowChart/Legend.css" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/routes/FlowChart/Legend.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/src/routes/FlowChart/Legend.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/routes/FlowChart/Legend.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/src/hooks/data-fetches.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/hooks/data-fetches.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/src/routes/Tracking.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/routes/Tracking.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +22,9 @@
         <option value="CSS File" />
       </list>
     </option>
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="origin/SCRUM-3" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -117,6 +119,7 @@
       <workItem from="1740775934059" duration="21789000" />
       <workItem from="1741094900613" duration="7824000" />
       <workItem from="1741121660194" duration="2186000" />
+      <workItem from="1741204987082" duration="1232000" />
     </task>
     <task id="LOCAL-00001" summary="Created Tracking Page, currently in progress">
       <option name="closed" value="true" />

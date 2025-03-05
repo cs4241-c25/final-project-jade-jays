@@ -28,6 +28,13 @@ export function getCourseData(subject: string) {
   });
 }
 
+export async function getCourseDataTracking(subject_id: string) {
+  const res = await axios.get(
+      `http://localhost:8080/api/course/code:${subject_id}`,
+  );
+  return res.data;
+}
+
 export function getSectionData(data: { [key: string]: ClientCourseType }) {
   return useQueries({
     queries: Object.values(data).map((course: ClientCourseType) => {
