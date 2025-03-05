@@ -39,9 +39,24 @@ export const getAllSubjectsCategory = (xmlDoc: XMLDocument): Array<string> => {
   return result;
 }
 
-export const getSubjectsFromCategoryString = (xmlDoc: XMLDocument, category: string) => {
-  const htmlCollection = xmlDoc.querySelectorAll(`[category='${category}']`);
+export const getTagsFromAttributeValue = (xmlDoc: XMLDocument, attribute: string, attributeValue: string) => {
+  const htmlCollection = xmlDoc.querySelectorAll(`[${attribute}='${attributeValue}']`);
   const result = [];
+
+  for (let i = 0; i < htmlCollection.length; i++) {
+    result.push(htmlCollection[i]);
+  }
+
+  return result;
+}
+
+export const getTagFromAttributeValue = (xmlDoc: XMLDocument, attribute: string, attributeValue: string) => {
+  const htmlCollection = xmlDoc.querySelector(`[${attribute}='${attributeValue}']`)?.children;
+  const result = [];
+
+  if (!htmlCollection) {
+    return null;
+  }
 
   for (let i = 0; i < htmlCollection.length; i++) {
     result.push(htmlCollection[i]);

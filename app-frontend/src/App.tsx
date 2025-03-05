@@ -3,6 +3,7 @@ import { MantineProvider, createTheme } from "@mantine/core";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 
 import { CourseProvider } from "@/components/CourseProvider.tsx";
+import { StateProvider } from "@/components/StateProvider.tsx";
 import { AppLayout } from "@/components/AppLayout/AppLayout.tsx";
 import { Courses } from "@/routes/Courses/Courses.tsx";
 
@@ -49,15 +50,17 @@ export default function App() {
   return (
     <MantineProvider theme={theme}>
       <QueryClientProvider client={client}>
-        <CourseProvider>
-          <BrowserRouter>
-            <Routes>
-              <Route element={<AppLayout />}>
-                <Route path={"/"} index element={<Courses />} />
-              </Route>
-            </Routes>
-          </BrowserRouter>
-        </CourseProvider>
+        <StateProvider>
+          <CourseProvider>
+            <BrowserRouter>
+              <Routes>
+                <Route element={<AppLayout />}>
+                  <Route path={"/"} index element={<Courses />} />
+                </Route>
+              </Routes>
+            </BrowserRouter>
+          </CourseProvider>
+        </StateProvider>
       </QueryClientProvider>
     </MantineProvider>
   );

@@ -64,6 +64,10 @@ async function getCourseData(subject_id: string) {
         $name: course.title,
         $number: course.code,
         $credits: course.credits,
+        $enrolled: course.enrolled_capacity,
+        $waitlist: course.waitlist_capacity,
+        $academic_terms: course.academic_terms_pattern.join(' '),
+        $academic_period: course.academic_period,
         section: sections,
       };
     }),

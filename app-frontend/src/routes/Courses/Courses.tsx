@@ -1,7 +1,9 @@
 import { PanelGroup, Panel, PanelResizeHandle } from "react-resizable-panels";
-import { SubjectList } from "./SubjectList"
 
+import { SubjectList } from "./SubjectList"
+import { CoursesList } from "./CoursesList"
 import panelClasses from "@/routes/panel.module.css";
+import courseListClasses from "@/routes/Courses/Courses.module.css";
 
 export function Courses() {
 
@@ -15,10 +17,12 @@ export function Courses() {
       direction={"horizontal"}
     >
       <Panel
-        style={{
-          overflow: "auto",
-        }}
-        className={panelClasses.panel}
+        style={{ overflow: "auto" }}
+        className={`
+          ${panelClasses.panel} 
+          ${courseListClasses.subjectListContainer}
+        `}
+        defaultSize={15}
         minSize={12}
         order={1}
       >
@@ -26,14 +30,12 @@ export function Courses() {
       </Panel>
       <PanelResizeHandle className={panelClasses.panelHandle} />
       <Panel
-        style={{
-          overflow: "auto",
-        }}
+        style={{ overflow: "auto" }}
         className={panelClasses.panel}
         minSize={12}
         order={1}
       >
-        Main
+        <CoursesList />
       </Panel>
     </PanelGroup>
   );

@@ -1,11 +1,14 @@
-import { Text } from "@mantine/core"
+import { Text, TextProps } from "@mantine/core"
+import React from 'react'
 
-import { getSubjectsFromCategoryString} from "@/components/data-parse.util.ts";
+import { getTagsFromAttributeValue } from "@/components/data-parse.util.ts"
 import { useCourseContext } from "@/components/CourseProvider"
+import { useStateContext } from "@/components/StateProvider"
 import courseListClasses from "./Courses.module.css"
 
 export function SubjectList() {
   const { xmlDoc, category } = useCourseContext();
+  const { setStoredSubject } = useStateContext();
 
   return (
     <>
@@ -18,16 +21,18 @@ export function SubjectList() {
               size={"md"}>
               {category}
             </Text>
-            {getSubjectsFromCategoryString(xmlDoc, category)
+            {getTagsFromAttributeValue(xmlDoc, 'category', category)
               .map((subject: Element, index: number) => {
               const name = subject.getAttribute("name");
+              const abbrev = subject.getAttribute("abbrev");
               return (
-                <Text
+                <SubjectItem
                   key={`${name}${index}`}
+                  label={name}
+                  size={"sm"}
                   className={courseListClasses.subjectItem}
-                  size={"sm"}>
-                  {name}
-                </Text>
+                  onClick={() => setStoredSubject(abbrev)}>
+                </SubjectItem>
               );
             })}
           </div>
@@ -35,4 +40,20 @@ export function SubjectList() {
       })}
     </>
   );
+}
+
+export interface SubjectItemProps extends TextProps {
+  className?: string;
+  label: string | null | undefined;
+  onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+}
+function SubjectItem({ label, className, onClick, ...props }: SubjectItemProps) {
+  return (
+    <Text
+      className={`${className}`}
+      onClick={onClick}
+      {...props}>
+      {label}
+    </Text>
+  )
 }
