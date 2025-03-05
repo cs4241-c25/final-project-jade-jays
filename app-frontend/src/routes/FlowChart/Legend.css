@@ -19,12 +19,14 @@
   align-items: center;
 }
 
-.prereq {
-  color: white;
+.prereq:hover {
+  cursor: pointer;
 }
 
-.legend input:checked ~ .prereq:after {
-  background-color: #2196f3;
+.prereq {
+  accent-color: var(--primary);
+  width: 20px;
+  height: 20px;
 }
 
 .class-fill {

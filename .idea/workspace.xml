@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca76c244-651c-4a03-b8ec-f5a9db95d904" name="Changes" comment="Slightly improved styling">
+    <list default="true" id="ca76c244-651c-4a03-b8ec-f5a9db95d904" name="Changes" comment="Fixed discrepancies between merged branches">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/src/hooks/data-fetches.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/hooks/data-fetches.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/src/routes/Tracking.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/routes/Tracking.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/src/routes/FlowChart/FlowChart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/routes/FlowChart/FlowChart.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/src/routes/FlowChart/Legend.css" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/routes/FlowChart/Legend.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/src/routes/FlowChart/Legend.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/routes/FlowChart/Legend.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -119,7 +122,7 @@
       <workItem from="1740775934059" duration="21789000" />
       <workItem from="1741094900613" duration="7824000" />
       <workItem from="1741121660194" duration="2186000" />
-      <workItem from="1741204987082" duration="1232000" />
+      <workItem from="1741204987082" duration="7093000" />
     </task>
     <task id="LOCAL-00001" summary="Created Tracking Page, currently in progress">
       <option name="closed" value="true" />
@@ -185,7 +188,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741105963363</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Fixed discrepancies between merged branches">
+      <option name="closed" value="true" />
+      <created>1741206440542</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1741206440542</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -200,6 +211,7 @@
     <MESSAGE value="Added ability to see all prereqs for selected courses" />
     <MESSAGE value="Added ability to animate edges connected to clicked node for easier path identification" />
     <MESSAGE value="Slightly improved styling" />
-    <option name="LAST_COMMIT_MESSAGE" value="Slightly improved styling" />
+    <MESSAGE value="Fixed discrepancies between merged branches" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed discrepancies between merged branches" />
   </component>
 </project>

@@ -13,14 +13,14 @@ export const Legend: React.FC = () => {
         <div className="class-fill uncompleted-line"></div>
         <div className={"shift-left"} aria-label={"Uncompleted Course"}>Uncompleted Course</div>
       </div>
-      <div className="legend-row">
-        <div className="class-fill confirmed-line"></div>
-        <p className={"shift-left"} aria-label={"Confirmed Course"}>Confirmed Course</p>
-      </div>
-      <div className="legend-row">
-        <div className="class-fill unconfirmed-line"></div>
-        <p className={"shift-left"} aria-label={"Unconfirmed Course"}>Unconfirmed Course</p>
-      </div>
+      {/*<div className="legend-row">*/}
+      {/*  <div className="class-fill confirmed-line"></div>*/}
+      {/*  <p className={"shift-left"} aria-label={"Confirmed Course"}>Confirmed Course</p>*/}
+      {/*</div>*/}
+      {/*<div className="legend-row">*/}
+      {/*  <div className="class-fill unconfirmed-line"></div>*/}
+      {/*  <p className={"shift-left"} aria-label={"Unconfirmed Course"}>Unconfirmed Course</p>*/}
+      {/*</div>*/}
       <div className="legend-row">
         <svg
           width="50"

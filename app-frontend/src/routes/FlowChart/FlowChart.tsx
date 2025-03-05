@@ -233,41 +233,41 @@ export const FlowChart = () => {
   }, []);
 
   return (
-    <div style={{ width: "100vw - 0px", height: "calc(100vh - 90px)" }}>
-      <ReactFlow
-        edges={edges}
-        nodes={nodes}
-        onEdgesChange={onEdgesChange}
-        onNodesChange={onNodesChange}
-        nodeTypes={nodeTypes}
-        fitView={false}
-        proOptions={{ hideAttribution: true }}
-        onNodeClick={onNodeClick}
-      >
-        <Panel position="top-left">
-          <Legend />
-        </Panel>
-        <Panel position="top-right">
-          <div className={"legend"}>
-            <label htmlFor="fullDepth">
-              <input
-                id="fullDepth"
-                type="checkbox"
-                checked={fullReq}
-                onChange={(event) => {
-                  setFullReq(event.target.checked);
-                  onPageLoad(event.target.checked);
-                }}
-                className="prereq"
-                aria-label={"Full Prerequisites"}
-              />
-              Full Prereqs
-            </label>
-          </div>
-        </Panel>
-        <MiniMap nodeStrokeWidth={30} />
-        <Controls />
-      </ReactFlow>
-    </div>
+      <div style={{width: "100vw - 0px", height: "calc(100vh - 90px)"}}>
+        <ReactFlow
+            edges={edges}
+            nodes={nodes}
+            onEdgesChange={onEdgesChange}
+            onNodesChange={onNodesChange}
+            nodeTypes={nodeTypes}
+            fitView={false}
+            proOptions={{hideAttribution: true}}
+            onNodeClick={onNodeClick}
+        >
+          <Panel position="top-left">
+            <Legend/>
+          </Panel>
+          <Panel position="top-right">
+            <div className={"legend"}>
+              <label htmlFor="fullDepth">
+                <input
+                    id="fullDepth"
+                    type="checkbox"
+                    checked={fullReq}
+                    onChange={(event) => {
+                      setFullReq(event.target.checked);
+                      onPageLoad(event.target.checked);
+                    }}
+                    className="prereq"
+                    aria-label={"Full Prerequisites"}
+                />
+                Full Prereqs
+              </label>
+            </div>
+          </Panel>
+          <MiniMap nodeStrokeWidth={30}/>
+          <Controls/>
+        </ReactFlow>
+      </div>
   );
 };

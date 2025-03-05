@@ -25,7 +25,8 @@
     "react-window": "^1.8.11",
     "reactflow": "^11.11.4",
     "@xyflow/react": "^12.4.4",
-    "@dagrejs/dagre": "^1.1.4"
+    "@dagrejs/dagre": "^1.1.4",
+    "@material-tailwind/react": "^2.1.10"
   },
   "devDependencies": {
     "eslint-config-prettier": "^10.0.2",
