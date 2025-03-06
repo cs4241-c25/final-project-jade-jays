@@ -52,17 +52,17 @@ const Prereqs = [
         courseID: "DS 502",
         reqs: [
             [
-                { id: "DS 517", req: "recomended" },
-                { id: "MA 517", req: "recomended" },
+                { id: "DS 517", req: "prereq" },
+                { id: "MA 517", req: "prereq" },
             ],
             [
-                { id: "MA 2611", req: "recomended" },
+                { id: "MA 2611", req: "prereq" },
             ],
             [
-                { id: "MA 2612", req: "recomended" },
+                { id: "MA 2612", req: "prereq" },
             ],
             [
-                { id: "MA 2071", req: "recomended" },
+                { id: "MA 2071", req: "prereq" },
             ],
         ],
     },
