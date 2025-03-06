@@ -16,6 +16,7 @@ import findreqDEV from "@/Prereqs/PrereqsDEV";
 import findreqBB from "@/Prereqs/PrereqsBB";
 import findreqPH from "@/Prereqs/PrereqsPH";
 import findreqCH from "@/Prereqs/PrereqsCH";
+import findreqDS from "@/Prereqs/PrereqsDS";
 
 export default function getPrereqs(code_abbrev: string, code_number: string) {
     const courseID = code_abbrev + " " + code_number;
@@ -56,6 +57,8 @@ export default function getPrereqs(code_abbrev: string, code_number: string) {
             return findreqPH(courseID);
         case "CH":
             return findreqCH(courseID);
+        case "DS":
+            return findreqDS(courseID);
     }
     return [];
 }
