@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import classes from "@/styles/tracking.module.css";
 import { getCourseData } from "@/hooks/data-fetches.ts";
 import { BSCS } from "../components/CSDegree.ts";
+import {Requirement} from "@/components/DegreeLayout.ts";
 
 export function Tracking() {
   const [panelRows, setPanelRows] = useState<JSX.Element[]>([]);
@@ -80,7 +81,7 @@ export function Tracking() {
         </Panel>,
       );
 
-      if (currentRow.length === 3 || i === categories.length - 1) {
+      if (currentRow.length === 4 || i === categories.length - 1) {
         rows.push(
           <PanelGroup key={i} direction="horizontal">
             {currentRow}
@@ -94,18 +95,67 @@ export function Tracking() {
   }, [courseDataMap, selectedCourses]); // Re-render when course data or selections change
 
   useEffect(() => {
-    for (let requirement of BSCS.Requirements) {
-      const found = requirement.courseIDs.some((r) =>
-        selectedCourses.includes(r),
-      );
-      if (found) {
-        requirement.met = true;
-      } else {
-        requirement.met = false;
-      }
+    for (const requirement of BSCS.Requirements) {
+      handleRequirement(requirement)
     }
     console.log(selectedCourses);
+    console.log(selectedCourses.filter(_ => true).length);
   }, [selectedCourses]);
+
+  function handleRequirement(requirement: Requirement) {
+    if (requirement.type === "choose1") {
+      const found = requirement.courseIDs.some((r) =>
+          selectedCourses.includes(r),
+      );
+      requirement.met = found;
+    } else if (requirement.type === "studyArea") {
+      let coursesTaken = 0;
+      for (const level of requirement.levels) {
+        for (const course of selectedCourses) {
+          if (course !== undefined) {
+            if (course.startsWith(level)) {
+              coursesTaken++;
+            }
+          }
+        }
+        requirement.met = coursesTaken >= requirement.requiredClasses;
+        if (requirement.met) {break}
+        if (!requirement.overlap) {
+          coursesTaken = 0;
+        }
+      }
+    } else if (requirement.type === "parentRequirement") {
+      for (const child of requirement.childRequirements) {
+        handleRequirement(child)
+        if (child.met) {
+          requirement.met = true
+          break
+        }
+        requirement.met = false;
+      }
+    } else if (requirement.type === "uniqueClasses") {
+      const courseTitles: string[] = selectedCourses
+          .filter((course) => course !== undefined)
+          .map((course) => {
+            const subject = course.substring(0, 2);
+            const code = course.substring(2);
+            const courseData = courseDataMap[subject]?.find((c) => c.code === code);
+            return courseData?.title || "";
+          })
+          .filter((title) => title !== "");
+
+      const uniqueTitles = new Set(courseTitles);
+      requirement.met = uniqueTitles.size === courseTitles.length;
+    } else if (requirement.type === "maxCourses") {
+      const count = selectedCourses
+          .filter((course) => course !== undefined)
+          .filter((course) => course.startsWith(requirement.subject))
+          .filter((course) => course.substring(2).startsWith(requirement.levelPrefix))
+          .length;
+
+      requirement.met = count <= requirement.maxAllowed;
+    }
+  }
 
   return (
     <>
