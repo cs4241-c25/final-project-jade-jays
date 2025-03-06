@@ -18,5 +18,9 @@ export const createServer = (): express.Express => {
     .use("/src/admin/", adminRoutes)
     .use("/src/data/", dataRoutes);
 
+  app.get('health-check', (req, res) => {
+    res.status(200).send('connected');
+  })
+
   return app;
 };

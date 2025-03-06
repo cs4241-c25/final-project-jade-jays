@@ -47,19 +47,19 @@ var __async = (__this, __arguments, generator) => {
   });
 };
 
-// src/index.ts
+// api/index.ts
 var index_exports = {};
 __export(index_exports, {
-  default: () => index_default
+  app: () => app
 });
 module.exports = __toCommonJS(index_exports);
 
-// src/app.ts
+// api/app.ts
 var import_express3 = __toESM(require("express"));
 var import_morgan = __toESM(require("morgan"));
 var import_cors = __toESM(require("cors"));
 
-// src/util/DatabaseUtil.ts
+// api/util/DatabaseUtil.ts
 var import_mongoose = __toESM(require("mongoose"));
 function ConnectDB() {
   if (!process.env.MONGO_LOCAL) return;
@@ -71,11 +71,11 @@ function ConnectDB() {
   });
 }
 
-// src/routes/adminRouter.ts
+// api/routes/adminRouter.ts
 var import_express = require("express");
 var import_axios = __toESM(require("axios"));
 
-// src/persistent/CoursePersistence.ts
+// api/persistent/CoursePersistence.ts
 var import_mongoose2 = __toESM(require("mongoose"));
 var course = new import_mongoose2.default.Schema({
   code: { type: String },
@@ -96,7 +96,7 @@ var course = new import_mongoose2.default.Schema({
 var Course = import_mongoose2.default.model("Course", course, "courses");
 var CoursePersistence_default = Course;
 
-// src/persistent/SectionPersistence.ts
+// api/persistent/SectionPersistence.ts
 var import_mongoose3 = __toESM(require("mongoose"));
 var subject = new import_mongoose3.default.Schema({
   locations: { type: String },
@@ -115,7 +115,7 @@ var subject = new import_mongoose3.default.Schema({
 var Section = import_mongoose3.default.model("Section", subject, "sections");
 var SectionPersistence_default = Section;
 
-// src/persistent/SubjectPersistence.ts
+// api/persistent/SubjectPersistence.ts
 var import_mongoose4 = __toESM(require("mongoose"));
 var subject2 = new import_mongoose4.default.Schema(
   {
@@ -129,7 +129,7 @@ var subject2 = new import_mongoose4.default.Schema(
 var Subject = import_mongoose4.default.model("Subject", subject2, "subjects");
 var SubjectPersistence_default = Subject;
 
-// src/routes/adminRouter.ts
+// api/routes/adminRouter.ts
 var router = (0, import_express.Router)();
 router.get("/populate_database", (req, res) => __async(void 0, null, function* () {
   try {
@@ -310,7 +310,7 @@ router.get("/dump/:type", (req, res) => __async(void 0, null, function* () {
 }));
 var adminRouter_default = router;
 
-// src/routes/dataRouter.ts
+// api/routes/dataRouter.ts
 var import_express2 = require("express");
 var import_fast_xml_parser = require("fast-xml-parser");
 var router2 = (0, import_express2.Router)();
@@ -397,27 +397,27 @@ function getSectionData(course_id) {
 }
 var dataRouter_default = router2;
 
-// src/app.ts
-function initApp() {
+// api/app.ts
+var createServer = () => {
   const app2 = (0, import_express3.default)();
-  app2.use((0, import_morgan.default)("dev"));
-  app2.use(import_express3.default.json());
-  app2.use(import_express3.default.urlencoded({ extended: true }));
-  app2.use(
-    // Enabling CORs for all localhost origins
-    (0, import_cors.default)({
-      origin: /^https?:\/\/(?:(?:[^:]+\.)?localhost|127\.0\.0\.1|\[::1\])(?::\d+)?$/
-    })
-  );
   ConnectDB();
-  app2.use("/src/admin/", adminRouter_default);
-  app2.use("/src/data/", dataRouter_default);
+  app2.disable("x-powered-by").use((0, import_morgan.default)("dev")).use(import_express3.default.json()).use(import_express3.default.urlencoded({ extended: true })).use((0, import_cors.default)()).use("/src/admin/", adminRouter_default).use("/src/data/", dataRouter_default);
+  app2.get("health-check", (req, res) => {
+    res.status(200).send("connected");
+  });
   return app2;
-}
+};
 
-// src/index.ts
-var app = initApp();
-app.listen(process.env.PORT, () => {
-  console.log(`API server listening on port ${process.env.PORT}`);
+// api/index.ts
+var app = createServer();
+var PORT = process.env.PORT || 3e3;
+app.listen(PORT, () => {
+  console.log(`API server listening on port ${PORT}`);
 });
-var index_default = app;
+app.get("/", (req, res) => {
+  res.status(200).send("express");
+});
+// Annotate the CommonJS export names for ESM import in node:
+0 && (module.exports = {
+  app
+});
