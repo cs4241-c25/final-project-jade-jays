@@ -30,3 +30,4 @@ tsconfig.tsbuildinfo
 
 # env files
 **/.env*
+.vercel

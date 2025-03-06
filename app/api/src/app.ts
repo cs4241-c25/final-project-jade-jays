@@ -6,23 +6,17 @@ import { ConnectDB } from "./util/DatabaseUtil";
 import adminRoutes from "./routes/adminRouter";
 import dataRoutes from "./routes/dataRouter";
 
-export function initApp(): express.Express {
+export const createServer = (): express.Express => {
   const app = express();
-  app.use(logger("dev"));
-  app.use(express.json());
-  app.use(express.urlencoded({ extended: true }));
-  app.use(
-    // Enabling CORs for all localhost origins
-    cors({
-      origin:
-        /^https?:\/\/(?:(?:[^:]+\.)?localhost|127\.0\.0\.1|\[::1\])(?::\d+)?$/,
-    }),
-  );
-
   ConnectDB();
-
-  app.use("/api/admin/", adminRoutes);
-  app.use("/api/data/", dataRoutes);
+  app
+    .disable("x-powered-by")
+    .use(logger("dev"))
+    .use(express.json())
+    .use(express.urlencoded({ extended: true }))
+    .use(cors())
+    .use("/src/admin/", adminRoutes)
+    .use("/src/data/", dataRoutes);
 
   return app;
-}
+};

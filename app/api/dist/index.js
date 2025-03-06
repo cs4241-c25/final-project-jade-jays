@@ -5,6 +5,10 @@ var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
 var __copyProps = (to, from, except, desc) => {
   if (from && typeof from === "object" || typeof from === "function") {
     for (let key of __getOwnPropNames(from))
@@ -21,6 +25,7 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
   mod
 ));
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 var __async = (__this, __arguments, generator) => {
   return new Promise((resolve, reject) => {
     var fulfilled = (value) => {
@@ -41,6 +46,13 @@ var __async = (__this, __arguments, generator) => {
     step((generator = generator.apply(__this, __arguments)).next());
   });
 };
+
+// src/index.ts
+var index_exports = {};
+__export(index_exports, {
+  default: () => index_default
+});
+module.exports = __toCommonJS(index_exports);
 
 // src/app.ts
 var import_express3 = __toESM(require("express"));
@@ -387,30 +399,25 @@ var dataRouter_default = router2;
 
 // src/app.ts
 function initApp() {
-  const app = (0, import_express3.default)();
-  app.use((0, import_morgan.default)("dev"));
-  app.use(import_express3.default.json());
-  app.use(import_express3.default.urlencoded({ extended: true }));
-  app.use(
+  const app2 = (0, import_express3.default)();
+  app2.use((0, import_morgan.default)("dev"));
+  app2.use(import_express3.default.json());
+  app2.use(import_express3.default.urlencoded({ extended: true }));
+  app2.use(
     // Enabling CORs for all localhost origins
     (0, import_cors.default)({
       origin: /^https?:\/\/(?:(?:[^:]+\.)?localhost|127\.0\.0\.1|\[::1\])(?::\d+)?$/
     })
   );
   ConnectDB();
-  app.use("/api/admin/", adminRouter_default);
-  app.use("/api/data/", dataRouter_default);
-  return app;
+  app2.use("/src/admin/", adminRouter_default);
+  app2.use("/src/data/", dataRouter_default);
+  return app2;
 }
 
 // src/index.ts
-function start() {
-  if (!process.env.PORT || !process.env.DATABASE_HOST || !process.env.DATABASE_USER || !process.env.DATABASE_PASS) {
-    console.error("Please set all required environment variables.");
-  }
-  const app = initApp();
-  app.listen(process.env.PORT, () => {
-    console.log(`API server listening on port ${process.env.PORT}`);
-  });
-}
-start();
+var app = initApp();
+app.listen(process.env.PORT, () => {
+  console.log(`API server listening on port ${process.env.PORT}`);
+});
+var index_default = app;
