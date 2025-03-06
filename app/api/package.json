@@ -4,14 +4,14 @@
   "main": "index.ts",
   "type": "module",
   "scripts": {
-    "start": "node api/index.ts",
+    "start": "node src/index.ts",
     "dev": "tsup --watch --onSuccess \"node dist/index.js\"",
     "build": "tsup",
     "check-types": "tsc --noEmit",
-    "lint": "eslint api/"
+    "lint": "eslint src/"
   },
   "dependencies": {
-    "@repo/app-commons": "workspace:1.0.0",
+    "@repo/app-commons": "^1.0.0",
     "@dotenvx/dotenvx": "^1.38.3",
     "@types/cors": "^2.8.17",
     "axios": "^1.8.1",
@@ -24,8 +24,8 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
+    "@repo/typescript-config": "^1.0.0",
+    "@repo/eslint-config": "^1.0.0",
     "@types/express": "^5.0.0",
     "@types/morgan": "^1.9.9",
     "@types/node": "^22.13.5",

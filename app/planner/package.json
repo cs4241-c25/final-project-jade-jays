@@ -10,7 +10,7 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@repo/app-commons": "workspace:1.0.0",
+    "@repo/app-commons": "^1.0.0",
     "@mantine/core": "^7.17.0",
     "@mantine/hooks": "^7.17.0",
     "@tanstack/react-query": "^5.66.9",
@@ -25,8 +25,8 @@
     "react-window": "^1.8.11"
   },
   "devDependencies": {
-    "@repo/typescript-config": "workspace:*",
-    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "^1.0.0",
+    "@repo/eslint-config": "^1.0.0",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "@types/react-window": "^1.8.8",

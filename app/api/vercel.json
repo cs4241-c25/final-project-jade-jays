@@ -1,11 +1,10 @@
 {
   "version": 2,
-  "rewrites": [
+  "builds": [{ "src": "dist/index.js", "use": "@vercel/node" }],
+  "routes": [
     {
-      "source": "/(.*)",
-      "destination": "/api"
+      "src": "/(.*)",
+      "dest": "dist/index.js"
     }
-  ],
-  "outputDirectory": "dist",
-  "installCommand": "pnpm install"
+  ]
 }

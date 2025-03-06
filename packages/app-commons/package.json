@@ -14,8 +14,8 @@
     "mongoose": "^8.11.0"
   },
   "devDependencies": {
-    "@repo/typescript-config": "workspace:1.0.0",
-    "@repo/eslint-config": "workspace:1.0.0",
+    "@repo/typescript-config": "workspace:*",
+    "@repo/eslint-config": "workspace:*",
     "eslint": "^9.21.0",
     "typescript": "^5.8.2"
   }

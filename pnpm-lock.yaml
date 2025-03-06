@@ -18,7 +18,7 @@ importers:
         specifier: ^1.38.3
         version: 1.38.3
       '@repo/app-commons':
-        specifier: workspace:1.0.0
+        specifier: workspace:*
         version: link:../../packages/app-commons
       '@types/cors':
         specifier: ^2.8.17
@@ -162,10 +162,10 @@ importers:
         version: 8.11.0
     devDependencies:
       '@repo/eslint-config':
-        specifier: workspace:1.0.0
+        specifier: workspace:*
         version: link:../eslint-config
       '@repo/typescript-config':
-        specifier: workspace:1.0.0
+        specifier: workspace:*
         version: link:../typescript-config
       eslint:
         specifier: ^9.21.0
