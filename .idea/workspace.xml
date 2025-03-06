@@ -4,21 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca76c244-651c-4a03-b8ec-f5a9db95d904" name="Changes" comment="Added styling to prereq checkbox">
-      <change afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsAB.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsAR.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsCN.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsEN.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsGN.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsHI.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsISE.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsMU.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsPY.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsSP.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsWR.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/getPrereqs.ts" afterDir="false" />
+    <list default="true" id="ca76c244-651c-4a03-b8ec-f5a9db95d904" name="Changes" comment="Added humanity prereqs">
+      <change afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsDEV.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsECON.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-backend/src/routes/adminRouter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/routes/adminRouter.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-backend/src/Prereqs/getPrereqs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/getPrereqs.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +119,7 @@
       <workItem from="1740775934059" duration="21789000" />
       <workItem from="1741094900613" duration="7824000" />
       <workItem from="1741121660194" duration="2186000" />
-      <workItem from="1741204987082" duration="10917000" />
+      <workItem from="1741204987082" duration="11205000" />
     </task>
     <task id="LOCAL-00001" summary="Created Tracking Page, currently in progress">
       <option name="closed" value="true" />
@@ -211,7 +201,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741216483666</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Added humanity prereqs">
+      <option name="closed" value="true" />
+      <created>1741220310590</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1741220310590</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,6 +226,7 @@
     <MESSAGE value="Slightly improved styling" />
     <MESSAGE value="Fixed discrepancies between merged branches" />
     <MESSAGE value="Added styling to prereq checkbox" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added styling to prereq checkbox" />
+    <MESSAGE value="Added humanity prereqs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added humanity prereqs" />
   </component>
 </project>
