@@ -6,10 +6,14 @@ import { classes } from "@/components/FlowChart/FlowChart.types.ts";
 const r = document.querySelector(":root");
 const rs = getComputedStyle(r);
 
-const width = rs.getPropertyValue("--node-width").replace("px", "");
+const width = Number(rs.getPropertyValue("--node-width").replace("px", ""));
 
 function getHandles(count: number): any {
-  const spacing: number = 40;
+  let spacing: number = 40;
+  const padding: number = 40;
+  if ((count - 1) * spacing >= width - padding) {
+    spacing *= (width - padding) / ((count - 1) * spacing);
+  }
   const startIndex: number =
     width / 2 +
     (1 - (count % 2)) * (spacing / 2) -

@@ -18,7 +18,7 @@ function basicEdge(
     color = rs.getPropertyValue("--prereq-color");
   } else if (req === "concurrent") {
     color = rs.getPropertyValue("--concurrent-color");
-  } else if (req === "recomended") {
+  } else if (req === "recommended") {
     color = rs.getPropertyValue("--recomend-color");
   }
 

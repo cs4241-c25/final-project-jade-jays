@@ -12,7 +12,7 @@ const Prereqs = [
         courseID: "ECON 210X",
         reqs: [
             [
-                { id: "ECON 1120", req: "recomended" },
+                { id: "ECON 1120", req: "recommended" },
             ],
         ],
     },

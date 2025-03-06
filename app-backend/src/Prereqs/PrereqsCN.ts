@@ -12,7 +12,7 @@ const Prereqs = [
         courseID: "CN 1542",
         reqs: [
             [
-                { id: "CN 1541", req: "recomended" },
+                { id: "CN 1541", req: "recommended" },
             ],
         ],
     },
@@ -20,7 +20,7 @@ const Prereqs = [
         courseID: "CN 1543",
         reqs: [
             [
-                { id: "CN 1542", req: "recomended" },
+                { id: "CN 1542", req: "recommended" },
             ],
         ],
     },
@@ -28,7 +28,7 @@ const Prereqs = [
         courseID: "CN 2541",
         reqs: [
             [
-                { id: "CN 1543", req: "recomended" },
+                { id: "CN 1543", req: "recommended" },
             ],
         ],
     },
@@ -36,7 +36,7 @@ const Prereqs = [
         courseID: "CN 2542",
         reqs: [
             [
-                { id: "CN 2541", req: "recomended" },
+                { id: "CN 2541", req: "recommended" },
             ],
         ],
     },
@@ -44,7 +44,7 @@ const Prereqs = [
         courseID: "CN 2543",
         reqs: [
             [
-                { id: "CN 2542", req: "recomended" },
+                { id: "CN 2542", req: "recommended" },
             ],
         ],
     },
@@ -52,7 +52,7 @@ const Prereqs = [
         courseID: "CN 2544",
         reqs: [
             [
-                { id: "CN 2543", req: "recomended" },
+                { id: "CN 2543", req: "recommended" },
             ],
         ],
     },
@@ -60,7 +60,7 @@ const Prereqs = [
         courseID: "CN 3541",
         reqs: [
             [
-                { id: "CN 2544", req: "recomended" },
+                { id: "CN 2544", req: "recommended" },
             ],
         ],
     },
@@ -68,7 +68,7 @@ const Prereqs = [
         courseID: "CN 3542",
         reqs: [
             [
-                { id: "CN 3541", req: "recomended" },
+                { id: "CN 3541", req: "recommended" },
             ],
         ],
     },
@@ -76,7 +76,7 @@ const Prereqs = [
         courseID: "CN 3543",
         reqs: [
             [
-                { id: "CN 3542", req: "recomended" },
+                { id: "CN 3542", req: "recommended" },
             ],
         ],
     },
@@ -84,7 +84,7 @@ const Prereqs = [
         courseID: "CN 3561",
         reqs: [
             [
-                { id: "CN 3543", req: "recomended" },
+                { id: "CN 3543", req: "recommended" },
             ],
         ],
     },
@@ -92,7 +92,7 @@ const Prereqs = [
         courseID: "CN 356X",
         reqs: [
             [
-                { id: "CN 355X", req: "recomended" },
+                { id: "CN 355X", req: "recommended" },
             ],
         ],
     },
@@ -100,7 +100,7 @@ const Prereqs = [
         courseID: "CN 3571",
         reqs: [
             [
-                { id: "CN 3543", req: "recomended" },
+                { id: "CN 3543", req: "recommended" },
             ],
         ],
     },

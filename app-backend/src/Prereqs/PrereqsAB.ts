@@ -12,7 +12,7 @@ const Prereqs = [
         courseID: "AB 1532",
         reqs: [
             [
-                { id: "AB 1531", req: "recomended" },
+                { id: "AB 1531", req: "recommended" },
             ],
         ],
     },
@@ -20,10 +20,10 @@ const Prereqs = [
         courseID: "AB 1533",
         reqs: [
             [
-                { id: "AB 1531", req: "recomended" },
+                { id: "AB 1531", req: "recommended" },
             ],
             [
-                { id: "AB 1532", req: "recomended" },
+                { id: "AB 1532", req: "recommended" },
             ],
         ],
     },
@@ -31,7 +31,7 @@ const Prereqs = [
         courseID: "AB 210X",
         reqs: [
             [
-                { id: "AB 1533", req: "recomended" },
+                { id: "AB 1533", req: "recommended" },
             ],
         ],
     },
@@ -39,7 +39,7 @@ const Prereqs = [
         courseID: "AB 220X",
         reqs: [
             [
-                { id: "AB 210X", req: "recomended" },
+                { id: "AB 210X", req: "recommended" },
             ],
         ],
     },
@@ -47,7 +47,7 @@ const Prereqs = [
         courseID: "AB 230X",
         reqs: [
             [
-                { id: "AB 220X", req: "recomended" },
+                { id: "AB 220X", req: "recommended" },
             ],
         ],
     },
@@ -55,13 +55,13 @@ const Prereqs = [
         courseID: "AB 2531",
         reqs: [
             [
-                { id: "AB 1531", req: "recomended" },
+                { id: "AB 1531", req: "recommended" },
             ],
             [
-                { id: "AB 1532", req: "recomended" },
+                { id: "AB 1532", req: "recommended" },
             ],
             [
-                { id: "AB 1533", req: "recomended" },
+                { id: "AB 1533", req: "recommended" },
             ],
         ],
     },
@@ -69,16 +69,16 @@ const Prereqs = [
         courseID: "AB 2532",
         reqs: [
             [
-                { id: "AB 1531", req: "recomended" },
+                { id: "AB 1531", req: "recommended" },
             ],
             [
-                { id: "AB 1532", req: "recomended" },
+                { id: "AB 1532", req: "recommended" },
             ],
             [
-                { id: "AB 1533", req: "recomended" },
+                { id: "AB 1533", req: "recommended" },
             ],
             [
-                { id: "AB 2531", req: "recomended" },
+                { id: "AB 2531", req: "recommended" },
             ],
         ],
     },
@@ -86,19 +86,19 @@ const Prereqs = [
         courseID: "AB 2533",
         reqs: [
             [
-                { id: "AB 1531", req: "recomended" },
+                { id: "AB 1531", req: "recommended" },
             ],
             [
-                { id: "AB 1532", req: "recomended" },
+                { id: "AB 1532", req: "recommended" },
             ],
             [
-                { id: "AB 1533", req: "recomended" },
+                { id: "AB 1533", req: "recommended" },
             ],
             [
-                { id: "AB 2531", req: "recomended" },
+                { id: "AB 2531", req: "recommended" },
             ],
             [
-                { id: "AB 2532", req: "recomended" },
+                { id: "AB 2532", req: "recommended" },
             ],
         ],
     },

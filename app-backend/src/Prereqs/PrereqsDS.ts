@@ -12,13 +12,13 @@ const Prereqs = [
         courseID: "DS 2010",
         reqs: [
             [
-                { id: "DS 1010", req: "recomended" },
+                { id: "DS 1010", req: "recommended" },
             ],
             [
-                { id: "MA 2611", req: "recomended" },
+                { id: "MA 2611", req: "recommended" },
             ],
             [
-                { id: "MA 2612", req: "recomended" },
+                { id: "MA 2612", req: "recommended" },
             ],
         ],
     },
@@ -26,25 +26,25 @@ const Prereqs = [
         courseID: "DS 3010",
         reqs: [
             [
-                { id: "DS 1010", req: "recomended" },
+                { id: "DS 1010", req: "recommended" },
             ],
             [
-                { id: "DS 2010", req: "recomended" },
+                { id: "DS 2010", req: "recommended" },
             ],
             [
-                { id: "MA 2611", req: "recomended" },
+                { id: "MA 2611", req: "recommended" },
             ],
             [
-                { id: "MA 2612", req: "recomended" },
+                { id: "MA 2612", req: "recommended" },
             ],
             [
-                { id: "CS 2102", req: "recomended" },
-                { id: "CS 2103", req: "recomended" },
-                { id: "CS 2119", req: "recomended" },
+                { id: "CS 2102", req: "recommended" },
+                { id: "CS 2103", req: "recommended" },
+                { id: "CS 2119", req: "recommended" },
             ],
             [
-                { id: "CS 3431", req: "recomended" },
-                { id: "MIS 3720", req: "recomended" },
+                { id: "CS 3431", req: "recommended" },
+                { id: "MIS 3720", req: "recommended" },
             ],
         ],
     },

@@ -12,7 +12,7 @@ const Prereqs = [
         courseID: "AR 205X",
         reqs: [
             [
-                { id: "AR 1101", req: "recomended" },
+                { id: "AR 1101", req: "recommended" },
             ],
         ],
     },
@@ -20,7 +20,7 @@ const Prereqs = [
         courseID: "AR 220X",
         reqs: [
             [
-                { id: "AR 2202", req: "recomended" },
+                { id: "AR 2202", req: "recommended" },
             ],
         ],
     },
@@ -28,12 +28,12 @@ const Prereqs = [
         courseID: "AR 405X",
         reqs: [
             [
-                { id: "IMGD 2101", req: "recomended" },
-                { id: "AR 2101", req: "recomended" },
+                { id: "IMGD 2101", req: "recommended" },
+                { id: "AR 2101", req: "recommended" },
             ],
             [
-                { id: "IMGD 3201", req: "recomended" },
-                { id: "AR 3201", req: "recomended" },
+                { id: "IMGD 3201", req: "recommended" },
+                { id: "AR 3201", req: "recommended" },
             ],
         ],
     },

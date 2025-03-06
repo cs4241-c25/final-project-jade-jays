@@ -12,7 +12,7 @@ const Prereqs = [
         courseID: "HI 3317",
         reqs: [
             [
-                { id: "HI 2400", req: "recomended" },
+                { id: "HI 2400", req: "recommended" },
             ],
         ],
     },

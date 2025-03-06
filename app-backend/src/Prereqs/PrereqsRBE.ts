@@ -12,11 +12,11 @@ const Prereqs = [
         courseID: "RBE 1001",
         reqs: [
             [
-                { id: "CS 1004", req: "recomended" },
+                { id: "CS 1004", req: "recommended" },
             ],
             [
-                { id: "PH 1120", req: "recomended" },
-                { id: "PH 1121", req: "recomended" },
+                { id: "PH 1120", req: "recommended" },
+                { id: "PH 1121", req: "recommended" },
             ],
         ],
     },
@@ -24,13 +24,13 @@ const Prereqs = [
         courseID: "RBE 2001",
         reqs: [
             [
-                { id: "ECE 2049", req: "recomended" },
+                { id: "ECE 2049", req: "recommended" },
             ],
             [
-                { id: "ES 2501", req: "recomended" },
+                { id: "ES 2501", req: "recommended" },
             ],
             [
-                { id: "ES 1310", req: "recomended" },
+                { id: "ES 1310", req: "recommended" },
             ],
         ],
     },
@@ -38,7 +38,7 @@ const Prereqs = [
         courseID: "RBE 2002",
         reqs: [
             [
-                { id: "ECE 2049", req: "recomended" },
+                { id: "ECE 2049", req: "recommended" },
             ],
         ],
     },
@@ -46,19 +46,19 @@ const Prereqs = [
         courseID: "RBE 3001",
         reqs: [
             [
-                { id: "RBE 2002", req: "recomended" },
+                { id: "RBE 2002", req: "recommended" },
             ],
             [
-                { id: "ECE 2049", req: "recomended" },
+                { id: "ECE 2049", req: "recommended" },
             ],
             [
-                { id: "CS 2102", req: "recomended" },
+                { id: "CS 2102", req: "recommended" },
             ],
             [
-                { id: "MA 2051", req: "recomended" },
+                { id: "MA 2051", req: "recommended" },
             ],
             [
-                { id: "MA 2071", req: "recomended" },
+                { id: "MA 2071", req: "recommended" },
             ],
         ],
     },
@@ -66,14 +66,14 @@ const Prereqs = [
         courseID: "RBE 3002",
         reqs: [
             [
-                { id: "RBE 3001", req: "recomended" },
+                { id: "RBE 3001", req: "recommended" },
             ],
             [
-                { id: "ES 3011", req: "recomended" },
+                { id: "ES 3011", req: "recommended" },
             ],
             [
-                { id: "MA 2621", req: "recomended" },
-                { id: "MA 2631", req: "recomended" },
+                { id: "MA 2621", req: "recommended" },
+                { id: "MA 2631", req: "recommended" },
             ],
         ],
     },
@@ -81,10 +81,10 @@ const Prereqs = [
         courseID: "RBE 4540",
         reqs: [
             [
-                { id: "RBE 3001", req: "recomended" },
+                { id: "RBE 3001", req: "recommended" },
             ],
             [
-                { id: "RBE 3002", req: "recomended" },
+                { id: "RBE 3002", req: "recommended" },
             ],
         ],
     },
@@ -92,10 +92,10 @@ const Prereqs = [
         courseID: "RBE 4601",
         reqs: [
             [
-                { id: "RBE 1001", req: "recomended" },
+                { id: "RBE 1001", req: "recommended" },
             ],
             [
-                { id: "RBE 3100", req: "recomended" },
+                { id: "RBE 3100", req: "recommended" },
             ],
         ],
     },
@@ -103,7 +103,7 @@ const Prereqs = [
         courseID: "RBE 4701",
         reqs: [
             [
-                { id: "RBE 3002", req: "recomended" },
+                { id: "RBE 3002", req: "recommended" },
             ],
         ],
     },
@@ -111,10 +111,10 @@ const Prereqs = [
         courseID: "RBE 4815",
         reqs: [
             [
-                { id: "RBE 3001", req: "recomended" },
+                { id: "RBE 3001", req: "recommended" },
             ],
             [
-                { id: "ES 3011", req: "recomended" },
+                { id: "ES 3011", req: "recommended" },
             ],
         ],
     },
@@ -241,12 +241,12 @@ const Prereqs = [
                 { id: "RBE 500", req: "prereq" },
             ],
             [
-                { id: "CS 4342", req: "recomended" },
-                { id: "CS 539", req: "recomended" },
-                { id: "RBE 577", req: "recomended" },
-                { id: "CS 4341", req: "recomended" },
-                { id: "CS 534", req: "recomended" },
-                { id: "RBE 4701", req: "recomended" },
+                { id: "CS 4342", req: "recommended" },
+                { id: "CS 539", req: "recommended" },
+                { id: "RBE 577", req: "recommended" },
+                { id: "CS 4341", req: "recommended" },
+                { id: "CS 534", req: "recommended" },
+                { id: "RBE 4701", req: "recommended" },
             ],
         ],
     },
