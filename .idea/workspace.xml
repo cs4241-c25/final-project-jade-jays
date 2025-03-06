@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca76c244-651c-4a03-b8ec-f5a9db95d904" name="Changes" comment="Updated datascience prereqs">
-      <change afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsRBE.ts" afterDir="false" />
+    <list default="true" id="ca76c244-651c-4a03-b8ec-f5a9db95d904" name="Changes" comment="Added robotics prereqs">
+      <change afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsIMGD.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsDS.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsDS.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app-backend/src/Prereqs/getPrereqs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/getPrereqs.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -119,7 +118,7 @@
       <workItem from="1740775934059" duration="21789000" />
       <workItem from="1741094900613" duration="7824000" />
       <workItem from="1741121660194" duration="2186000" />
-      <workItem from="1741204987082" duration="22475000" />
+      <workItem from="1741204987082" duration="23716000" />
     </task>
     <task id="LOCAL-00001" summary="Created Tracking Page, currently in progress">
       <option name="closed" value="true" />
@@ -257,7 +256,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741232077041</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Added robotics prereqs">
+      <option name="closed" value="true" />
+      <created>1741233609272</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1741233609272</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -281,6 +288,7 @@
     <MESSAGE value="Added chemistry prereqs" />
     <MESSAGE value="Added datascience prereqs" />
     <MESSAGE value="Updated datascience prereqs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated datascience prereqs" />
+    <MESSAGE value="Added robotics prereqs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added robotics prereqs" />
   </component>
 </project>

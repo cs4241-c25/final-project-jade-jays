@@ -18,6 +18,7 @@ import findreqPH from "@/Prereqs/PrereqsPH";
 import findreqCH from "@/Prereqs/PrereqsCH";
 import findreqDS from "@/Prereqs/PrereqsDS";
 import findreqRBE from "@/Prereqs/PrereqsRBE";
+import findreqIMGD from "@/Prereqs/PrereqsIMGD";
 
 export default function getPrereqs(code_abbrev: string, code_number: string) {
     const courseID = code_abbrev + " " + code_number;
@@ -26,6 +27,18 @@ export default function getPrereqs(code_abbrev: string, code_number: string) {
             return findreqCS(courseID);
         case "MA":
             return findreqMA(courseID);
+        case "BB":
+            return findreqBB(courseID);
+        case "PH":
+            return findreqPH(courseID);
+        case "CH":
+            return findreqCH(courseID);
+        case "DS":
+            return findreqDS(courseID);
+        case "RBE":
+            return findreqRBE(courseID);
+        case "IMGD":
+            return findreqIMGD(courseID);
         case "AB":
             return findreqAB(courseID);
         case "AR":
@@ -52,16 +65,6 @@ export default function getPrereqs(code_abbrev: string, code_number: string) {
             return findreqECON(courseID);
         case "DEV":
             return findreqDEV(courseID);
-        case "BB":
-            return findreqBB(courseID);
-        case "PH":
-            return findreqPH(courseID);
-        case "CH":
-            return findreqCH(courseID);
-        case "DS":
-            return findreqDS(courseID);
-        case "RBE":
-            return findreqRBE(courseID);
     }
     return [];
 }
