@@ -14,3 +14,7 @@
 
 # editor
 .idea/
+
+# monorepo & deployment
+.vercel
+.turbo

@@ -2,16 +2,12 @@
   "name": "final-project-jade-jays",
   "type": "module",
   "scripts": {
-    "dev": "pnpm run -r dev",
-    "prettier:all": "prettier . --write",
-    "prettier:client": "prettier ./frontend/src --write",
-    "prettier:server": "prettier ./backend/src --write"
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint"
   },
   "devDependencies": {
-    "prettier": "3.5.2"
-  },
-  "engines": {
-    "node": ">=20"
+    "turbo": "^2.4.4"
   },
   "pnpm": {
     "ignoredBuiltDependencies": [
@@ -20,5 +16,6 @@
     "onlyBuiltDependencies": [
       "@swc/core"
     ]
-  }
+  },
+  "packageManager": "pnpm@10.4.1"
 }

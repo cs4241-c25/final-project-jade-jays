@@ -1,0 +1,13 @@
+{
+  "include": ["src/**/*"],
+  "extends": [
+    "@repo/typescript-config/base.json",
+    "@repo/typescript-config/vite.json"
+  ],
+  "compilerOptions": {
+    "jsx": "react",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
