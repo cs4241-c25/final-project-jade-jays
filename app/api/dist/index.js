@@ -405,7 +405,7 @@ function initApp() {
 
 // src/index.ts
 function start() {
-  if (!process.env.PORT || !process.env.MONGO_HOST || !process.env.MONGO_USER || !process.env.MONGO_PASS || !process.env.MONGO_LOCAL) {
+  if (!process.env.PORT || !process.env.DATABASE_HOST || !process.env.DATABASE_USER || !process.env.DATABASE_PASS) {
     console.error("Please set all required environment variables.");
   }
   const app = initApp();

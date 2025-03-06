@@ -1,0 +1,13 @@
+{
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      "env": [
+        "PORT",
+        "DATABASE_USER",
+        "DATABASE_PASS",
+        "DATABASE_HOST"
+      ]
+    }
+  }
+}
