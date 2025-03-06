@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca76c244-651c-4a03-b8ec-f5a9db95d904" name="Changes" comment="Added physics prereqs">
-      <change afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsCH.ts" afterDir="false" />
+    <list default="true" id="ca76c244-651c-4a03-b8ec-f5a9db95d904" name="Changes" comment="Added chemistry prereqs">
+      <change afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsDS.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-backend/src/Prereqs/getPrereqs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/getPrereqs.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +117,7 @@
       <workItem from="1740775934059" duration="21789000" />
       <workItem from="1741094900613" duration="7824000" />
       <workItem from="1741121660194" duration="2186000" />
-      <workItem from="1741204987082" duration="20382000" />
+      <workItem from="1741204987082" duration="20914000" />
     </task>
     <task id="LOCAL-00001" summary="Created Tracking Page, currently in progress">
       <option name="closed" value="true" />
@@ -232,7 +231,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741229086936</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Added chemistry prereqs">
+      <option name="closed" value="true" />
+      <created>1741231517711</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1741231517711</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -253,6 +260,7 @@
     <MESSAGE value="Added social science prereqs" />
     <MESSAGE value="Added biology prereqs" />
     <MESSAGE value="Added physics prereqs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added physics prereqs" />
+    <MESSAGE value="Added chemistry prereqs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added chemistry prereqs" />
   </component>
 </project>
