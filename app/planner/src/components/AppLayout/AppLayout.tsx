@@ -97,7 +97,7 @@ export function AppLayout() {
                 localStorage.setItem("user", "");
                 localStorage.setItem("pass", "");
                 localStorage.setItem("logged", "false");
-                window.location.replace("/login");
+                useNavigate("/login");
               }}
             >
               <Title order={4} fw={"600"}>
