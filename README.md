@@ -1,39 +1,40 @@
 # Final Project
 
+Project link: https://final-project-jade-jays-planner.vercel.app/ 
+
 Our final project is a course planner similar to that of [WPI Planner](https://planner.wpi.edu/).
-On top of course planning, we have some additional features include:
+On top of the default features, we added some additional ones including:
 
-- An intuitive course tracker
-- An interactive course flowchart
-
-## Dev Instructions
-
-To ensure that development environment is consistent, I suggest using **pnpm**.
-
-### Manual Webstorm Setup
-
-Press `CTRL+ALT+S` to go to Webstorm's settings. In the search bar type Node.js.
-Under Languages & Frameworks, click on the Node.js tab. Look for Node interpreter.
-Click on the dropdown and select download, choose any Node version above 20 and
-click download. This would install Node and other package managers, including
-pnpm.
-
-### Others
-
-You can quickly install by running the `install` script in `Powershell`. This
-will install pnpm and set up a path to the pnpm executable. This allows you to
-call pnpm anywhere in the terminal. Window users must call `install.ps1`. If
-you want to uninstall pnpm, `clean.ps1` script is available.
-
-Once pnpm is installed. To start developing, run the following commands in the
-project's root directory:
-
-1. `pnpm install` - installs all required dependencies
-2. `pnpm run dev` - starts and watches express server & builds and watches
-   frontend directory
+- A tracking sheet
+- An interactive course flowchart showing prerequisite data
 
 ## Our tech stack
 
-Our frontend consists of React + TailwindCSS and ShadcnUI as our component library.
-In the backend we have a Node.js + Express.js web server. For the database we use
-MongoDB.
+Here is a list of the technologies we used:
+
+### Frontend stack
+- React
+- Mostly CSS Modules
+- Some TailwindCSS sprinkled in
+- Mantine UI Library
+- Vite
+
+### Backend stack
+- NodeJS
+- ExpressJS
+- MongoDB (database)
+
+### Deployment & Project structure
+- Pnpm 
+- Turborepo
+- Vercel
+- Render
+
+For deployment, we hosted an api server on Render and the actual application on Vercel.  
+
+# Notes
+
+This version of the app is rather messy. This was mainly due to a poorly thought-out system architecture that made
+both client and server state management really verbose and bloated. If you feel down in the dumps while looking at
+this codebase and are curious, the improved version that didn't make it to production is in the `dev` branch and 
+contains a much MUCH simpler codebase.

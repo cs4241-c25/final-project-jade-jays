@@ -5,7 +5,7 @@
 .pnp.*
 
 # production
-/dist
+**/dist/**
 /build
 
 # editor

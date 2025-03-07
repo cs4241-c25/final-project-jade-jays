@@ -9,14 +9,14 @@ export function getSubjectData() {
     queryKey: ["subject"],
     queryFn: () =>
       axios
-        .get("http://localhost:8080/api/subject/all")
+        .get("/api/subject/all")
         .then((res) => res.data),
   });
 }
 
 export async function fetchCourseData(subject_id: string) {
   const res = await axios.get(
-    `http://localhost:8080/api/course/code:${subject_id}`,
+    `/api/course/code:${subject_id}`,
   );
   return res.data;
 }
@@ -30,7 +30,7 @@ export function getCourseData(subject: string) {
 
 export async function getCourseDataTracking(subject_id: string) {
   const res = await axios.get(
-      `http://localhost:8080/api/course/code:${subject_id}`,
+      `/api/course/code:${subject_id}`,
   );
   return res.data;
 }
@@ -43,7 +43,7 @@ export function getSectionData(data: { [key: string]: ClientCourseType }) {
         queryFn: () =>
           axios
             .get(
-              `http://localhost:8080/api/section/code:${course.subject}-${course.code}`,
+              `/api/section/code:${course.subject}-${course.code}`,
             )
             .then((res) => res.data),
       };
@@ -61,7 +61,7 @@ export function getSectionData(data: { [key: string]: ClientCourseType }) {
 
 export async function getCourseObject(subject_id: string, code_id: string) {
   const res = await axios.get(
-    `http://localhost:8080/api/singlecourse/:${subject_id},${code_id}`,
+    `/api/singlecourse/:${subject_id},${code_id}`,
   );
   return res.data.course[0];
 }

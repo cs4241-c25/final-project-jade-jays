@@ -1,20 +1,11 @@
-import { Text, ActionIcon, Box, Transition } from "@mantine/core";
-import {
-  useClickOutside,
-  readLocalStorageValue,
-  useHover,
-  mergeRefs,
-} from "@mantine/hooks";
+import { Text, ActionIcon, Box } from "@mantine/core";
+import { useClickOutside, readLocalStorageValue, mergeRefs } from "@mantine/hooks";
 import { memo } from "react";
 import { Plus } from "lucide-react";
 import React from "react";
 
-import {
-  ClientCourseType,
-  SetLocalStorageValue,
-} from "app-packages/types/persistent.types.ts";
+import { ClientCourseType, SetLocalStorageValue } from "app-packages/types/persistent.types.ts";
 import classes from "@/routes/Courses/courses.module.css";
-import useElementDimensions from "@/hooks/use-element-dimensions.ts";
 
 export const CourseListMemo = memo(CourseList);
 export const CourseItemMemo = memo(CourseItem);
@@ -118,10 +109,6 @@ type TermRibbonProps = {
   innerRef?: React.ForwardedRef<HTMLDivElement>;
 };
 function TermButton({ term, course, innerRef, ...props }: TermRibbonProps) {
-  const { hovered, ref: hoverRef } = useHover();
-  const { dimensions, ref: dimensionRef } = useElementDimensions();
-  const { x, y } = dimensions ?? {};
-
   const status = React.useMemo(() => getStatus(term, course), [term, course]);
 
   return (
@@ -132,30 +119,6 @@ function TermButton({ term, course, innerRef, ...props }: TermRibbonProps) {
       {...props}
     >
       {term}
-      {x && y ? (
-        <Transition
-          mounted={hovered}
-          transition={"fade"}
-          duration={200}
-          enterDelay={200}
-          exitDelay={100}
-          timingFunction="ease"
-        >
-          {(transitionStyle) => (
-            <div
-              className={classes.tooltip}
-              style={{
-                top: `calc(${y}px + 2.25rem)`,
-                left: `calc(${x}px + 0.5rem)`,
-                zIndex: 3,
-                ...transitionStyle,
-              }}
-            >
-              <Text size={"xs"}>{getTooltipDescription(status, term)}</Text>
-            </div>
-          )}
-        </Transition>
-      ) : undefined}
     </Box>
   );
 }
@@ -171,31 +134,4 @@ function getStatus(term: string, course: ClientCourseType) {
   }
 
   return "not-available";
-}
-
-function getTooltipDescription(status: string, term: string) {
-  let label = "";
-  switch (status) {
-    case "available":
-      {
-        label = `Course is available for ${term} Term`;
-      }
-      break;
-    case "not-available":
-      {
-        label = `Course not offered for ${term} Term`;
-      }
-      break;
-    case "under-waitlist":
-      {
-        label = `There are no seats left for ${term} Term `;
-      }
-      break;
-    case "closed":
-      {
-        label = "";
-      }
-      break;
-  }
-  return label;
 }
