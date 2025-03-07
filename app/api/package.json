@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "node src/index.ts",
-    "dev": "tsup --watch --onSuccess \"node dist/index.cjs\"",
+    "dev": "tsup --watch --onSuccess \"dotenvx -- run node dist/index.cjs\"",
     "build": "tsup",
     "check-types": "tsc --noEmit",
     "lint": "eslint src/"

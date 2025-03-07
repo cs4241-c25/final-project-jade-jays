@@ -6,7 +6,7 @@ export function fetchCourseXML() {
     queryKey: ["subject"],
     queryFn: () =>
       axios({
-        url: "/api/data/all",
+        url: "http://localhost:8080/api/data/all",
         method: "get",
         headers: {
           "Content-Type": "application/xml",

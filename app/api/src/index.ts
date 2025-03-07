@@ -1,12 +1,22 @@
 import { createServer } from "./app";
 import dotenv from "dotenv/config";
 
-export const app  = createServer();
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-  console.log(`API server listening on port ${PORT}`);
-});
+export const start = () => {
+  if (
+    !process.env.PORT ||
+    !process.env.DATABASE_LOCAL
+  ) {
+    throw new Error("Please set all environment variables.");
+  }
 
-app.get("/", (req, res) => {
-  res.status(200).send("express");
-})
+  const app  = createServer({
+    DATABASE_URL: process.env.DATABASE_LOCAL,
+  });
+  const PORT = process.env.PORT || 8080;
+  app.listen(PORT, () => {
+    console.log(`API server listening on port ${PORT}`);
+  });
+  return app;
+}
+
+start();
