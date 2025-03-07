@@ -1,15 +1,22 @@
 .panel {
-  background-color: var(--mantine-color-gray-1);
+  background-color: var(--mantine-color-white);
   display: flex;
   flex-direction: column;
 }
 .panelPadding {
   padding: var(--mantine-spacing-sm);
 }
-.panelHandle {
-  flex: 0 0 0.4rem;
+.panelHandleVertical {
+  flex: 0 0 0.6rem;
   transition: background-color 250ms;
 }
-.panelHandle[data-resize-handle-active="pointer"] {
+.panelHandleVertical[data-resize-handle-active="pointer"] {
+  background-color: var(--mantine-color-dark-2);
+}
+.panelHandleHorizontal {
+  flex: 0 0 0.6rem;
+  transition: background-color 250ms;
+}
+.panelHandleHorizontal[data-resize-handle-active="pointer"] {
   background-color: var(--mantine-color-dark-2);
 }

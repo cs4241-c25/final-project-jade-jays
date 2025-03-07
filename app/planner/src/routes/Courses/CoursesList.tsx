@@ -1,19 +1,20 @@
-import { Text, ActionIcon, Box, Transition } from "@mantine/core"
-import { mergeRefs, useHover, useWindowScroll } from "@mantine/hooks"
+import { mergeRefs, useHover, readLocalStorageValue } from "@mantine/hooks"
 import { Plus } from "lucide-react"
 import React from "react"
 
 import { getTagFromAttributeValue } from "@/components/data-parse.util.ts"
-import { useCourseContext } from "@/components/CourseProvider.tsx";
-import { useStateContext } from "@/components/StateProvider.tsx";
-import useElementDimensions from "@/hooks/use-element-dimensions.ts";
 import courseListClasses from "./Courses.module.css"
 
-const CourseItemMemo = React.memo(CourseItem);
 
-export function CoursesList() {
-  const { xmlDoc } = useCourseContext();
-  const { currentSubject } = useStateContext();
+interface CourseListProps extends React.HTMLProps<HTMLDivElement> {
+  xmlDoc: XMLDocument;
+  currentSubject: any;
+  setAddedCourses: (course: string[]) => void;
+  setSelectedCourse: (course: Element) => void;
+}
+export const CoursesList = React.memo(function CoursesList(
+  { xmlDoc, setAddedCourses, currentSubject, setSelectedCourse }: CourseListProps
+) {
   const courses = getTagFromAttributeValue(xmlDoc, 'abbrev', currentSubject);
 
   if (!courses) {
@@ -26,105 +27,98 @@ export function CoursesList() {
         const name = course.getAttribute("name");
 
         return (
-          <CourseItemMemo
+          <CourseItem
             key={`${name}${index}`}
             subject={currentSubject}
             course={course}
+            clickCB={() => {
+              const newValue = readLocalStorageValue<string[]>({key: 'added_courses'});
+              if (name && !newValue[name]) {
+                newValue[name] = course.outerHTML;
+              }
+              setAddedCourses(newValue);
+            }}
+            setSelectedCourse={setSelectedCourse}
             className={courseListClasses.courseItem}>
-          </CourseItemMemo>
+          </CourseItem>
         )
       })}
     </div>
   )
-}
+});
 
-interface CourseItemProps extends React.HTMLProps<HTMLDivElement> {
+export interface CourseItemProps extends React.HTMLProps<HTMLDivElement> {
   course: Element;
   subject: string;
+  compact?: boolean;
+  icon?: React.ReactNode;
+  clickCB?: () => void;
+  setSelectedCourse?: (course: Element) => void;
 }
-function CourseItem({ subject, course, className }: CourseItemProps) {
-  const label = course.getAttribute("name");
-  const subjectAbbrev = subject;
-  const courseNumber = course.getAttribute("number");
+export const CourseItem = React.memo(function CourseItem(
+  { course, subject, compact, icon, clickCB: addCourse, setSelectedCourse, className }: CourseItemProps
+) {
+  const label = React.useMemo(() => course.getAttribute("name"), []);
+  const courseNumber = React.useMemo(() => course.getAttribute("number"), []);
 
   return (
-    <div className={className}>
-      <ActionIcon
+    <div
+      className={className}
+      onClick={(setSelectedCourse) ? ()=>setSelectedCourse(course) : undefined}>
+      <button
         className={`${courseListClasses.courseItemButton}`}
-      >
-        <Plus size={"1rem"} />
-      </ActionIcon>
-      <Text
-        className={`
+        onClick={(addCourse) ? (event) => {
+          event.stopPropagation();
+          addCourse();
+        } : undefined}>
+        {(icon) ?
+          icon : <Plus size={"1rem"} />
+        }
+      </button>
+      <a className={`
           ${courseListClasses.courseItemSection} 
           ${courseListClasses.courseCode}
-        `}
-        size={"sm"}
-      >
-        {`${subjectAbbrev} ${courseNumber}`}
-      </Text>
+        `}>
+        {`${subject} ${courseNumber}`}
+      </a>
       <div className={`${courseListClasses.termRibbon}`}>
         {["A", "B", "C", "D"].map(term => {
           const status = getStatus(term, course);
           return (
             <TermButton
-              key={`${label}${subjectAbbrev}${courseNumber}${term}`}
+              key={`${label}${subject}${courseNumber}${term}`}
               status={status}
               term={term}/>
           )
         })}
       </div>
-      <Text
-        className={`
+      {compact ?
+        undefined :
+        <a className={`
           ${courseListClasses.courseItemSection} 
           ${courseListClasses.courseTitle}
-        `}
-        size={"sm"}>
-        {label}
-      </Text>
+        `}>
+          {label}
+        </a>
+      }
     </div>
   )
-}
+});
 
-interface TermButtonProps extends React.HTMLProps<HTMLDivElement> {
+export interface TermButtonProps extends React.HTMLProps<HTMLDivElement> {
   term: string;
   status: string;
 }
-function TermButton({ term, status, ...props } : TermButtonProps) {
-  const { hovered, ref: hoverRef } = useHover();
-  const { dimensions, ref: dimensionRef } = useElementDimensions();
-  const { x, y } = dimensions ?? {};
+export function TermButton({ term, status, ...props } : TermButtonProps) {
 
   return (
-    <Box
-      mod={{ status: status }}
+    <div
+      data-status={status}
       className={`${courseListClasses.termButton}`}
       {...props}
     >
       {term}
-      {x && y ? (
-        <Transition
-          mounted={hovered}
-          transition={"fade"}
-          duration={200}
-          enterDelay={200}
-          exitDelay={100}
-          timingFunction="ease"
-        >
-          {(transitionStyle) => (
-            <div
-              className={courseListClasses.tooltip}
-              style={{
-                zIndex: 3,
-                ...transitionStyle,
-              }}
-            >
-              <Text size={"xs"}>{getTooltipDescription(status, term)}</Text>
-            </div>
-          )}
-        </Transition>
-      ) : undefined}
-    </Box>
+    </div>
   );
 }
 

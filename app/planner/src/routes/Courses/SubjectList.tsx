@@ -2,13 +2,15 @@ import { Text, TextProps } from "@mantine/core"
 import React from 'react'
 
 import { getTagsFromAttributeValue } from "@/components/data-parse.util.ts"
-import { useCourseContext } from "@/components/CourseProvider"
-import { useStateContext } from "@/components/StateProvider"
 import courseListClasses from "./Courses.module.css"
 
-export function SubjectList() {
-  const { xmlDoc, category } = useCourseContext();
-  const { setStoredSubject } = useStateContext();
+
+interface SubjectListProps extends React.HTMLProps<HTMLDivElement> {
+  xmlDoc: XMLDocument;
+  category: any;
+  setStoredSubject: (abbrev: any) => void;
+}
+export const SubjectList = React.memo(function SubjectList({ xmlDoc, category, setStoredSubject } : SubjectListProps) {
 
   return (
     <>
@@ -16,11 +18,9 @@ export function SubjectList() {
         return (
           <div key={`${category}${index}}`}
             className={courseListClasses.category}>
-            <Text
-              className={courseListClasses.departmentName}
-              size={"md"}>
+            <a className={courseListClasses.departmentName}>
               {category}
-            </Text>
+            </a>
             {getTagsFromAttributeValue(xmlDoc, 'category', category)
               .map((subject: Element, index: number) => {
               const name = subject.getAttribute("name");
@@ -29,7 +29,6 @@ export function SubjectList() {
                 <SubjectItem
                   key={`${name}${index}`}
                   label={name}
-                  size={"sm"}
                   className={courseListClasses.subjectItem}
                   onClick={() => setStoredSubject(abbrev)}>
                 </SubjectItem>
@@ -40,20 +39,20 @@ export function SubjectList() {
       })}
     </>
   );
-}
+});
 
-export interface SubjectItemProps extends TextProps {
+export interface SubjectItemProps {
   className?: string;
   label: string | null | undefined;
   onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }
-function SubjectItem({ label, className, onClick, ...props }: SubjectItemProps) {
+const SubjectItem = React.memo(function SubjectItem({ label, className, onClick, ...props }: SubjectItemProps) {
   return (
-    <Text
+    <div
       className={`${className}`}
       onClick={onClick}
       {...props}>
       {label}
-    </Text>
+    </div>
   )
-}
+});

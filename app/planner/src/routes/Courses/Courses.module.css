@@ -3,9 +3,9 @@
 }
 
 .subjectListContainer {
-    padding-inline: 0.25rem;
     padding-top: 0.1625rem;
     padding-bottom: 2rem;
+    padding-inline: 0.25rem;
 }
 
 .category {
@@ -20,14 +20,21 @@
 }
 
 .subjectItem {
+    font-size: calc(0.85rem * var(--mantine-scale));
     margin-inline-start: 1em;
     padding-inline-start: 0.2em;
     border-radius: 0.25em;
     line-height: calc(1.2rem * var(--mantine-scale));
 }
 .subjectItem:hover {
-    background-color: var(--mantine-color-gray-2);
+    background-color: var(--mantine-color-gray-1);
     cursor: pointer;
+}
+
+.courseInfoContainer {
+    padding-top: 0.1625rem;
+    padding-bottom: 2rem;
+    padding-inline: 0.5em;
 }
 
 .courseItem {
@@ -45,20 +52,28 @@
     border-left: 0;
     border-right: 0;
     border-style: solid;
-    border-color: #e7e7e7;
+    border-color: #ffffff;
 }
 .courseItem:nth-child(even) {
-    background-color: #e0e0e7;
+    background-color: #f9f9fC;
 }
 .courseItem[data-active] {
-    background-color: var(--mantine-color-gray-3);
+    background-color: var(--mantine-color-gray-2);
     transition: background-color 0ms;
 }
 
 .courseItemButton {
-    display: flex;
-    justify-items: center;
-    align-items: center;
+    min-width: 1.8rem;
+    min-height: 1.8rem;
+    color: var(--mantine-color-white);
+    background-color: var(--mantine-color-red-6);
+    border-radius: var(--mantine-radius-sm);
+    border-style: none;
+    transition: background-color 100ms;
+}
+.courseItemButton:hover {
+    background-color: var(--mantine-color-red-9);
+    cursor: pointer;
 }
 
 .courseItemSection {
@@ -70,10 +85,16 @@
 }
 
 .courseCode {
-    width: calc(4.5rem * var(--mantine-scale));
+    font-size: calc(0.85rem * var(--mantine-scale));
+    min-width: calc(4.5rem * var(--mantine-scale));
+    text-wrap: nowrap;
+    cursor: default;
 }
 
 .courseTitle {
+    font-size: calc(0.85rem * var(--mantine-scale));
+    padding-inline-start: 1.5rem;
+    text-wrap: nowrap;
     cursor: default;
 }
 
@@ -85,7 +106,8 @@
 .termButton {
     padding: 0.3rem;
     cursor: default;
-    border: 1px solid var(--mantine-color-gray-1);
+    font-size: calc(0.85rem * var(--mantine-scale));
+    border: 1px solid var(--mantine-color-white);
     border-radius: 6px;
 }
 .termButton[data-status="not-available"] {

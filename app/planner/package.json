@@ -10,24 +10,25 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@repo/app-commons": "workspace:*",
     "@mantine/core": "^7.17.0",
     "@mantine/hooks": "^7.17.0",
+    "@repo/app-commons": "workspace:*",
     "@tanstack/react-query": "^5.66.9",
     "axios": "^1.8.1",
+    "babel-plugin-react-compiler": "19.0.0-beta-40c6c23-20250301",
     "clsx": "^2.1.1",
     "lucide-react": "^0.475.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-resizable-panels": "^2.1.7",
     "react-router-dom": "^7.2.0",
+    "react-scan": "^0.2.11",
     "react-virtualized-auto-sizer": "^1.0.25",
     "react-window": "^1.8.11"
   },
   "devDependencies": {
-    "@repo/typescript-config": "workspace:*",
     "@repo/eslint-config": "workspace:*",
-    "typescript-eslint": "^8.26.0",
+    "@repo/typescript-config": "workspace:*",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "@types/react-window": "^1.8.8",
@@ -38,6 +39,7 @@
     "postcss-preset-mantine": "^1.17.0",
     "postcss-simple-vars": "^7.0.1",
     "typescript": "~5.7.2",
+    "typescript-eslint": "^8.26.0",
     "vite": "^6.1.0"
   }
 }
