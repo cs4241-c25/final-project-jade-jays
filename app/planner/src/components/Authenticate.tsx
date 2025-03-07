@@ -1,4 +1,4 @@
-import { rootPath } from "./Paths";
+// import { rootPath } from "./Paths";
 
 try {
   localStorage.getItem("user");
@@ -15,7 +15,8 @@ export default function Auth(
   password: string,
   targetPath: string,
 ) {
-  let path = rootPath;
+  // let path = rootPath;
+  let path = "/";
 
   if (localStorage.getItem("user") !== username && username !== "") {
     localStorage.setItem("user", username);

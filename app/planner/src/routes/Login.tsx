@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Auth from "./Authenticate";
-import { makePath, rootPath } from "./Paths";
+import Auth from "../components/Authenticate";
+// import { makePath, rootPath } from "./Paths";
 
 try {
   localStorage.getItem("user");
@@ -12,7 +12,7 @@ try {
   localStorage.setItem("pass", "");
 }
 
-export default function Login() {
+export function Login() {
   const navigate = useNavigate();
   const [user, setUser] = useState(getCred("user"));
   const [pass, setPass] = useState(getCred("pass"));

@@ -48,6 +48,18 @@ export function AppLayout() {
               </Title>
             </UnstyledButton>
           </div>
+          <div className={classes.headerMenu}>
+            <UnstyledButton
+                className={classes.menuButton}
+                renderRoot={({ className, ...others }) => (
+                    <NavLink to={"/login"} className={cx(className)} {...others} />
+                )}
+            >
+              <Title order={4} fw={"600"}>
+                Login
+              </Title>
+            </UnstyledButton>
+          </div>
         </div>
       </AppShell.Header>
       <AppShell.Main className={classes.main}>

@@ -6,6 +6,8 @@ import { CourseProvider } from "@/components/CourseProvider.tsx";
 import { StateProvider } from "@/components/StateProvider.tsx";
 import { AppLayout } from "@/components/AppLayout/AppLayout.tsx";
 import { Courses } from "@/routes/Courses/Courses.tsx";
+import { Schedule } from "@/routes/Schedule/Schedule.tsx";
+import { Login } from "@/routes/Login.tsx";
 
 const theme = createTheme({
   activeClassName: "",
@@ -56,6 +58,8 @@ export default function App() {
               <Routes>
                 <Route element={<AppLayout />}>
                   <Route path={"/"} index element={<Courses />} />
+                  {/*<Route path={"/schedule"} element={<Schedule />} />*/}
+                  <Route path={"/login"} element={<Login />} />
                 </Route>
               </Routes>
             </BrowserRouter>
