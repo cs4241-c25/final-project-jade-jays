@@ -7,8 +7,24 @@ import adminRoutes from "./routes/adminRouter";
 import dataRoutes from "./routes/dataRouter";
 import authRoutes from "./routes/authRouter";
 
+import passport from "passport";
+import LocalStrategy from "passport-local";
+
 export const createServer = ({ DATABASE_URL } : { [key:string]: string }): express.Express => {
   const app = express();
+
+  passport.use(new LocalStrategy(
+    function(username, password, done) {
+      // Need to create a User model
+      User.findOne({ username: username }, function (err, user) {
+        if (err) { return done(err); }
+        if (!user) { return done(null, false); }
+        if (!user.verifyPassword(password)) { return done(null, false); }
+        return done(null, user);
+      });
+    }
+  ));
+
   ConnectDB(DATABASE_URL);
   app
     .disable("x-powered-by")
