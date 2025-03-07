@@ -21,8 +21,8 @@ export function convertTimeStringToInteger(time_string: string) {
   const [time, period] = time_string.split(" ");
   const [hour_string, minute_string] = time.split(":");
 
-  let hour = Number(hour_string),
-    minute = Number(minute_string) / 60;
+  let hour = Number(hour_string);
+  const minute = Number(minute_string) / 60;
   if (period === "PM") {
     if (hour !== 12) {
       hour = hour + 12;
