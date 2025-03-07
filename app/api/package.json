@@ -4,8 +4,8 @@
   "main": "index.ts",
   "type": "module",
   "scripts": {
-    "start": "node dist/index.cjs",
-    "dev": "tsup --watch --onSuccess \"dotenvx -- run node dist/index.cjs\"",
+    "start": "dotenvx run -- node dist/index.cjs",
+    "dev": "tsup --watch --onSuccess \"dotenvx run -- node dist/index.cjs\"",
     "build": "tsup",
     "check-types": "tsc --noEmit",
     "lint": "eslint src/"

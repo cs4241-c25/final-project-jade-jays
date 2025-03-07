@@ -1,5 +1,4 @@
 import { createServer } from "./app";
-import dotenv from "dotenv/config";
 
 export const start = () => {
   if (

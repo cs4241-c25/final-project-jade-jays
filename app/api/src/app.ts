@@ -1,7 +1,6 @@
 import express from "express";
 import logger from "morgan";
 import cors from "cors";
-import dot from "dotenv/config";
 
 import { ConnectDB } from "./util/DatabaseUtil";
 import adminRoutes from "./routes/adminRouter";
