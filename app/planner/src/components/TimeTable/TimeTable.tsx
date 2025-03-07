@@ -1,12 +1,12 @@
 import { Text } from "@mantine/core";
 import React from "react";
 
-import { getTimeRangeArrayMilitaryFormat } from "app-packages/util/time.utils.ts";
+import { getTimeRangeArrayMilitaryFormat } from "@/hooks/time.utils.ts";
 import {
   RangeType,
   TableSectionDataType,
-} from "app-packages/types/persistent.types.ts";
-import { stringToDecimal } from "app-packages/util/util.ts";
+} from "@repo/app-commons/persistent-types";
+import { stringToDecimal } from "@/hooks/time.utils.ts";
 import useElementDimensions from "@/hooks/use-element-dimensions.ts";
 import classes from "./timetable.module.css";
 

@@ -5,7 +5,7 @@
     "module": "ES2015",
     "baseUrl": "./",
     "paths": {
-      "@/*": ["api/*"]
+      "@/*": ["src/*"]
     },
     "outDir": "./build",
     "strict": true,

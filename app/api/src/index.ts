@@ -1,20 +1,22 @@
-import { initApp } from "./app.js";
-import dotenv from "dotenv/config";
-
-function start() {
+import { createServer } from "./app";
+import dotenv from "dotenv";
+dotenv.config();
+export const start = () => {
   if (
     !process.env.PORT ||
-    !process.env.MONGO_HOST ||
-    !process.env.MONGO_USER ||
-    !process.env.MONGO_PASS ||
-    !process.env.MONGO_LOCAL
+    !process.env.DATABASE_URL
   ) {
-    console.error("Please set all required environment variables.");
+    throw new Error("Please set all environment variables.");
   }
 
-  const app = initApp();
-  app.listen(process.env.PORT, () => {
-    console.log(`API server listening on port ${process.env.PORT}`);
+  const app  = createServer({
+    DATABASE_URL: process.env.DATABASE_URL,
   });
+  const PORT = process.env.PORT || 8080;
+  app.listen(PORT, () => {
+    console.log(`API server listening on port ${PORT}`);
+  });
+  return app;
 }
+
 start();

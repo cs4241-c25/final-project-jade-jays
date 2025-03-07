@@ -2,8 +2,8 @@ import {
   TableSectionDataType,
   TablesType,
   SectionType,
-} from "app-packages/types/persistent.types.ts";
-import { convertTimeStringToInteger } from "app-packages/util/time.utils.ts";
+} from "@repo/app-commons/types/persistent.types.ts";
+import { convertTimeStringToInteger } from "@/hooks/time.utils.ts";
 
 export function parseSectionData(results: any[]) {
   const timeTable: TablesType = {

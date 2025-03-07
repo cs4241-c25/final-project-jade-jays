@@ -29,21 +29,6 @@ export function AppLayout() {
               Planner
             </Title>
           </UnstyledButton>
-          <UnstyledButton
-              renderRoot={({ className, ...others }) => (
-                  <NavLink className={cx(className)} {...others} />
-              )}
-              onClick={() => {
-                localStorage.setItem("user", "");
-                localStorage.setItem("pass", "");
-                localStorage.setItem("logged", "false");
-                window.location.replace("/login");
-              }}
-          >
-            <Title order={2} fw={"700"}>
-              {loggedIn}
-            </Title>
-          </UnstyledButton>
         </Group>
         <div className={classes.headerGroup}>
           <div className={classes.headerMenu}>
@@ -99,6 +84,24 @@ export function AppLayout() {
             >
               <Title order={4} fw={"600"}>
                 Flow Chart
+              </Title>
+            </UnstyledButton>
+          </div>
+          <div className={classes.headerMenu}>
+            <UnstyledButton
+              className={classes.menuButton}
+              renderRoot={({ className, ...others }) => (
+                <NavLink className={cx(className)} {...others} />
+              )}
+              onClick={() => {
+                localStorage.setItem("user", "");
+                localStorage.setItem("pass", "");
+                localStorage.setItem("logged", "false");
+                window.location.replace("/login");
+              }}
+            >
+              <Title order={4} fw={"600"}>
+                {loggedIn}
               </Title>
             </UnstyledButton>
           </div>
