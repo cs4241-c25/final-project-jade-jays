@@ -1,0 +1,23 @@
+{
+  "name": "@repo/app-commons",
+  "description": "collection of common utilities & types for WPick",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    "./persistent-types": "./types/persitent.types.ts"
+  },
+  "scripts": {
+    "lint": "eslint \"**/*.ts\""
+  },
+  "dependencies": {
+    "mongodb": "^6.13.1",
+    "mongoose": "^8.11.0"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "@repo/eslint-config": "workspace:*",
+    "typescript-eslint": "^8.26.0",
+    "eslint": "^9.21.0",
+    "typescript": "^5.8.2"
+  }
+}

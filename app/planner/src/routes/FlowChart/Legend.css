@@ -1,0 +1,74 @@
+@import "FlowNode.css";
+
+.legend {
+  width: fit-content;
+  height: auto;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 15px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+}
+
+.legend-row {
+  display: flex;
+  flex-direction: row;
+  height: 1.6rem;
+  align-items: center;
+}
+
+.prereq:hover {
+  cursor: pointer;
+}
+
+.prereq {
+  accent-color: var(--primary);
+  width: 20px;
+  height: 20px;
+}
+
+.class-fill {
+  width: 50px;
+  height: 10px;
+  flex-shrink: 0;
+  border-radius: 5px;
+  border: 2px solid #000;
+}
+
+.uncompleted-line {
+  background-color: var(--uncomplete-color);
+}
+
+.completed-line {
+  background-color: var(--complete-color);
+}
+
+.confirmed-line {
+  background-color: var(--confirm-color);
+}
+
+.unconfirmed-line {
+  background-color: var(--unconfirm-color);
+}
+
+.prereq-path {
+  fill: var(--prereq-color);
+  stroke: black;
+}
+
+.concurrent-path {
+  fill: var(--concurrent-color);
+  stroke: black;
+}
+
+.recommended-path {
+  fill: var(--recomend-color);
+  stroke: black;
+}
+
+.shift-left {
+  padding: 5px;
+  font-size: 12px;
+}

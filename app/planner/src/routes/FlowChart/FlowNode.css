@@ -1,0 +1,47 @@
+:root {
+  --node-width: 280px;
+  --node-height: 60px;
+  --uncomplete-color: #ff0000;
+  --complete-color: #00e10b;
+  --confirm-color: #6166ff;
+  --unconfirm-color: #ffaa00;
+  --prereq-color: white;
+  --concurrent-color: blue;
+  --recomend-color: green;
+}
+
+.node-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+}
+
+.flow-node {
+  max-width: var(--node-width) !important;
+  min-width: var(--node-width) !important;
+  max-height: var(--node-height) !important;
+  min-height: var(--node-height) !important;
+  border: 2px solid white;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 5px;
+}
+
+.uncompleted {
+  background-color: var(--uncomplete-color);
+}
+
+.completed {
+  background-color: var(--complete-color);
+}
+
+.confirmed {
+  background-color: var(--confirm-color);
+}
+
+.unconfirmed {
+  background-color: var(--unconfirm-color);
+}
