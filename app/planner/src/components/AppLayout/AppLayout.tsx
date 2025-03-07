@@ -1,5 +1,6 @@
 import { AppShell, Group, Title, UnstyledButton } from "@mantine/core";
 import { Outlet, NavLink } from "react-router-dom";
+import React from 'react';
 import cx from "clsx";
 
 import classes from "./appLayout.module.css";
@@ -37,7 +38,7 @@ export function AppLayout() {
               className={classes.menuButton}
               renderRoot={({ className, ...others }) => (
                 <NavLink
-                  to={"/schedule"}
+                  to={"/scheduler"}
                   className={cx(className)}
                   {...others}
                 />

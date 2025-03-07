@@ -3,7 +3,7 @@ import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 
 import { SectionType } from "app-packages/types/persistent.types.ts";
-import scheduleClasses from "./schedule.module.css";
+import scheduleClasses from "./scheduler.module.css";
 
 interface SectionListProps {
   data?: SectionType[][];

@@ -31,7 +31,7 @@ export const StateProvider = ({ children }: StateProviderProps) => {
       currentSubject: storedSubject,
       setStoredSubject: setStoredSubject,
       addedCourses: addedCourses,
-      addCourse: setAddedCourses,
+      setAddedCourses: setAddedCourses,
     }}>
       {children}
     </StateContext.Provider>

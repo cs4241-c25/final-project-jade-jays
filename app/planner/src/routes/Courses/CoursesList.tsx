@@ -9,7 +9,7 @@ import courseListClasses from "./Courses.module.css"
 interface CourseListProps extends React.HTMLProps<HTMLDivElement> {
   xmlDoc: XMLDocument;
   currentSubject: any;
-  setAddedCourses: (course: string[]) => void;
+  setAddedCourses: (list: { [key:string]: string }) => void;
   setSelectedCourse: (course: Element) => void;
 }
 export const CoursesList = React.memo(function CoursesList(
@@ -32,11 +32,11 @@ export const CoursesList = React.memo(function CoursesList(
             subject={currentSubject}
             course={course}
             clickCB={() => {
-              const newValue = readLocalStorageValue<string[]>({key: 'added_courses'});
+              const newValue = readLocalStorageValue<{ [key:string]: string }>({key: 'added_courses'});
               if (name && !newValue[name]) {
                 newValue[name] = course.outerHTML;
+                setAddedCourses(newValue);
               }
-              setAddedCourses(newValue);
             }}
             setSelectedCourse={setSelectedCourse}
             className={courseListClasses.courseItem}>
@@ -56,7 +56,7 @@ export interface CourseItemProps extends React.HTMLProps<HTMLDivElement> {
   setSelectedCourse?: (course: Element) => void;
 }
 export const CourseItem = React.memo(function CourseItem(
-  { course, subject, compact, icon, clickCB: addCourse, setSelectedCourse, className }: CourseItemProps
+  { course, subject, compact, icon, clickCB, setSelectedCourse, className }: CourseItemProps
 ) {
   const label = React.useMemo(() => course.getAttribute("name"), []);
   const courseNumber = React.useMemo(() => course.getAttribute("number"), []);
@@ -67,9 +67,9 @@ export const CourseItem = React.memo(function CourseItem(
       onClick={(setSelectedCourse) ? ()=>setSelectedCourse(course) : undefined}>
       <button
         className={`${courseListClasses.courseItemButton}`}
-        onClick={(addCourse) ? (event) => {
+        onClick={(clickCB) ? (event) => {
           event.stopPropagation();
-          addCourse();
+          clickCB();
         } : undefined}>
         {(icon) ?
           icon : <Plus size={"1rem"} />

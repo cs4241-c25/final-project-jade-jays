@@ -1,11 +1,13 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom"; // Ensure this is from "react-router-dom"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { MantineProvider, createTheme } from "@mantine/core";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+import React from "react";
 
 import { CourseProvider } from "@/components/CourseProvider.tsx";
 import { StateProvider } from "@/components/StateProvider.tsx";
 import { AppLayout } from "@/components/AppLayout/AppLayout.tsx";
 import { Courses } from "@/routes/Courses/Courses.tsx";
+import { Scheduler } from "@/routes/Scheduler/Scheduler.tsx";
 
 const theme = createTheme({
   activeClassName: "",
@@ -56,6 +58,7 @@ export default function App() {
               <Routes>
                 <Route element={<AppLayout />}>
                   <Route path={"/"} index element={<Courses />} />
+                  <Route path={"/scheduler"} index element={<Scheduler />} />
                 </Route>
               </Routes>
             </BrowserRouter>

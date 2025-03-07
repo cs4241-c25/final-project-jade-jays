@@ -7,13 +7,13 @@ import { useStateContext } from "@/components/StateProvider.tsx"
 import { SubjectList } from "./SubjectList"
 import { CoursesList } from "./CoursesList"
 import { CourseInfo } from "./CourseInfo"
+import { AddedCoursesList } from "@/routes/Courses/AddedCoursesList.tsx";
 import panelClasses from "@/routes/panel.module.css"
 import courseListClasses from "@/routes/Courses/Courses.module.css"
-import {AddedCoursesList} from "@/routes/Courses/AddedCoursesList.tsx";
 
 export function Courses() {
   const { xmlDoc, category } = useCourseContext();
-  const { setStoredSubject, addCourse } = useStateContext();
+  const { setStoredSubject, setAddedCourses } = useStateContext();
   const currentSubject = readLocalStorageValue<string>({ key: 'subject' });
   const [ selectedCourse, setSelectedCourse ] = React.useState<Element | null>(null);
 
@@ -42,7 +42,7 @@ export function Courses() {
         order={2}>
         <CoursesList
           xmlDoc={xmlDoc}
-          setAddedCourses={addCourse}
+          setAddedCourses={setAddedCourses}
           currentSubject={currentSubject}
           setSelectedCourse={setSelectedCourse}
         />
@@ -70,7 +70,11 @@ export function Courses() {
             className={panelClasses.panel}
             defaultSize={30}
             order={5}>
-            <AddedCoursesList subject={currentSubject} />
+            <AddedCoursesList
+              subject={currentSubject}
+              setAddedCourses={setAddedCourses}
+              setSelectedCourse={setSelectedCourse}
+            />
           </Panel>
         </PanelGroup>
       </Panel>
