@@ -1,0 +1,32 @@
+.login {
+    background-color: var(--primary);
+    color: white;
+    border-radius: 10px;
+    border: solid 1px white;
+    padding: 10px;
+    margin: 15px;
+}
+
+.login:hover {
+    cursor: pointer;
+}
+
+.log-field {
+    border: solid 1px white;
+    border-radius: 10px;
+    margin: 15px;
+}
+
+.login-title {
+    color: white;
+    font-size: 3rem;
+    display: flex;
+}
+
+.login-container {
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

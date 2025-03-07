@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import {useNavigate} from "react-router-dom";
 import Auth, {initAuth} from "@/hooks/authenticate.ts";
 
+import "./login.css";
+
+import { Button, Input } from "@material-tailwind/react";
+
 initAuth();
 
 export default function Login() {
@@ -41,24 +45,25 @@ export default function Login() {
         navigate("/");
     }
     else {
-        htmlCode = <>
-            <h1>Login</h1>
-            <form id={"login"}></form>
-            <input type={"text"} id={"username"} placeholder={"Username"} onChange={changeUser} value={user || ""} autoComplete="off"></input>
+        htmlCode = <div className={"login-container"}>
+            <h1 className={"login-title"}>WPI Planner Login</h1>
+            {/*<input type={"text"} id={"username"} placeholder={"Username"} onChange={changeUser} value={user || ""} autoComplete="off"></input>*/}
+            {/*<br/>*/}
+            {/*<input type={"password"} id={"password"} placeholder={"Password"} onChange={changePass} value={pass || ""} autoComplete="off"></input>*/}
+
+            <Input className={"log-field"} type={"text"} id={"username"} placeholder={"Username"} onChange={changeUser} value={user || ""} autoComplete="off"></Input>
+            <br />
+            <Input className={"log-field"} type={"password"} id={"password"} placeholder={"Password"} onChange={changePass} value={pass || ""} autoComplete="off"></Input>
             <br/>
-            <input type={"text"} id={"password"} placeholder={"Password"} onChange={changePass} value={pass || ""} autoComplete="off"></input>
             <br/>
-            <br/>
-            <button onClick={() => {
+            <Button className={"login"} onClick={() => {
                 localStorage.setItem("logged", "true");
                 const path = Auth(user, pass, "/");
                 if (path !== "/login") {
                     window.location.replace(path);
                 }
-
-            }}>Login</button>
-            <p>{user}:{pass}</p>
-        </>;
+            }}>Login</Button>
+        </div>;
     }
 
     return (
