@@ -34,8 +34,14 @@ export default function Login() {
         }
     });
 
-    return (
-        <>
+    let htmlCode = <></>;
+
+    const path = Auth("", "", "/");
+    if (path !== "/login") {
+        navigate("/");
+    }
+    else {
+        htmlCode = <>
             <h1>Login</h1>
             <form id={"login"}></form>
             <input type={"text"} id={"username"} placeholder={"Username"} onChange={changeUser} value={user || ""} autoComplete="off"></input>
@@ -46,9 +52,16 @@ export default function Login() {
             <button onClick={() => {
                 localStorage.setItem("logged", "true");
                 const path = Auth(user, pass, "/");
-                window.location.replace(path);
+                if (path !== "/login") {
+                    window.location.replace(path);
+                }
+
             }}>Login</button>
             <p>{user}:{pass}</p>
-        </>
+        </>;
+    }
+
+    return (
+        htmlCode
     );
 }

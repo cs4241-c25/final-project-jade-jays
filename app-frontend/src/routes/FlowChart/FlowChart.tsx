@@ -21,7 +21,7 @@ import { getEdges } from "@/routes/FlowChart/FlowEdges.tsx";
 import { Legend } from "@/routes/FlowChart/Legend.tsx";
 import { getCourseObject } from "@/hooks/data-fetches.ts";
 import {useNavigate} from "react-router-dom";
-import Auth from "@/hooks/authenticate.ts";
+import Auth, {loggedIn} from "@/hooks/authenticate.ts";
 
 if (!localStorage.getItem("selectedCourses")) {
   localStorage.setItem("selectedCourses", "");
@@ -242,42 +242,47 @@ export const FlowChart = () => {
     }
   }, []);
 
-  return (
-      <div style={{width: "100vw - 0px", height: "calc(100vh - 90px)"}}>
-        <ReactFlow
-            edges={edges}
-            nodes={nodes}
-            onEdgesChange={onEdgesChange}
-            onNodesChange={onNodesChange}
-            nodeTypes={nodeTypes}
-            fitView={false}
-            proOptions={{hideAttribution: true}}
-            onNodeClick={onNodeClick}
-        >
-          <Panel position="top-left">
-            <Legend/>
-          </Panel>
-          <Panel position="top-right">
-            <div className={"legend"}>
-              <label htmlFor="fullDepth">
-                <input
-                    id="fullDepth"
-                    type="checkbox"
-                    checked={fullReq}
-                    onChange={(event) => {
-                      setFullReq(event.target.checked);
-                      onPageLoad(event.target.checked);
-                    }}
-                    className="prereq"
-                    aria-label={"Full Prerequisites"}
-                />
-                Full Prereqs
-              </label>
-            </div>
-          </Panel>
-          <MiniMap nodeStrokeWidth={30}/>
-          <Controls/>
-        </ReactFlow>
-      </div>
-  );
+  if (!loggedIn()) {
+    return (<></>);
+  }
+  else {
+    return (
+        <div style={{width: "100vw - 0px", height: "calc(100vh - 90px)"}}>
+          <ReactFlow
+              edges={edges}
+              nodes={nodes}
+              onEdgesChange={onEdgesChange}
+              onNodesChange={onNodesChange}
+              nodeTypes={nodeTypes}
+              fitView={false}
+              proOptions={{hideAttribution: true}}
+              onNodeClick={onNodeClick}
+          >
+            <Panel position="top-left">
+              <Legend/>
+            </Panel>
+            <Panel position="top-right">
+              <div className={"legend"}>
+                <label htmlFor="fullDepth">
+                  <input
+                      id="fullDepth"
+                      type="checkbox"
+                      checked={fullReq}
+                      onChange={(event) => {
+                        setFullReq(event.target.checked);
+                        onPageLoad(event.target.checked);
+                      }}
+                      className="prereq"
+                      aria-label={"Full Prerequisites"}
+                  />
+                  Full Prereqs
+                </label>
+              </div>
+            </Panel>
+            <MiniMap nodeStrokeWidth={30}/>
+            <Controls/>
+          </ReactFlow>
+        </div>
+    );
+  }
 };

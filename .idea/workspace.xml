@@ -4,22 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca76c244-651c-4a03-b8ec-f5a9db95d904" name="Changes" comment="Added imgd prereqs">
-      <change afterPath="$PROJECT_DIR$/app-frontend/src/hooks/authenticate.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app-frontend/src/routes/Login/Login.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app-frontend/src/routes/Login/Redirect.tsx" afterDir="false" />
+    <list default="true" id="ca76c244-651c-4a03-b8ec-f5a9db95d904" name="Changes" comment="Added basic logging functionality">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/src/components/AppLayout/AppLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/components/AppLayout/AppLayout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/src/components/Authenticate.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/src/components/Redirect.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app-frontend/src/routes/Courses/Courses.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/routes/Courses/Courses.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app-frontend/src/routes/FlowChart/FlowChart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/routes/FlowChart/FlowChart.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/src/routes/Login.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/src/routes/Login/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/routes/Login/Login.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app-frontend/src/routes/Schedule/Schedule.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/routes/Schedule/Schedule.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app-frontend/src/routes/Tracking.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/routes/Tracking.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -308,7 +299,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741234860276</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Added basic logging functionality">
+      <option name="closed" value="true" />
+      <created>1741311715155</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1741311715155</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -334,6 +333,7 @@
     <MESSAGE value="Updated datascience prereqs" />
     <MESSAGE value="Added robotics prereqs" />
     <MESSAGE value="Added imgd prereqs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added imgd prereqs" />
+    <MESSAGE value="Added basic logging functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added basic logging functionality" />
   </component>
 </project>

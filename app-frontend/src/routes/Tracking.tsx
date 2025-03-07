@@ -5,7 +5,7 @@ import {getCourseData, getCourseDataTracking} from "@/hooks/data-fetches.ts";
 import { BSCS } from "../components/CSDegree.ts";
 import {Requirement} from "@/components/DegreeLayout.ts";
 import {useNavigate} from "react-router-dom";
-import Auth from "@/hooks/authenticate.ts";
+import Auth, {loggedIn} from "@/hooks/authenticate.ts";
 
 if (!localStorage.getItem("selectedCourses")) {
   localStorage.setItem("selectedCourses", "");
@@ -201,27 +201,32 @@ export function Tracking() {
     }
   }
 
-  return (
-      <>
-        <PanelGroup direction={"vertical"}>{panelRows}</PanelGroup>
-        <PanelGroup direction={"horizontal"}>
-          <Panel className={classes.panel}>
-            <h3>Requirements</h3>
-            {BSCS.Requirements.map((value) => (
-                <p
-                    key={value.description}
-                    style={{
-                      margin: 0,
-                      paddingTop: 0,
-                      marginBottom: 0,
-                      color: value.met ? "green" : "red",
-                    }}
-                >
-                  {value.description}
-                </p>
-            ))}
-          </Panel>
-        </PanelGroup>
-      </>
-  );
+  if (!loggedIn()) {
+    return (<></>);
+  }
+  else {
+    return (
+        <>
+          <PanelGroup direction={"vertical"}>{panelRows}</PanelGroup>
+          <PanelGroup direction={"horizontal"}>
+            <Panel className={classes.panel}>
+              <h3>Requirements</h3>
+              {BSCS.Requirements.map((value) => (
+                  <p
+                      key={value.description}
+                      style={{
+                        margin: 0,
+                        paddingTop: 0,
+                        marginBottom: 0,
+                        color: value.met ? "green" : "red",
+                      }}
+                  >
+                    {value.description}
+                  </p>
+              ))}
+            </Panel>
+          </PanelGroup>
+        </>
+    );
+  }
 }

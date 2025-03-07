@@ -7,7 +7,7 @@ import { getSectionData } from "@/hooks/data-fetches.ts";
 import { SectionList } from "@/routes/Schedule/SectionList";
 import scheduleClasses from "./schedule.module.css";
 import {useNavigate} from "react-router-dom";
-import Auth from "@/hooks/authenticate.ts";
+import Auth, {loggedIn} from "@/hooks/authenticate.ts";
 
 export function Schedule() {
   const navigate = useNavigate();
@@ -30,93 +30,98 @@ export function Schedule() {
     return <span>Error</span>;
   }
 
-  return (
-    <div
-      style={{
-        display: "flex",
-        maxHeight:
-          "calc(100vh - var(--app-shell-header-height) - 2 * var(--app-shell-padding))",
-      }}
-    >
-      <style>{`
+  if (!loggedIn()) {
+    return (<></>);
+  }
+  else {
+    return (
+        <div
+            style={{
+              display: "flex",
+              maxHeight:
+                  "calc(100vh - var(--app-shell-header-height) - 2 * var(--app-shell-padding))",
+            }}
+        >
+          <style>{`
         :root {
           --schedule-list-width: 20rem;
         }
       `}</style>
-      <SectionList data={data?.sectionList} />
-      <table cellPadding={0} cellSpacing={0}>
-        <tbody>
-          <tr>
-            <td className={scheduleClasses.grid}>
-              {data && data.timeTable["A"] ? (
-                <TimeTable
-                  title={"A"}
-                  colHeader={[
-                    "MONDAY",
-                    "TUESDAY",
-                    "WEDNESDAY",
-                    "THURSDAY",
-                    "FRIDAY",
-                  ]}
-                  data={data.timeTable["A"]}
-                  defaultRange={{ start: 8, end: 18 }}
-                />
-              ) : undefined}
-            </td>
-            <td style={{ right: 0 }} className={scheduleClasses.grid}>
-              {data && data.timeTable["B"] ? (
-                <TimeTable
-                  title={"B"}
-                  colHeader={[
-                    "MONDAY",
-                    "TUESDAY",
-                    "WEDNESDAY",
-                    "THURSDAY",
-                    "FRIDAY",
-                  ]}
-                  data={data.timeTable["B"]}
-                  defaultRange={{ start: 8, end: 18 }}
-                />
-              ) : undefined}
-            </td>
-            <td style={{ bottom: 0 }} className={scheduleClasses.grid}>
-              {data && data.timeTable["C"] ? (
-                <TimeTable
-                  title={"C"}
-                  colHeader={[
-                    "MONDAY",
-                    "TUESDAY",
-                    "WEDNESDAY",
-                    "THURSDAY",
-                    "FRIDAY",
-                  ]}
-                  data={data.timeTable["C"]}
-                  defaultRange={{ start: 8, end: 18 }}
-                />
-              ) : undefined}
-            </td>
-            <td
-              style={{ bottom: 0, right: 0 }}
-              className={scheduleClasses.grid}
-            >
-              {data && data.timeTable["D"] ? (
-                <TimeTable
-                  title={"D"}
-                  colHeader={[
-                    "MONDAY",
-                    "TUESDAY",
-                    "WEDNESDAY",
-                    "THURSDAY",
-                    "FRIDAY",
-                  ]}
-                  data={data.timeTable["D"]}
-                  defaultRange={{ start: 8, end: 18 }}
-                />
-              ) : undefined}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  );
+          <SectionList data={data?.sectionList}/>
+          <table cellPadding={0} cellSpacing={0}>
+            <tbody>
+            <tr>
+              <td className={scheduleClasses.grid}>
+                {data && data.timeTable["A"] ? (
+                    <TimeTable
+                        title={"A"}
+                        colHeader={[
+                          "MONDAY",
+                          "TUESDAY",
+                          "WEDNESDAY",
+                          "THURSDAY",
+                          "FRIDAY",
+                        ]}
+                        data={data.timeTable["A"]}
+                        defaultRange={{start: 8, end: 18}}
+                    />
+                ) : undefined}
+              </td>
+              <td style={{right: 0}} className={scheduleClasses.grid}>
+                {data && data.timeTable["B"] ? (
+                    <TimeTable
+                        title={"B"}
+                        colHeader={[
+                          "MONDAY",
+                          "TUESDAY",
+                          "WEDNESDAY",
+                          "THURSDAY",
+                          "FRIDAY",
+                        ]}
+                        data={data.timeTable["B"]}
+                        defaultRange={{start: 8, end: 18}}
+                    />
+                ) : undefined}
+              </td>
+              <td style={{bottom: 0}} className={scheduleClasses.grid}>
+                {data && data.timeTable["C"] ? (
+                    <TimeTable
+                        title={"C"}
+                        colHeader={[
+                          "MONDAY",
+                          "TUESDAY",
+                          "WEDNESDAY",
+                          "THURSDAY",
+                          "FRIDAY",
+                        ]}
+                        data={data.timeTable["C"]}
+                        defaultRange={{start: 8, end: 18}}
+                    />
+                ) : undefined}
+              </td>
+              <td
+                  style={{bottom: 0, right: 0}}
+                  className={scheduleClasses.grid}
+              >
+                {data && data.timeTable["D"] ? (
+                    <TimeTable
+                        title={"D"}
+                        colHeader={[
+                          "MONDAY",
+                          "TUESDAY",
+                          "WEDNESDAY",
+                          "THURSDAY",
+                          "FRIDAY",
+                        ]}
+                        data={data.timeTable["D"]}
+                        defaultRange={{start: 8, end: 18}}
+                    />
+                ) : undefined}
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+    );
+  }
 }
