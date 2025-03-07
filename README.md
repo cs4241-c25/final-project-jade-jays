@@ -67,6 +67,13 @@ An additional challenge was trying to align schedules with each other. Because o
 - Deployed the web app and making sure everything worked, CORs, rewriting Vercel routes.
 - Used Render for the api server and Vercel for the frontend, which routes api calls to the api server.
 
+### Silas
+- Setup the Express server
+- Created the Tracking page, which consisted of:
+  - Creating Types for majors, course categories, and course requirements
+  - Creating the requirements for the CS major
+  - Parsing the course data to display courses based on category
+  - Creating validation system for course requirements based on selected courses
 
 ## Notes
 
