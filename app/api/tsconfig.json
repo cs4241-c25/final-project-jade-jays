@@ -1,0 +1,24 @@
+{
+  "extends": "@repo/typescript-config/base.json",
+  "compilerOptions": {
+    "target": "es2015",
+    "module": "ES2015",
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["api/*"]
+    },
+    "outDir": "./build",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true
+  },
+  "include": ["./**/*.ts"],
+  "exclude": [
+    "node_modules"
+  ]
+}

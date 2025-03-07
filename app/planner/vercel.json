@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "rewrites": [
+    {
+      "source": "/:path*",
+      "destination": "https://final-project-jade-jays-jmw7.onrender.com/:path*"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/api/:path*",
+      "headers": [
+        { "key": "Access-Controls-Allow-Origin", "value": "https://final-project-jade-jays-jmw7.onrender.com" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET" }
+      ]
+    }
+  ]
+}
