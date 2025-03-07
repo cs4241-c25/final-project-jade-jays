@@ -1,4 +1,5 @@
 import express from "express";
+import session from "express-session";
 import logger from "morgan";
 import cors from "cors";
 
@@ -32,6 +33,12 @@ export const createServer = ({ DATABASE_URL } : { [key:string]: string }): expre
     .use(express.json())
     .use(express.urlencoded({ extended: true }))
     .use(cors())
+    .use(session({
+        secret: "secret",
+        resave: false,
+        saveUninitialized: false,
+        // store:
+    }))
     .use("/api/admin/", adminRoutes)
     .use("/api/data/", dataRoutes)
     .use("/api/auth/", authRoutes);
