@@ -10,6 +10,13 @@ import {useNavigate} from "react-router-dom";
 import Auth, {loggedIn} from "@/hooks/authenticate.ts";
 
 export function Schedule() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const path = Auth("", "", "/schedule");
+    if (path === "/login") {
+      navigate("/login");
+    }
+  });
   const value: { [key: string]: ClientCourseType } = readLocalStorageValue({
     key: "added_course_list",
   });

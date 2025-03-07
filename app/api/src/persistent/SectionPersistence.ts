@@ -1,4 +1,4 @@
-import { SectionType } from "@repo/app-commons/types/persistent.types";
+import { SectionType } from "app-packages/types/persistent.types";
 import mongoose from "mongoose";
 
 const subject = new mongoose.Schema<SectionType>({

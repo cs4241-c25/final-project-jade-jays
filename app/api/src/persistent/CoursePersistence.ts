@@ -1,4 +1,4 @@
-import { CourseType } from "@repo/app-commons/types/persistent.types";
+import { CourseType } from "app-packages/types/persistent.types";
 import mongoose, { Schema } from "mongoose";
 
 const course = new mongoose.Schema<CourseType>({

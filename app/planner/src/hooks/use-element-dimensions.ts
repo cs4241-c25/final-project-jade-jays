@@ -13,9 +13,7 @@ function useElementDimensions<T extends HTMLDivElement>() {
     }
   }, []);
 
-  useEventListener("scroll", refresh);
   useEventListener("resize", refresh);
-  useEventListener("navigate", refresh);
 
   return { dimensions, ref, refresh };
 }

@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv/config";
 
-export function ConnectDB(database_url: string | undefined) {
-  if (!database_url) throw new Error("MongoDB URL is missing");
+export function ConnectDB() {
+  if (!process.env.MONGO_LOCAL) return;
 
   mongoose
-    .connect(database_url)
+    .connect(process.env.MONGO_LOCAL)
     .then((value) => {
       console.log("[STATUS] Database Connected");
     })
