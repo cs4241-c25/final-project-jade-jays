@@ -7,6 +7,8 @@ import Subject from "../persistent/SubjectPersistence";
 
 const router: Router = Router();
 
-
+router.post("/login", async (req: Request, res: Response) => {
+    // Implement local strategy here
+});
 
 export default router;

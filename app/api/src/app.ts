@@ -5,6 +5,7 @@ import cors from "cors";
 import { ConnectDB } from "./util/DatabaseUtil";
 import adminRoutes from "./routes/adminRouter";
 import dataRoutes from "./routes/dataRouter";
+import authRoutes from "./routes/authRouter";
 
 export const createServer = ({ DATABASE_URL } : { [key:string]: string }): express.Express => {
   const app = express();
@@ -16,7 +17,8 @@ export const createServer = ({ DATABASE_URL } : { [key:string]: string }): expre
     .use(express.urlencoded({ extended: true }))
     .use(cors())
     .use("/api/admin/", adminRoutes)
-    .use("/api/data/", dataRoutes);
+    .use("/api/data/", dataRoutes)
+    .use("/api/auth/", authRoutes);
 
   app.get('/health-check', (req, res) => {
     res.status(200).send('connected');

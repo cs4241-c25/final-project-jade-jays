@@ -47,7 +47,7 @@ export function Login() {
   return (
     <>
       <h1>Login</h1>
-      <form id={"login"}></form>
+      <form id={"login"} action={"/api/auth/login"} method={"post"}></form>
       <input
         type={"text"}
         id={"username"}
@@ -69,7 +69,7 @@ export function Login() {
       <br />
       <button
         onClick={() => {
-          const path = Auth(user, pass, makePath);
+          const path = Auth(user, pass, "/");
           navigate(path);
         }}
       >
