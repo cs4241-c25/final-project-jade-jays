@@ -2,8 +2,8 @@
  * Grabs all subject tags from xml document and return
  * it as an Element array.
  */
-export const getAllSubjects = (xmlDoc: XMLDocument): Array<Element> => {
-  const htmlCollection = xmlDoc.getElementsByTagName("subject");
+export const getAll = (xmlDoc: XMLDocument, tag: string): Array<Element> => {
+  const htmlCollection = xmlDoc.getElementsByTagName(tag);
   const result = [];
 
   for (let i = 0; i < htmlCollection.length; i++) {

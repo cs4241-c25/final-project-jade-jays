@@ -86,6 +86,11 @@ async function getSectionData(course_id: string) {
       $format: section.instructional_format,
       $code: section.section_code,
       $status: section.section_status,
+      $start_date: section.section_start_date,
+      $end_date: section.section_end_date,
+      $start_time: section.section_start_time,
+      $end_time: section.section_end_time,
+      $day_pattern: section.meeting_day_patterns
     };
   });
 }
