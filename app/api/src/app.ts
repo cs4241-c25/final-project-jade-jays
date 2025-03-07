@@ -18,7 +18,7 @@ export const createServer = ({ DATABASE_URL } : { [key:string]: string }): expre
     .use("/api/admin/", adminRoutes)
     .use("/api/data/", dataRoutes);
 
-  app.get('health-check', (req, res) => {
+  app.get('/health-check', (req, res) => {
     res.status(200).send('connected');
   })
 
