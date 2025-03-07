@@ -4,14 +4,13 @@
   "main": "index.ts",
   "type": "module",
   "scripts": {
-    "start": "dotenvx run -- node dist/index.cjs",
-    "dev": "tsup --watch --onSuccess \"dotenvx run -- node dist/index.cjs\"",
+    "start": "node dist/index.cjs",
+    "dev": "tsup --watch --onSuccess \"node dist/index.cjs\"",
     "build": "tsup",
     "check-types": "tsc --noEmit",
     "lint": "eslint src/"
   },
   "dependencies": {
-    "@dotenvx/dotenvx": "^1.38.3",
     "@repo/app-commons": "workspace:*",
     "@types/cors": "^2.8.17",
     "axios": "^1.8.1",

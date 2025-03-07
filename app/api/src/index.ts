@@ -1,5 +1,6 @@
 import { createServer } from "./app";
-
+import dotenv from "dotenv";
+dotenv.config();
 export const start = () => {
   if (
     !process.env.PORT ||

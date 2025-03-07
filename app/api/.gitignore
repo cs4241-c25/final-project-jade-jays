@@ -31,3 +31,8 @@ tsconfig.tsbuildinfo
 # env files
 **/.env*
 .vercel
+
+.env*
+.flaskenv*
+!.env.project
+!.env.vault
