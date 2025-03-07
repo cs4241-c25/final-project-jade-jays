@@ -7,6 +7,8 @@ import { Courses } from "@/routes/Courses/Courses.tsx";
 import { Schedule } from "@/routes/Schedule/Schedule.tsx";
 import { Tracking } from "@/routes/Tracking";
 import { FlowChart } from "@/routes/FlowChart/FlowChart.tsx";
+import Login from "@/routes/Login/Login.tsx";
+import Redirect from "@/routes/Login/Redirect.tsx";
 
 const theme = createTheme({
   activeClassName: "",
@@ -58,6 +60,8 @@ export default function App() {
               <Route path={"/schedule"} index element={<Schedule />} />
               <Route path={"/tracking"} index element={<Tracking />} />
               <Route path={"/flow"} index element={<FlowChart />} />
+              <Route path={"/login"} index element={<Login />} />
+              <Route path="*" element={<Redirect />} />
             </Route>
           </Routes>
         </BrowserRouter>

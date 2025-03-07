@@ -1,10 +1,21 @@
 import { AppShell, Group, Title, UnstyledButton } from "@mantine/core";
-import { Outlet, NavLink } from "react-router-dom";
+import {Outlet, NavLink, useNavigate} from "react-router-dom";
 import cx from "clsx";
 
 import classes from "./appLayout.module.css";
+import {useState} from "react";
+import {loggedIn} from "@/hooks/authenticate.ts";
+
+function LogButton() {
+  if (loggedIn()) {
+    return "Logout"
+  }
+  return "";
+}
 
 export function AppLayout() {
+  const [loggedIn, setLoggedIn] = useState(LogButton());
+
   return (
     <AppShell withBorder={false} header={{ height: "50", offset: true }}>
       <AppShell.Header className={classes.header}>
@@ -16,6 +27,21 @@ export function AppLayout() {
           >
             <Title order={2} fw={"700"}>
               Planner
+            </Title>
+          </UnstyledButton>
+          <UnstyledButton
+              renderRoot={({ className, ...others }) => (
+                  <NavLink className={cx(className)} {...others} />
+              )}
+              onClick={() => {
+                localStorage.setItem("user", "");
+                localStorage.setItem("pass", "");
+                localStorage.setItem("logged", "false");
+                window.location.replace("/login");
+              }}
+          >
+            <Title order={2} fw={"700"}>
+              {loggedIn}
             </Title>
           </UnstyledButton>
         </Group>

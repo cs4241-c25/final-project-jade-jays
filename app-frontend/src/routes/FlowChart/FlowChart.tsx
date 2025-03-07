@@ -20,6 +20,8 @@ import { ClassNode, getClasses } from "@/routes/FlowChart/FlowNodes.tsx";
 import { getEdges } from "@/routes/FlowChart/FlowEdges.tsx";
 import { Legend } from "@/routes/FlowChart/Legend.tsx";
 import { getCourseObject } from "@/hooks/data-fetches.ts";
+import {useNavigate} from "react-router-dom";
+import Auth from "@/hooks/authenticate.ts";
 
 if (!localStorage.getItem("selectedCourses")) {
   localStorage.setItem("selectedCourses", "");
@@ -94,6 +96,14 @@ const getLayoutedElements = (nodes, edges, options) => {
 };
 
 export const FlowChart = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const path = Auth("", "", "/flow");
+    if (path === "/login") {
+      navigate("/login");
+    }
+  });
+
   const [edges, setEdges] = useState(getEdges([]));
   const [nodes, setNodes] = useState(getClasses([], edges));
   const [fullReq, setFullReq] = useState<boolean>(false);

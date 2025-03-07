@@ -4,6 +4,8 @@ import classes from "@/styles/tracking.module.css";
 import {getCourseData, getCourseDataTracking} from "@/hooks/data-fetches.ts";
 import { BSCS } from "../components/CSDegree.ts";
 import {Requirement} from "@/components/DegreeLayout.ts";
+import {useNavigate} from "react-router-dom";
+import Auth from "@/hooks/authenticate.ts";
 
 if (!localStorage.getItem("selectedCourses")) {
   localStorage.setItem("selectedCourses", "");
@@ -40,6 +42,13 @@ export function arrayToLocal(selectedCourses: string[]) {
 }
 
 export function Tracking() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const path = Auth("", "", "/tracking");
+    if (path === "/login") {
+      navigate("/login");
+    }
+  });
   const [panelRows, setPanelRows] = useState<JSX.Element[]>([]);
   const [categories, setCategories] = useState<Category[]>(BSCS.categories);
   const [courseDataMap, setCourseDataMap] = useState<Record<string, any[]>>({});

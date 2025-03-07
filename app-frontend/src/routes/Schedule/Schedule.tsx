@@ -1,13 +1,22 @@
 import { readLocalStorageValue } from "@mantine/hooks";
 import { TimeTable } from "@/components/TimeTable/TimeTable.tsx";
-import { useState } from "react";
+import {useEffect} from "react";
 
 import { ClientCourseType } from "app-packages/types/persistent.types.ts";
 import { getSectionData } from "@/hooks/data-fetches.ts";
 import { SectionList } from "@/routes/Schedule/SectionList";
 import scheduleClasses from "./schedule.module.css";
+import {useNavigate} from "react-router-dom";
+import Auth from "@/hooks/authenticate.ts";
 
 export function Schedule() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const path = Auth("", "", "/schedule");
+    if (path === "/login") {
+      navigate("/login");
+    }
+  });
   const value: { [key: string]: ClientCourseType } = readLocalStorageValue({
     key: "added_course_list",
   });

@@ -5,29 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ca76c244-651c-4a03-b8ec-f5a9db95d904" name="Changes" comment="Added imgd prereqs">
+      <change afterPath="$PROJECT_DIR$/app-frontend/src/hooks/authenticate.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-frontend/src/routes/Login/Login.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app-frontend/src/routes/Login/Redirect.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsAB.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsAB.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsAR.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsAR.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsBB.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsBB.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsCH.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsCH.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsCN.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsCN.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsCS.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsCS.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsDEV.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsDEV.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsDS.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsDS.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsECON.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsECON.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsEN.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsEN.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsGN.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsGN.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsHI.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsHI.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsIMGD.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsIMGD.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsISE.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsISE.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsMA.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsMA.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsMU.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsMU.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsPY.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsPY.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsRBE.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsRBE.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsSP.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsSP.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsWR.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app-backend/src/Prereqs/PrereqsWR.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/src/routes/FlowChart/FlowEdges.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/routes/FlowChart/FlowEdges.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-frontend/src/routes/FlowChart/FlowNodes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/routes/FlowChart/FlowNodes.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/src/components/AppLayout/AppLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/components/AppLayout/AppLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/src/components/Authenticate.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/src/components/Redirect.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/src/routes/Courses/Courses.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/routes/Courses/Courses.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/src/routes/FlowChart/FlowChart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/routes/FlowChart/FlowChart.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/src/routes/Login.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/src/routes/Schedule/Schedule.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/routes/Schedule/Schedule.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-frontend/src/routes/Tracking.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app-frontend/src/routes/Tracking.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,31 +69,53 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;SCRUM-2&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/sidog/WebstormProjects/final-project-jade-jays/app-backend&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;/home/camren-chraplak/.nvm/versions/node/v22.14.0/bin/node&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
-    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.nodejs&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/media/Files/WPI/CS_4241/final-project-jade-jays/app-frontend/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "SCRUM-1",
+    "last_opened_file_path": "C:/Users/sidog/WebstormProjects/final-project-jade-jays/app-backend",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "/home/camren-chraplak/.nvm/versions/node/v22.14.0/bin/node",
+    "nodejs_package_manager_path": "pnpm",
+    "npm.app-backend > dev.executor": "Run",
+    "npm.app-frontend > dev.executor": "Run",
+    "npm.dev.executor": "Run",
+    "settings.editor.selected.configurable": "settings.nodejs",
+    "ts.external.directory.path": "/media/Files/WPI/CS_4241/final-project-jade-jays/app-backend/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\sidog\WebstormProjects\final-project-jade-jays\app-backend" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.dev">
+    <configuration name="app-backend &gt; dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/app-backend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="app-frontend &gt; dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/app-frontend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -115,6 +129,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="npm.dev" />
+        <item itemvalue="npm.app-backend &gt; dev" />
+        <item itemvalue="npm.app-frontend &gt; dev" />
       </list>
     </recent_temporary>
   </component>

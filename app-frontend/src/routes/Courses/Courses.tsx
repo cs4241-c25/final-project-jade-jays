@@ -7,8 +7,19 @@ import { SidebarItem } from "@/routes/Courses/SidebarItem.tsx";
 import { CourseView } from "@/routes/Courses/CourseView.tsx";
 
 import panelClasses from "@/routes/panel.module.css";
+import {useEffect} from "react";
+import Auth from "@/hooks/authenticate.ts";
+import {useNavigate} from "react-router-dom";
 
 export function Courses() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const path = Auth("", "", "/");
+    if (path === "/login") {
+      navigate("/login");
+    }
+  });
+
   const [currentSubject, setCurrentSubject] = useLocalStorage({
     key: "subject",
     defaultValue: "ACC",
