@@ -1,0 +1,19 @@
+# Exported from Render on 2025-03-07T01:24:21Z
+services:
+  - type: web
+    name: final-project-jade-jays
+    runtime: node
+    repo: https://github.com/cs4241-c25/final-project-jade-jays
+    branch: SCRUM-37
+    plan: free
+    envVars:
+      - key: PORT
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+    region: oregon
+    buildCommand: pnpm install --no-frozen-lockfile && turbo build
+    startCommand: pnpm start
+    healthCheckPath: /health
+    rootDir: app/api
+version: "1"

@@ -1,0 +1,8 @@
+{
+  "restartable": "rs",
+  "watch": ["src"],
+  "ext": "ts",
+  "exec": "ts-node ./api/index.ts",
+  "ignore": [".git", "node_modules/**/node_modules", "api/**/*.spec.ts"],
+  "verbose": true
+}
