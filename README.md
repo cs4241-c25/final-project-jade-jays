@@ -8,6 +8,10 @@ On top of the default features, we added some additional ones including:
 - A tracking sheet
 - An interactive course flowchart showing prerequisite data
 
+## Credentials
+- username: admin
+- password: admin
+
 ## Our tech stack
 
 Here is a list of the technologies we used:
