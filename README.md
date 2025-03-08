@@ -74,6 +74,15 @@ An additional challenge was trying to align schedules with each other. Because o
   - Creating the requirements for the CS major
   - Parsing the course data to display courses based on category
   - Creating validation system for course requirements based on selected courses
+ 
+### Noah
+- Worked on navbar (AppLayout)
+- Worked on page routes (Login)
+- Worked on api endpoint routers
+- Investigated deployments with Vercel and Render
+- Worked on localStrategy authorization (incomplete)
+- Conceptualized UI/UX via storyboards
+- Organized Jira tasks
 
 ## Notes
 
